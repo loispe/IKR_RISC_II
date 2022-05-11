@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom behav
+DEFAULT_FILE atom step_if_behav.vhd

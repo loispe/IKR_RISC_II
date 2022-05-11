@@ -1,0 +1,14 @@
+[ModelSim]
+raro_ikr_risc_II_lib = $HDS_PROJECT_DIR/raro_ikr_risc_II_lib/work
+[hdl]
+raro_ikr_risc_II_lib = $HDS_PROJECT_DIR/raro_ikr_risc_II_lib/hdl
+[hds]
+raro_ikr_risc_II_lib = $HDS_PROJECT_DIR/raro_ikr_risc_II_lib/hds
+[hds_settings]
+default_library = raro_ikr_risc_II_lib
+design_root = raro_ikr_risc_II_lib.raro_ikr_risc_II_tb(struct)raro_ikr_risc_@i@i_tb/struct.bd
+version = 2
+[library_type]
+raro_ikr_risc_II_lib = regular
+[shared]
+others = $HDS_TEAM_HOME/shared.hdp
