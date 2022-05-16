@@ -11,7 +11,7 @@ LIBRARY ieee;
 use ieee.numeric_std.all;
 
 ARCHITECTURE behav OF step_if IS
-  type memory_type is array(0 to 3) of word;
+  type memory_type is array(0 to memory_depth - 1) of word;
   constant rom: memory_type :=  (0 => x"0000_0013",
                                 1 => x"0000_0014",
                                 2 => x"0000_0015",

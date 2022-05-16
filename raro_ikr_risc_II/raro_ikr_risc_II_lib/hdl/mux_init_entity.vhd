@@ -13,9 +13,8 @@ USE raro_ikr_risc_II_lib.internal_types.all;
 
 ENTITY mux_init IS
    PORT( 
-      if_out_rPc : IN     word;
-      if_in_rPc  : OUT    word
-   );
+      if_out_rPc : IN     word := (others => '0');
+      if_in_rPc  : OUT    word);
 
 -- Declarations
 
