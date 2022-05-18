@@ -13,11 +13,11 @@ BEGIN
   begin
     if res_n = '0' then
       rOpcode_out <= (others => '0');
-      rNextPc_in <= (others => '0');
+      rNextPc_in_dc <= (others => '0');
     else
       if clk'event and clk = '1' then
         rOpcode_out <= rOpcode_in;
-        rNextPc_in <= rPc_in;
+        rNextPc_in_dc <= rPc_in;
       end if;
     end if;
   end process;

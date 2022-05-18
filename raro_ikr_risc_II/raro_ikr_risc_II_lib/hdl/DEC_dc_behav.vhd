@@ -20,12 +20,18 @@ BEGIN
     
     format := rOpcode_out(opc_format'range);
     
+    if format = x"3F" then
+      sel_imm <= '0';
+    else
+      sel_imm <= '1';
+    end if;
+    
     case format is
     when opc_addi => 
       alu_mode_dc <= add;
       sel_c <= rOpcode_out(opc_c_reg'range);
       sel_b <= rOpcode_out(opc_b_reg'range);
-      a_imm <= rOpcode_out(opc_imm'range);
+      a_imm <= x"0000" & rOpcode_out(opc_imm'range);
     when others => 
       a_imm <= (others => '0');
       sel_b <= (others => '0');

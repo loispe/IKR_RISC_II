@@ -15,7 +15,7 @@ PACKAGE isa_types IS
   SUBTYPE opc_c_reg IS std_logic_vector(25 downto 21);
   SUBTYPE opc_b_reg IS std_logic_vector(20 downto 16);
   SUBTYPE opc_a_reg IS std_logic_vector(4 downto 0);
-  SUBTYPE opc_imm IS std_logic_vector(31 downto 0);
+  SUBTYPE opc_imm IS std_logic_vector(15 downto 0);
   
   --alu modes
   TYPE alu_mode_type IS (add, sub);
