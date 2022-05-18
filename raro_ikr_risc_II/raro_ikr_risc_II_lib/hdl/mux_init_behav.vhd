@@ -13,11 +13,10 @@ use IEEE.numeric_std.all;
 ARCHITECTURE behav OF mux_init IS
 BEGIN
   
-  process is
+  process(rPc_out) is
   begin
-    wait for 5 ns;
-    if to_integer(unsigned(if_out_rPC)) < memory_depth - 1 then
-      if_in_rPc <= std_logic_vector(unsigned(if_out_rPc) + 1);
+    if to_integer(unsigned(rPc_out)) < memory_depth - 1 then
+      rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
     end if;
   end process;
     

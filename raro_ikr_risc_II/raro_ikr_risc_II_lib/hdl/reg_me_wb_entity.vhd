@@ -1,4 +1,4 @@
--- VHDL Entity raro_ikr_risc_II_lib.step_me.generatedInstance
+-- VHDL Entity raro_ikr_risc_II_lib.reg_me_wb.generatedInstance
 --
 -- Created:
 --          by - lspetrck.meyer (pc091)
@@ -11,12 +11,11 @@ USE ieee.std_logic_1164.all;
 LIBRARY raro_ikr_risc_II_lib;
 USE raro_ikr_risc_II_lib.internal_types.all;
 
-ENTITY step_me IS
+ENTITY reg_me_wb IS
    PORT( 
-      rALU_out       : IN     std_logic_vector (15 DOWNTO 0);
-      rME_in         : OUT    std_logic_vector (15 DOWNTO 0);
-      rStoreData_out : IN     std_logic_vector (15 DOWNTO 0)
+      rME_in  : IN     std_logic_vector (15 DOWNTO 0);
+      rME_out : OUT    std_logic_vector (15 DOWNTO 0)
    );
 
-END step_me ;
+END reg_me_wb ;
 

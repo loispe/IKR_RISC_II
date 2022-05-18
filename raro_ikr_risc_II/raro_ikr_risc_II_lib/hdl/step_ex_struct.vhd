@@ -17,7 +17,13 @@ ARCHITECTURE struct OF step_ex IS
    -- Architecture declarations
 
    -- Internal signal declarations
-   SIGNAL ALU_out : std_logic_vector(15 DOWNTO 0);
+   SIGNAL ALU_out          : std_logic_vector(15 DOWNTO 0);
+   SIGNAL ex_out_nextPc    : std_logic_vector(15 DOWNTO 0);
+   SIGNAL ex_out_ra        : std_logic_vector(15 DOWNTO 0);
+   SIGNAL ex_out_rb        : std_logic_vector(15 DOWNTO 0);
+   SIGNAL ex_out_rc        : std_logic_vector(15 DOWNTO 0);
+   SIGNAL me_in_rALUout    : std_logic_vector(15 DOWNTO 0);
+   SIGNAL me_in_rStoreData : std_logic_vector(15 DOWNTO 0);
 
 
    -- Component Declarations

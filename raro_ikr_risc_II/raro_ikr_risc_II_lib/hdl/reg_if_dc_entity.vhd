@@ -1,4 +1,4 @@
--- VHDL Entity raro_ikr_risc_II_lib.step_if.interface
+-- VHDL Entity raro_ikr_risc_II_lib.reg_if_dc.interface
 --
 -- Created:
 --          by - lspetrck.meyer (pc091)
@@ -11,13 +11,17 @@ USE ieee.std_logic_1164.all;
 LIBRARY raro_ikr_risc_II_lib;
 USE raro_ikr_risc_II_lib.internal_types.all;
 
-ENTITY step_if IS
+ENTITY reg_if_dc IS
    PORT( 
-      rPc_out    : IN     word;
-      rOpcode_in : OUT    word
+      clk         : IN     std_logic;
+      rOpcode_in  : IN     word;
+      rPc_in      : IN     word;
+      res_n       : IN     std_logic;
+      rNextPc_in  : OUT    word;
+      rOpcode_out : OUT    word
    );
 
 -- Declarations
 
-END step_if ;
+END reg_if_dc ;
 

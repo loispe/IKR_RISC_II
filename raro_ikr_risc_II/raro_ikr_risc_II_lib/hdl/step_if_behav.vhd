@@ -12,13 +12,13 @@ use ieee.numeric_std.all;
 
 ARCHITECTURE behav OF step_if IS
   type memory_type is array(0 to memory_depth - 1) of word;
-  constant rom: memory_type :=  (0 => x"0000_0013",
+  constant rom: memory_type :=  (0 =>  "000000_00001_00000" & x"0005", --addi $00_rc_rb_#imm
                                 1 => x"0000_0014",
                                 2 => x"0000_0015",
                                 3 => x"0000_0016");
   
 BEGIN
-  dc_in_rOpcode <= rom(to_integer(unsigned(if_out_rPc)));
+  rOpcode_in <= rom(to_integer(unsigned(rPc_out)));
       
 END ARCHITECTURE behav;
 

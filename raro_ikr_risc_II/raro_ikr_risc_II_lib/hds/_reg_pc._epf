@@ -1,0 +1,2 @@
+DEFAULT_FILE atom reg_if_behav.vhd
+DEFAULT_ARCHITECTURE atom behav
