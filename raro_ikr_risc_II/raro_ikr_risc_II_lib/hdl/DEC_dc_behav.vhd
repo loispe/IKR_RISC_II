@@ -27,6 +27,7 @@ BEGIN
   begin
     format := rOpcode_out(format'range);
     a_imm <= (others => '0');
+    sel_imm <= '0';
     sel_b <= (others => '0');
     sel_c <= (others => '0');
     
@@ -110,12 +111,15 @@ BEGIN
       end case; --end r-command or jump
     when others =>  --is i-command
       opc_i := format;
-      reg_c := rOpcode_out(reg_c'range);
-      reg_b := rOpcode_out(reg_b'range);
-      imm16 := rOpcode_out(imm16'range);
+      sel_c <= rOpcode_out(reg_c'range);
+      sel_b <= rOpcode_out(reg_b'range);
+      a_imm <= 16x"0" & rOpcode_out(imm16'range);
+      sel_imm <= '1';
       case opc_i is --determine i-command
       ----arithmetic
-      when opc_addi =>
+      when opc_addi => 
+        --a_imm <= 16x"0" & imm16;
+        rAluMode_in <= add;
       when opc_addli =>
       when opc_addhi =>
       when opc_cmpui =>

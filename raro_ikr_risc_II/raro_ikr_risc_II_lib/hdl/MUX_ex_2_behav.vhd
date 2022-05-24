@@ -9,6 +9,6 @@
 --
 ARCHITECTURE behav OF MUX_ex_2 IS
 BEGIN
-  mux_ALU_B <= B_out;
+  mux_ALU_B <= rB_out;
 END ARCHITECTURE behav;
 

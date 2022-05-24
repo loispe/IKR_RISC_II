@@ -28,7 +28,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 7,0
+suid 11,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -73,11 +73,11 @@ lang 11
 decl (Decl
 n "a_imm"
 t "word"
-o 9
-suid 4,0
+o 10
+suid 8,0
 )
 )
-uid 173,0
+uid 224,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -87,10 +87,10 @@ decl (Decl
 n "rA_in"
 t "word"
 o 6
-suid 5,0
+suid 9,0
 )
 )
-uid 175,0
+uid 226,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -98,11 +98,11 @@ lang 11
 decl (Decl
 n "rf_mux_a"
 t "word"
-o 11
-suid 6,0
+o 12
+suid 10,0
 )
 )
-uid 177,0
+uid 228,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -110,11 +110,11 @@ lang 11
 decl (Decl
 n "sel_imm"
 t "std_logic"
-o 15
-suid 7,0
+o 16
+suid 11,0
 )
 )
-uid 179,0
+uid 230,0
 )
 ]
 )
@@ -170,25 +170,25 @@ uid 92,0
 litem &14
 pos 0
 dimension 20
-uid 174,0
+uid 225,0
 )
 *24 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 176,0
+uid 227,0
 )
 *25 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 178,0
+uid 229,0
 )
 *26 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 180,0
+uid 231,0
 )
 ]
 )
@@ -459,19 +459,19 @@ value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/ra
 )
 (vvPair
 variable "date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "day"
-value "Wed"
+value "Tue"
 )
 (vvPair
 variable "day_long"
-value "Wednesday"
+value "Tuesday"
 )
 (vvPair
 variable "dd"
-value "18"
+value "24"
 )
 (vvPair
 variable "entity_name"
@@ -499,7 +499,7 @@ value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -507,11 +507,11 @@ value "meyer"
 )
 (vvPair
 variable "graphical_source_host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:08:57"
+value "16:46:35"
 )
 (vvPair
 variable "group"
@@ -519,7 +519,7 @@ value "meyer"
 )
 (vvPair
 variable "host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "language"
@@ -611,7 +611,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "17:08:57"
+value "16:46:35"
 )
 (vvPair
 variable "unit"
@@ -646,34 +646,34 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *60 (CptPort
-uid 153,0
+uid 204,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 154,0
+uid 205,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "63250,23625,64000,24375"
+xt "63250,24625,64000,25375"
 )
 tg (CPTG
-uid 155,0
+uid 206,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 156,0
+uid 207,0
 va (VaSet
 font "courier,8,0"
 )
-xt "65000,23550,67500,24450"
+xt "65000,24550,67500,25450"
 st "a_imm"
-blo "65000,24250"
+blo "65000,25250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 157,0
+uid 208,0
 va (VaSet
 font "courier,8,0"
 )
@@ -686,41 +686,41 @@ lang 11
 decl (Decl
 n "a_imm"
 t "word"
-o 9
-suid 4,0
+o 10
+suid 8,0
 )
 )
 )
 *61 (CptPort
-uid 158,0
+uid 209,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 159,0
+uid 210,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "76000,27625,76750,28375"
+xt "76000,34625,76750,35375"
 )
 tg (CPTG
-uid 160,0
+uid 211,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 161,0
+uid 212,0
 va (VaSet
 font "courier,8,0"
 )
-xt "72500,27550,75000,28450"
+xt "72500,34550,75000,35450"
 st "rA_in"
 ju 2
-blo "75000,28250"
+blo "75000,35250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 162,0
+uid 213,0
 va (VaSet
 font "courier,8,0"
 )
@@ -735,39 +735,39 @@ decl (Decl
 n "rA_in"
 t "word"
 o 6
-suid 5,0
+suid 9,0
 )
 )
 )
 *62 (CptPort
-uid 163,0
+uid 214,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 164,0
+uid 215,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "63250,27625,64000,28375"
+xt "63250,34625,64000,35375"
 )
 tg (CPTG
-uid 165,0
+uid 216,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 166,0
+uid 217,0
 va (VaSet
 font "courier,8,0"
 )
-xt "65000,27550,69000,28450"
+xt "65000,34550,69000,35450"
 st "rf_mux_a"
-blo "65000,28250"
+blo "65000,35250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 167,0
+uid 218,0
 va (VaSet
 font "courier,8,0"
 )
@@ -780,40 +780,40 @@ lang 11
 decl (Decl
 n "rf_mux_a"
 t "word"
-o 11
-suid 6,0
+o 12
+suid 10,0
 )
 )
 )
 *63 (CptPort
-uid 168,0
+uid 219,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 169,0
+uid 220,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "69625,31333,70375,32083"
+xt "69625,40500,70375,41250"
 )
 tg (CPTG
-uid 170,0
+uid 221,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 171,0
+uid 222,0
 ro 270
 va (VaSet
 font "courier,8,0"
 )
-xt "69550,26833,70450,30333"
+xt "69550,36000,70450,39500"
 st "sel_imm"
-blo "70250,30333"
+blo "70250,39500"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 172,0
+uid 223,0
 va (VaSet
 font "courier,8,0"
 )
@@ -826,8 +826,8 @@ lang 11
 decl (Decl
 n "sel_imm"
 t "std_logic"
-o 15
-suid 7,0
+o 16
+suid 11,0
 )
 )
 )
@@ -840,8 +840,9 @@ fg "0,65535,0"
 lineColor "0,32896,0"
 lineWidth 2
 )
-xt "64000,23000,76000,33000"
+xt "64000,23000,76000,44000"
 )
+oxt "64000,23000,76000,33000"
 biTextGroup (BiTextGroup
 uid 10,0
 ps "CenterOffsetStrategy"
@@ -851,18 +852,18 @@ uid 11,0
 va (VaSet
 font "courier,8,1"
 )
-xt "64750,27100,75250,28000"
+xt "64750,32600,75250,33500"
 st "raro_ikr_risc_II_lib"
-blo "64750,27800"
+blo "64750,33300"
 )
 second (Text
 uid 12,0
 va (VaSet
 font "courier,8,1"
 )
-xt "64750,28000,67750,28900"
+xt "64750,33500,67750,34400"
 st "MUX_dc"
-blo "64750,28700"
+blo "64750,34200"
 )
 )
 gi *64 (GenericInterface
@@ -875,7 +876,7 @@ uid 15,0
 va (VaSet
 font "courier,8,0"
 )
-xt "-6000,7000,4500,7900"
+xt "-6000,12500,4500,13400"
 st "Generic Declarations"
 )
 header "Generic Declarations"
@@ -1542,6 +1543,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 180,0
+lastUid 231,0
 activeModelName "Symbol:CDM"
 )

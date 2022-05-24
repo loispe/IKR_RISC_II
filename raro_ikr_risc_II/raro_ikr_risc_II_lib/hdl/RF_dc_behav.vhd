@@ -30,7 +30,7 @@ BEGIN
       for i in registers'range loop
         registers(i) <= (others => '0');
       end loop;
-      registers(1) <= x"CAFEAFFE";
+      registers(2) <= 32x"02";
 --    else
 --      if clk'event and clk = '1' then
 --        registers(sel_b) <= 

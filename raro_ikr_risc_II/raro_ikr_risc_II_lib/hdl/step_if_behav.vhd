@@ -12,7 +12,7 @@ use ieee.numeric_std.all;
 
 ARCHITECTURE behav OF step_if IS
   type memory_type is array(0 to memory_depth - 1) of word;
-  constant rom: memory_type :=  (0 =>  b"000000_00001_00000" & x"0005", --addi $00_rc_rb_#imm
+  constant rom: memory_type :=  (0 => 6x"00" & 5x"01" & 5x"02" & 16x"04", --addi rc = 1 rb = 2 imm = 4 
                                 1 => x"0000_0014",
                                 2 => x"0000_0015",
                                 3 => x"0000_0016");

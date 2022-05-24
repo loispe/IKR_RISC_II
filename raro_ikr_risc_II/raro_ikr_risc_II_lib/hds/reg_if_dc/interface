@@ -11,6 +11,11 @@ unitName "std_logic_1164"
 library "raro_ikr_risc_II_lib"
 unitName "internal_types"
 )
+(DmPackageRef
+library "raro_ikr_risc_II_lib"
+unitName "isa_types"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
@@ -22,7 +27,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 66,0
+suid 72,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -68,10 +73,10 @@ decl (Decl
 n "clk"
 t "std_logic"
 o 1
-suid 61,0
+suid 67,0
 )
 )
-uid 811,0
+uid 876,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -80,10 +85,10 @@ decl (Decl
 n "res_n"
 t "std_logic"
 o 2
-suid 62,0
+suid 68,0
 )
 )
-uid 813,0
+uid 878,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -93,10 +98,10 @@ decl (Decl
 n "rNextPc_in_dc"
 t "word"
 o 14
-suid 63,0
+suid 69,0
 )
 )
-uid 815,0
+uid 880,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -105,10 +110,10 @@ decl (Decl
 n "rOpcode_in"
 t "word"
 o 15
-suid 64,0
+suid 70,0
 )
 )
-uid 817,0
+uid 882,0
 )
 *18 (LogPort
 port (LogicalPort
@@ -118,10 +123,10 @@ decl (Decl
 n "rOpcode_out"
 t "word"
 o 16
-suid 65,0
+suid 71,0
 )
 )
-uid 819,0
+uid 884,0
 )
 *19 (LogPort
 port (LogicalPort
@@ -130,10 +135,10 @@ decl (Decl
 n "rPc_in"
 t "word"
 o 17
-suid 66,0
+suid 72,0
 )
 )
-uid 821,0
+uid 886,0
 )
 ]
 )
@@ -189,37 +194,37 @@ uid 113,0
 litem &14
 pos 0
 dimension 20
-uid 812,0
+uid 877,0
 )
 *26 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 814,0
+uid 879,0
 )
 *27 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 816,0
+uid 881,0
 )
 *28 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 818,0
+uid 883,0
 )
 *29 (MRCItem
 litem &18
 pos 4
 dimension 20
-uid 820,0
+uid 885,0
 )
 *30 (MRCItem
 litem &19
 pos 5
 dimension 20
-uid 822,0
+uid 887,0
 )
 ]
 )
@@ -490,19 +495,19 @@ value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/ra
 )
 (vvPair
 variable "date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "day"
-value "Wed"
+value "Tue"
 )
 (vvPair
 variable "day_long"
-value "Wednesday"
+value "Tuesday"
 )
 (vvPair
 variable "dd"
-value "18"
+value "24"
 )
 (vvPair
 variable "entity_name"
@@ -530,7 +535,7 @@ value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -538,11 +543,11 @@ value "meyer"
 )
 (vvPair
 variable "graphical_source_host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:16:56"
+value "16:55:25"
 )
 (vvPair
 variable "group"
@@ -550,7 +555,7 @@ value "meyer"
 )
 (vvPair
 variable "host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "language"
@@ -642,7 +647,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "17:16:56"
+value "16:55:25"
 )
 (vvPair
 variable "unit"
@@ -677,10 +682,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *64 (CptPort
-uid 781,0
+uid 846,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 782,0
+uid 847,0
 ro 90
 va (VaSet
 vasetType 1
@@ -689,11 +694,11 @@ fg "0,65535,0"
 xt "14250,25625,15000,26375"
 )
 tg (CPTG
-uid 783,0
+uid 848,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 784,0
+uid 849,0
 va (VaSet
 font "courier,8,0"
 )
@@ -704,7 +709,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 785,0
+uid 850,0
 va (VaSet
 font "courier,8,0"
 )
@@ -718,15 +723,15 @@ decl (Decl
 n "clk"
 t "std_logic"
 o 1
-suid 61,0
+suid 67,0
 )
 )
 )
 *65 (CptPort
-uid 786,0
+uid 851,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 787,0
+uid 852,0
 ro 90
 va (VaSet
 vasetType 1
@@ -735,11 +740,11 @@ fg "0,65535,0"
 xt "14250,27625,15000,28375"
 )
 tg (CPTG
-uid 788,0
+uid 853,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 789,0
+uid 854,0
 va (VaSet
 font "courier,8,0"
 )
@@ -750,7 +755,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 790,0
+uid 855,0
 va (VaSet
 font "courier,8,0"
 )
@@ -764,15 +769,15 @@ decl (Decl
 n "res_n"
 t "std_logic"
 o 2
-suid 62,0
+suid 68,0
 )
 )
 )
 *66 (CptPort
-uid 791,0
+uid 856,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 792,0
+uid 857,0
 ro 90
 va (VaSet
 vasetType 1
@@ -781,11 +786,11 @@ fg "0,65535,0"
 xt "27000,30625,27750,31375"
 )
 tg (CPTG
-uid 793,0
+uid 858,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 794,0
+uid 859,0
 va (VaSet
 font "courier,8,0"
 )
@@ -797,7 +802,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 795,0
+uid 860,0
 va (VaSet
 font "courier,8,0"
 )
@@ -812,15 +817,15 @@ decl (Decl
 n "rNextPc_in_dc"
 t "word"
 o 14
-suid 63,0
+suid 69,0
 )
 )
 )
 *67 (CptPort
-uid 796,0
+uid 861,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 797,0
+uid 862,0
 ro 90
 va (VaSet
 vasetType 1
@@ -829,11 +834,11 @@ fg "0,65535,0"
 xt "14250,20625,15000,21375"
 )
 tg (CPTG
-uid 798,0
+uid 863,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 799,0
+uid 864,0
 va (VaSet
 font "courier,8,0"
 )
@@ -844,7 +849,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 800,0
+uid 865,0
 va (VaSet
 font "courier,8,0"
 )
@@ -858,15 +863,15 @@ decl (Decl
 n "rOpcode_in"
 t "word"
 o 15
-suid 64,0
+suid 70,0
 )
 )
 )
 *68 (CptPort
-uid 801,0
+uid 866,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 802,0
+uid 867,0
 ro 90
 va (VaSet
 vasetType 1
@@ -875,11 +880,11 @@ fg "0,65535,0"
 xt "27000,20625,27750,21375"
 )
 tg (CPTG
-uid 803,0
+uid 868,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 804,0
+uid 869,0
 va (VaSet
 font "courier,8,0"
 )
@@ -891,7 +896,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 805,0
+uid 870,0
 va (VaSet
 font "courier,8,0"
 )
@@ -906,15 +911,15 @@ decl (Decl
 n "rOpcode_out"
 t "word"
 o 16
-suid 65,0
+suid 71,0
 )
 )
 )
 *69 (CptPort
-uid 806,0
+uid 871,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 807,0
+uid 872,0
 ro 90
 va (VaSet
 vasetType 1
@@ -923,11 +928,11 @@ fg "0,65535,0"
 xt "14250,30625,15000,31375"
 )
 tg (CPTG
-uid 808,0
+uid 873,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 809,0
+uid 874,0
 va (VaSet
 font "courier,8,0"
 )
@@ -938,7 +943,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 810,0
+uid 875,0
 va (VaSet
 font "courier,8,0"
 )
@@ -952,7 +957,7 @@ decl (Decl
 n "rPc_in"
 t "word"
 o 17
-suid 66,0
+suid 72,0
 )
 )
 )
@@ -1383,11 +1388,12 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,22500,4500"
+xt "0,900,42000,4500"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 LIBRARY raro_ikr_risc_II_lib;
-USE raro_ikr_risc_II_lib.internal_types.all;"
+USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.ALL;
+"
 tm "PackageList"
 )
 ]
@@ -1666,6 +1672,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 822,0
+lastUid 887,0
 activeModelName "Symbol:CDM"
 )

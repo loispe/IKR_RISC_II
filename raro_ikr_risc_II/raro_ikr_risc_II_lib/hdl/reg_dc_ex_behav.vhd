@@ -16,7 +16,7 @@ BEGIN
       rB_out <= (others => '0');
       rC_out <= (others => '0');
       rNextPc_out_ex <= (others => '0');
-      rAluMode_out <= NOP;
+      --rAluMode_out <= NOP;
     else
       if clk'event and clk = '1' then
         rA_out <= rA_in;

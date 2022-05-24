@@ -7,6 +7,20 @@ dmPackageRefs [
 library "ieee"
 unitName "std_logic_1164"
 )
+(DmPackageRef
+library "ieee"
+unitName "numeric_std"
+)
+(DmPackageRef
+library "raro_ikr_risc_II_lib"
+unitName "isa_types"
+itemName "ALL"
+)
+(DmPackageRef
+library "raro_ikr_risc_II_lib"
+unitName "internal_types"
+itemName "ALL"
+)
 ]
 instances [
 (Instance
@@ -57,6 +71,7 @@ uid 245,0
 ]
 libraryRefs [
 "ieee"
+"raro_ikr_risc_II_lib"
 ]
 )
 version "32.1"
@@ -107,19 +122,19 @@ value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/ra
 )
 (vvPair
 variable "date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "day"
-value "Wed"
+value "Tue"
 )
 (vvPair
 variable "day_long"
-value "Wednesday"
+value "Tuesday"
 )
 (vvPair
 variable "dd"
-value "18"
+value "24"
 )
 (vvPair
 variable "entity_name"
@@ -147,7 +162,7 @@ value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "05/18/22"
+value "05/24/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -155,11 +170,11 @@ value "meyer"
 )
 (vvPair
 variable "graphical_source_host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:47:40"
+value "18:01:06"
 )
 (vvPair
 variable "group"
@@ -167,7 +182,7 @@ value "meyer"
 )
 (vvPair
 variable "host"
-value "pc091"
+value "pc086"
 )
 (vvPair
 variable "language"
@@ -259,7 +274,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "17:47:40"
+value "18:01:06"
 )
 (vvPair
 variable "unit"
@@ -875,8 +890,9 @@ fg "39936,56832,65280"
 lineColor "0,0,32768"
 lineWidth 2
 )
-xt "51000,16000,63000,26000"
+xt "53000,16000,65000,26000"
 )
+oxt "51000,16000,63000,26000"
 ttg (MlTextGroup
 uid 237,0
 ps "CenterOffsetStrategy"
@@ -887,9 +903,9 @@ uid 238,0
 va (VaSet
 font "courier,8,1"
 )
-xt "51750,19650,62250,20550"
+xt "53750,19650,64250,20550"
 st "raro_ikr_risc_II_lib"
-blo "51750,20350"
+blo "53750,20350"
 tm "BdLibraryNameMgr"
 )
 *26 (Text
@@ -897,9 +913,9 @@ uid 239,0
 va (VaSet
 font "courier,8,1"
 )
-xt "51750,20550,55750,21450"
+xt "53750,20550,57750,21450"
 st "MUX_ex_4"
-blo "51750,21250"
+blo "53750,21250"
 tm "BlkNameMgr"
 )
 *27 (Text
@@ -907,9 +923,9 @@ uid 240,0
 va (VaSet
 font "courier,8,1"
 )
-xt "51750,21450,53250,22350"
+xt "53750,21450,55250,22350"
 st "U_3"
-blo "51750,22150"
+blo "53750,22150"
 tm "InstanceNameMgr"
 )
 ]
@@ -924,7 +940,7 @@ uid 243,0
 va (VaSet
 font "courier,8,0"
 )
-xt "51750,29650,51750,29650"
+xt "53750,29650,53750,29650"
 )
 header ""
 )
@@ -938,9 +954,10 @@ va (VaSet
 vasetType 1
 fg "49152,49152,49152"
 )
-xt "51250,24250,52750,25750"
-iconName "UnknownFile.png"
-iconMaskName "UnknownFile.msk"
+xt "53250,24250,54750,25750"
+iconName "VhdlFileViewIcon.png"
+iconMaskName "VhdlFileViewIcon.msk"
+ftype 10
 )
 viewiconposition 0
 )
@@ -954,8 +971,9 @@ fg "39936,56832,65280"
 lineColor "0,0,32768"
 lineWidth 2
 )
-xt "28000,16000,43000,30000"
+xt "28000,9000,43000,30000"
 )
+oxt "28000,16000,43000,30000"
 ttg (MlTextGroup
 uid 247,0
 ps "CenterOffsetStrategy"
@@ -966,9 +984,9 @@ uid 248,0
 va (VaSet
 font "courier,8,1"
 )
-xt "33750,22650,44250,23550"
+xt "28750,21650,39250,22550"
 st "raro_ikr_risc_II_lib"
-blo "33750,23350"
+blo "28750,22350"
 tm "BdLibraryNameMgr"
 )
 *30 (Text
@@ -976,9 +994,9 @@ uid 249,0
 va (VaSet
 font "courier,8,1"
 )
-xt "33750,23550,36750,24450"
+xt "28750,22550,31750,23450"
 st "ALU_ex"
-blo "33750,24250"
+blo "28750,23250"
 tm "BlkNameMgr"
 )
 *31 (Text
@@ -986,9 +1004,9 @@ uid 250,0
 va (VaSet
 font "courier,8,1"
 )
-xt "33750,24450,35250,25350"
+xt "28750,23450,30250,24350"
 st "U_4"
-blo "33750,25150"
+blo "28750,24150"
 tm "InstanceNameMgr"
 )
 ]
@@ -1038,9 +1056,8 @@ uid 278,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,9000,36500,9900"
-st "SIGNAL ALU_out        : word
-"
+xt "-19000,-4700,-4500,-3800"
+st "SIGNAL ALU_out        : word"
 )
 )
 *33 (PortIoIn
@@ -1103,9 +1120,8 @@ uid 354,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,1800,33000,2700"
-st "rA_out         : word
-"
+xt "-19000,-11900,-8000,-11000"
+st "rA_out         : word"
 )
 )
 *35 (PortIoOut
@@ -1121,16 +1137,16 @@ optionalChildren [
 uid 357,0
 sl 0
 ro 270
-xt "78500,19625,80000,20375"
+xt "80500,19625,82000,20375"
 )
 (Line
 uid 358,0
 sl 0
 ro 270
-xt "78000,20000,78500,20000"
+xt "80000,20000,80500,20000"
 pts [
-"78000,20000"
-"78500,20000"
+"80000,20000"
+"80500,20000"
 ]
 )
 ]
@@ -1146,9 +1162,9 @@ uid 360,0
 va (VaSet
 font "courier,8,0"
 )
-xt "81000,19500,84500,20400"
+xt "83000,19500,86500,20400"
 st "rALU_in"
-blo "81000,20200"
+blo "83000,20200"
 tm "WireNameMgr"
 )
 )
@@ -1158,8 +1174,7 @@ uid 367,0
 lang 11
 decl (Decl
 n "rALU_in"
-t "std_logic_vector"
-b "(15 DOWNTO 0)"
+t "word"
 o 6
 suid 11,0
 )
@@ -1168,9 +1183,8 @@ uid 368,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,6300,45500,7200"
-st "rALU_in        : std_logic_vector(15 DOWNTO 0)
-"
+xt "-19000,-7400,-8000,-6500"
+st "rALU_in        : word"
 )
 )
 *37 (PortIoIn
@@ -1233,9 +1247,8 @@ uid 382,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,3600,33000,4500"
-st "rB_out         : word
-"
+xt "-19000,-10100,-8000,-9200"
+st "rB_out         : word"
 )
 )
 *39 (PortIoIn
@@ -1298,9 +1311,8 @@ uid 396,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,4500,33000,5400"
-st "rC_out         : word
-"
+xt "-19000,-9200,-8000,-8300"
+st "rC_out         : word"
 )
 )
 *41 (PortIoOut
@@ -1353,8 +1365,7 @@ uid 423,0
 lang 11
 decl (Decl
 n "rStoreData_in"
-t "std_logic_vector"
-b "(15 DOWNTO 0)"
+t "word"
 o 7
 suid 15,0
 )
@@ -1363,9 +1374,8 @@ uid 424,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,7200,45500,8100"
-st "rStoreData_in  : std_logic_vector(15 DOWNTO 0)
-"
+xt "-19000,-6500,-8000,-5600"
+st "rStoreData_in  : word"
 )
 )
 *43 (PortIoIn
@@ -1428,9 +1438,8 @@ uid 440,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,5400,33000,6300"
-st "rNextPC_out_ex : word
-"
+xt "-19000,-8300,-8000,-7400"
+st "rNextPC_out_ex : word"
 )
 )
 *45 (Net
@@ -1447,9 +1456,8 @@ uid 472,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,10800,36500,11700"
-st "SIGNAL mux_ALU_B      : word
-"
+xt "-19000,-2900,-4500,-2000"
+st "SIGNAL mux_ALU_B      : word"
 )
 )
 *46 (Net
@@ -1466,9 +1474,8 @@ uid 474,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,9900,36500,10800"
-st "SIGNAL mux_ALU_A      : word
-"
+xt "-19000,-3800,-4500,-2900"
+st "SIGNAL mux_ALU_A      : word"
 )
 )
 *47 (PortIoIn
@@ -1523,7 +1530,7 @@ lang 11
 decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
-o 10
+o 2
 suid 22,0
 )
 declText (MLText
@@ -1531,9 +1538,8 @@ uid 512,0
 va (VaSet
 font "courier,8,0"
 )
-xt "22000,2700,37500,3600"
-st "rAluMode_out   : alu_mode_type
-"
+xt "-19000,-11000,-3500,-10100"
+st "rAluMode_out   : alu_mode_type"
 )
 )
 *49 (Wire
@@ -1544,10 +1550,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "43000,22000,51000,22000"
+xt "43000,21000,53000,21000"
 pts [
-"43000,22000"
-"51000,22000"
+"43000,21000"
+"53000,21000"
 ]
 )
 start &28
@@ -1567,9 +1573,9 @@ uid 276,0
 va (VaSet
 font "courier,8,0"
 )
-xt "43000,26100,46500,27000"
+xt "44000,21100,47500,22000"
 st "ALU_out"
-blo "43000,26800"
+blo "44000,21800"
 tm "WireNameMgr"
 )
 )
@@ -1621,10 +1627,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "63000,20000,78000,20000"
+xt "65000,20000,80000,20000"
 pts [
-"63000,20000"
-"78000,20000"
+"65000,20000"
+"80000,20000"
 ]
 )
 start &24
@@ -1645,9 +1651,9 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "70000,19100,78500,20000"
-st "rALU_in : (15:0)"
-blo "70000,19800"
+xt "72000,19100,75500,20000"
+st "rALU_in"
+blo "72000,19800"
 tm "WireNameMgr"
 )
 )
@@ -1860,12 +1866,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "13000,23000,28000,28000"
+xt "13000,23000,28000,23000"
 pts [
 "13000,23000"
-"22000,23000"
-"22000,28000"
-"28000,28000"
+"28000,23000"
 ]
 )
 start &16
@@ -1901,10 +1905,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "48000,19000,51000,19000"
+xt "50000,19000,53000,19000"
 pts [
-"48000,19000"
-"51000,19000"
+"50000,19000"
+"53000,19000"
 ]
 )
 end &24
@@ -1923,9 +1927,9 @@ uid 470,0
 va (VaSet
 font "courier,8,0"
 )
-xt "42000,17100,49500,18000"
+xt "44000,17100,51500,18000"
 st "rNextPC_out_ex"
-blo "42000,17800"
+blo "44000,17800"
 tm "WireNameMgr"
 )
 )
@@ -1978,10 +1982,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "34000,28133,34000,33000"
+xt "19000,27000,28000,27000"
 pts [
-"34000,33000"
-"34000,28133"
+"19000,27000"
+"28000,27000"
 ]
 )
 end &28
@@ -1997,13 +2001,12 @@ ps "ConnStartEndStrategy"
 stg "STSignalDisplayStrategy"
 f (Text
 uid 522,0
-ro 270
 va (VaSet
 font "courier,8,0"
 )
-xt "32100,30500,33000,37000"
+xt "20000,26100,26500,27000"
 st "rAluMode_out"
-blo "32800,37000"
+blo "20000,26800"
 tm "WireNameMgr"
 )
 )
@@ -2039,9 +2042,13 @@ uid 139,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,2700"
+xt "0,900,22500,6300"
 st "LIBRARY ieee;
-USE ieee.std_logic_1164.all;"
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.isa_types.ALL;
+USE raro_ikr_risc_II_lib.internal_types.ALL;"
 tm "PackageList"
 )
 ]
@@ -2123,11 +2130,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,3,2044,1125"
-viewArea "-53082,-1662,61893,58251"
-cachedDiagramExtent "-36500,0,88000,51000"
+viewArea "-6011,-9704,99839,45454"
+cachedDiagramExtent "-36500,-13700,88000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-80000,0"
-lastUid 522,0
+lastUid 729,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -3124,18 +3131,18 @@ uid 2,0
 va (VaSet
 font "courier,8,1"
 )
-xt "20000,0,26500,900"
+xt "-21000,-13700,-14500,-12800"
 st "Declarations"
-blo "20000,700"
+blo "-21000,-13000"
 )
 portLabel (Text
 uid 3,0
 va (VaSet
 font "courier,8,1"
 )
-xt "20000,900,23000,1800"
+xt "-21000,-12800,-18000,-11900"
 st "Ports:"
-blo "20000,1600"
+blo "-21000,-12100"
 )
 preUserLabel (Text
 uid 4,0
@@ -3143,9 +3150,9 @@ va (VaSet
 isHidden 1
 font "courier,8,1"
 )
-xt "20000,0,24500,900"
+xt "-21000,-13700,-16500,-12800"
 st "Pre User:"
-blo "20000,700"
+blo "-21000,-13000"
 )
 preUserText (MLText
 uid 5,0
@@ -3153,7 +3160,7 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "20000,0,20000,0"
+xt "-21000,-13700,-21000,-13700"
 tm "BdDeclarativeTextMgr"
 )
 diagSignalLabel (Text
@@ -3161,9 +3168,9 @@ uid 6,0
 va (VaSet
 font "courier,8,1"
 )
-xt "20000,8100,28500,9000"
+xt "-21000,-5600,-12500,-4700"
 st "Diagram Signals:"
-blo "20000,8800"
+blo "-21000,-4900"
 )
 postUserLabel (Text
 uid 7,0
@@ -3171,9 +3178,9 @@ va (VaSet
 isHidden 1
 font "courier,8,1"
 )
-xt "20000,0,25500,900"
+xt "-21000,-13700,-15500,-12800"
 st "Post User:"
-blo "20000,700"
+blo "-21000,-13000"
 )
 postUserText (MLText
 uid 8,0
@@ -3181,13 +3188,13 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "20000,0,20000,0"
+xt "-21000,-13700,-21000,-13700"
 tm "BdDeclarativeTextMgr"
 )
 )
 commonDM (CommonDM
 ldm (LogicalDM
-suid 23,0
+suid 33,0
 usingSuid 1
 emptyRow *92 (LEmptyRow
 )
@@ -3257,8 +3264,7 @@ lang 11
 m 1
 decl (Decl
 n "rALU_in"
-t "std_logic_vector"
-b "(15 DOWNTO 0)"
+t "word"
 o 6
 suid 11,0
 )
@@ -3295,8 +3301,7 @@ lang 11
 m 1
 decl (Decl
 n "rStoreData_in"
-t "std_logic_vector"
-b "(15 DOWNTO 0)"
+t "word"
 o 7
 suid 15,0
 )
@@ -3347,7 +3352,7 @@ lang 11
 decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
-o 10
+o 2
 suid 22,0
 )
 )
