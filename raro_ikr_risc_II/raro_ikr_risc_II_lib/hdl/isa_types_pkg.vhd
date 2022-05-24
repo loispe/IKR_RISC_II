@@ -19,9 +19,9 @@ PACKAGE isa_types IS
   SUBTYPE opc_c_reg IS std_logic_vector(25 downto 21); --Register c steht immer an derselben Stelle (sofern vorhanden)
   SUBTYPE opc_b_reg IS std_logic_vector(20 downto 16); --Register b steht immer an derselben Stelle (sofern vorhanden)
   SUBTYPE opc_a_reg IS std_logic_vector(4 downto 0); --Register a steht immer an derselben Stelle (sofern vorhanden)
-  SUBTYPE imm16 IS std_logic_vector(15 downto 0); --16-Bit-Konstante
-  SUBTYPE disp26 IS std_logic_vector(25 downto 0); --26-Bit Displacement bei branch-befehlen
-  SUBTYPE disp18 IS std_logic_vector(17 downto 0); --18-Bit Displacement bei branch-Befehlen
+  SUBTYPE imm16_type IS std_logic_vector(15 downto 0); --16-Bit-Konstante
+  SUBTYPE disp26_type IS std_logic_vector(25 downto 0); --26-Bit Displacement bei branch-befehlen
+  SUBTYPE disp18_type IS std_logic_vector(17 downto 0); --18-Bit Displacement bei branch-Befehlen
   
   --alu modes
   TYPE alu_mode_type IS (add, sub);
