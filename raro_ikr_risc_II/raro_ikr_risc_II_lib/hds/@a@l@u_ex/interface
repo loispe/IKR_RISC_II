@@ -32,7 +32,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 24,0
+suid 33,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -78,11 +78,11 @@ m 1
 decl (Decl
 n "ALU_out"
 t "word"
-o 8
-suid 21,0
+o 10
+suid 30,0
 )
 )
-uid 384,0
+uid 493,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -90,11 +90,11 @@ lang 11
 decl (Decl
 n "mux_ALU_A"
 t "word"
-o 9
-suid 22,0
+o 11
+suid 31,0
 )
 )
-uid 386,0
+uid 495,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -102,11 +102,11 @@ lang 11
 decl (Decl
 n "mux_ALU_B"
 t "word"
-o 10
-suid 23,0
+o 12
+suid 32,0
 )
 )
-uid 388,0
+uid 497,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -115,10 +115,10 @@ decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
 o 2
-suid 24,0
+suid 33,0
 )
 )
-uid 390,0
+uid 499,0
 )
 ]
 )
@@ -174,25 +174,25 @@ uid 99,0
 litem &14
 pos 0
 dimension 20
-uid 385,0
+uid 494,0
 )
 *24 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 387,0
+uid 496,0
 )
 *25 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 389,0
+uid 498,0
 )
 *26 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 391,0
+uid 500,0
 )
 ]
 )
@@ -463,19 +463,19 @@ value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/ra
 )
 (vvPair
 variable "date"
-value "05/24/22"
+value "05/25/22"
 )
 (vvPair
 variable "day"
-value "Tue"
+value "Wed"
 )
 (vvPair
 variable "day_long"
-value "Tuesday"
+value "Wednesday"
 )
 (vvPair
 variable "dd"
-value "24"
+value "25"
 )
 (vvPair
 variable "entity_name"
@@ -503,7 +503,7 @@ value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "05/24/22"
+value "05/25/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -511,11 +511,11 @@ value "meyer"
 )
 (vvPair
 variable "graphical_source_host"
-value "pc086"
+value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:10:04"
+value "17:04:37"
 )
 (vvPair
 variable "group"
@@ -523,7 +523,7 @@ value "meyer"
 )
 (vvPair
 variable "host"
-value "pc086"
+value "pc091"
 )
 (vvPair
 variable "language"
@@ -615,7 +615,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "17:10:04"
+value "17:04:37"
 )
 (vvPair
 variable "unit"
@@ -650,10 +650,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *60 (CptPort
-uid 364,0
+uid 473,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 365,0
+uid 474,0
 ro 90
 va (VaSet
 vasetType 1
@@ -662,11 +662,11 @@ fg "0,65535,0"
 xt "43000,27625,43750,28375"
 )
 tg (CPTG
-uid 366,0
+uid 475,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 367,0
+uid 476,0
 va (VaSet
 font "courier,8,0"
 )
@@ -678,7 +678,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 368,0
+uid 477,0
 va (VaSet
 font "courier,8,0"
 )
@@ -692,16 +692,16 @@ m 1
 decl (Decl
 n "ALU_out"
 t "word"
-o 8
-suid 21,0
+o 10
+suid 30,0
 )
 )
 )
 *61 (CptPort
-uid 369,0
+uid 478,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 370,0
+uid 479,0
 ro 90
 va (VaSet
 vasetType 1
@@ -710,11 +710,11 @@ fg "0,65535,0"
 xt "27250,23625,28000,24375"
 )
 tg (CPTG
-uid 371,0
+uid 480,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 372,0
+uid 481,0
 va (VaSet
 font "courier,8,0"
 )
@@ -725,7 +725,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 373,0
+uid 482,0
 va (VaSet
 font "courier,8,0"
 )
@@ -738,16 +738,16 @@ lang 11
 decl (Decl
 n "mux_ALU_A"
 t "word"
-o 9
-suid 22,0
+o 11
+suid 31,0
 )
 )
 )
 *62 (CptPort
-uid 374,0
+uid 483,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 375,0
+uid 484,0
 ro 90
 va (VaSet
 vasetType 1
@@ -756,11 +756,11 @@ fg "0,65535,0"
 xt "27250,29625,28000,30375"
 )
 tg (CPTG
-uid 376,0
+uid 485,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 377,0
+uid 486,0
 va (VaSet
 font "courier,8,0"
 )
@@ -771,7 +771,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 378,0
+uid 487,0
 va (VaSet
 font "courier,8,0"
 )
@@ -784,16 +784,16 @@ lang 11
 decl (Decl
 n "mux_ALU_B"
 t "word"
-o 10
-suid 23,0
+o 12
+suid 32,0
 )
 )
 )
 *63 (CptPort
-uid 379,0
+uid 488,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 380,0
+uid 489,0
 ro 90
 va (VaSet
 vasetType 1
@@ -802,11 +802,11 @@ fg "0,65535,0"
 xt "27250,33625,28000,34375"
 )
 tg (CPTG
-uid 381,0
+uid 490,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 382,0
+uid 491,0
 va (VaSet
 font "courier,8,0"
 )
@@ -817,7 +817,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 383,0
+uid 492,0
 va (VaSet
 font "courier,8,0"
 )
@@ -831,7 +831,7 @@ decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
 o 2
-suid 24,0
+suid 33,0
 )
 )
 )
@@ -1548,6 +1548,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 391,0
+lastUid 500,0
 activeModelName "Symbol:CDM"
 )

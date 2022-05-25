@@ -72,7 +72,7 @@ lang 11
 decl (Decl
 n "rA_out"
 t "word"
-o 6
+o 1
 suid 67,0
 )
 )
@@ -85,7 +85,7 @@ m 1
 decl (Decl
 n "rALU_in"
 t "word"
-o 3
+o 7
 suid 68,0
 )
 )
@@ -97,7 +97,7 @@ lang 11
 decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
-o 23
+o 2
 suid 69,0
 )
 )
@@ -109,7 +109,7 @@ lang 11
 decl (Decl
 n "rB_out"
 t "word"
-o 8
+o 3
 suid 70,0
 )
 )
@@ -121,7 +121,7 @@ lang 11
 decl (Decl
 n "rC_out"
 t "word"
-o 10
+o 4
 suid 71,0
 )
 )
@@ -135,7 +135,7 @@ decl (Decl
 n "rMEmMode_in_ex"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 26
+o 8
 suid 72,0
 )
 )
@@ -148,7 +148,7 @@ decl (Decl
 n "rMemMode_out_ex"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 25
+o 5
 suid 73,0
 )
 )
@@ -160,7 +160,7 @@ lang 11
 decl (Decl
 n "rNextPC_out_ex"
 t "word"
-o 13
+o 6
 suid 74,0
 )
 )
@@ -173,7 +173,7 @@ m 1
 decl (Decl
 n "rStoreData_in"
 t "word"
-o 19
+o 9
 suid 75,0
 )
 )
@@ -604,7 +604,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "14:24:57"
+value "17:12:45"
 )
 (vvPair
 variable "group"
@@ -704,7 +704,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "14:24:57"
+value "17:12:45"
 )
 (vvPair
 variable "unit"
@@ -770,13 +770,15 @@ uid 1172,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,1800,60500,2700"
+st "rA_out          : IN     word  ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rA_out"
 t "word"
-o 6
+o 1
 suid 67,0
 )
 )
@@ -814,6 +816,8 @@ uid 1177,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,7200,60500,8100"
+st "rALU_in         : OUT    word  ;"
 )
 thePort (LogicalPort
 lang 11
@@ -821,7 +825,7 @@ m 1
 decl (Decl
 n "rALU_in"
 t "word"
-o 3
+o 7
 suid 68,0
 )
 )
@@ -858,13 +862,15 @@ uid 1182,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,2700,65000,3600"
+st "rAluMode_out    : IN     alu_mode_type  ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rAluMode_out"
 t "alu_mode_type"
-o 23
+o 2
 suid 69,0
 )
 )
@@ -901,13 +907,15 @@ uid 1187,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,3600,60500,4500"
+st "rB_out          : IN     word  ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rB_out"
 t "word"
-o 8
+o 3
 suid 70,0
 )
 )
@@ -944,13 +952,15 @@ uid 1192,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,4500,60500,5400"
+st "rC_out          : IN     word  ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rC_out"
 t "word"
-o 10
+o 4
 suid 71,0
 )
 )
@@ -988,6 +998,8 @@ uid 1197,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,8100,73000,9000"
+st "rMEmMode_in_ex  : OUT    std_logic_vector (15 downto 0) ;"
 )
 thePort (LogicalPort
 lang 11
@@ -996,7 +1008,7 @@ decl (Decl
 n "rMEmMode_in_ex"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 26
+o 8
 suid 72,0
 )
 )
@@ -1033,6 +1045,8 @@ uid 1202,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,5400,73000,6300"
+st "rMemMode_out_ex : IN     std_logic_vector (15 downto 0) ;"
 )
 thePort (LogicalPort
 lang 11
@@ -1040,7 +1054,7 @@ decl (Decl
 n "rMemMode_out_ex"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 25
+o 5
 suid 73,0
 )
 )
@@ -1077,13 +1091,15 @@ uid 1207,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,6300,60500,7200"
+st "rNextPC_out_ex  : IN     word  ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rNextPC_out_ex"
 t "word"
-o 13
+o 6
 suid 74,0
 )
 )
@@ -1121,6 +1137,8 @@ uid 1212,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,9000,59500,9900"
+st "rStoreData_in   : OUT    word "
 )
 thePort (LogicalPort
 lang 11
@@ -1128,7 +1146,7 @@ m 1
 decl (Decl
 n "rStoreData_in"
 t "word"
-o 19
+o 9
 suid 75,0
 )
 )
@@ -1812,9 +1830,9 @@ uid 4,0
 va (VaSet
 font "courier,8,1"
 )
-xt "42000,8100,44500,9000"
+xt "42000,9900,44500,10800"
 st "User:"
-blo "42000,8800"
+blo "42000,10600"
 )
 internalLabel (Text
 uid 6,0
@@ -1831,7 +1849,7 @@ uid 5,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,9000,44000,9000"
+xt "44000,10800,44000,10800"
 tm "SyDeclarativeTextMgr"
 )
 internalText (MLText
@@ -1844,7 +1862,7 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 1230,0
+lastUid 1322,0
 okToSyncOnLoad 1
 OkToSyncGenericsOnLoad 1
 activeModelName "Symbol:CDM"

@@ -11,8 +11,9 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 PACKAGE internal_types IS
-  SUBTYPE word IS std_logic_vector(31 downto 0);
-  CONSTANT memory_depth : positive := 32;
-  SUBTYPE reg_addr_type IS std_logic_vector(4 downto 0);  
+  SUBTYPE word IS           std_logic_vector(31 downto 0);
+  SUBTYPE reg_addr_type IS  std_logic_vector(4 downto 0);  
+  CONSTANT memory_depth:    positive := 32;
+  
   
 END internal_types;

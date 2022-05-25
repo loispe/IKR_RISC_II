@@ -24,6 +24,7 @@ BEGIN
   
   --variable format: std_logic_vector(opc_format'range);
   --variable rc: std_logic_vector(opc_c_reg'range);
+  
   begin
     format  := rOpcode_out(format'range);
     a_imm   <= (others => '0');
@@ -43,6 +44,7 @@ BEGIN
       --do something
       
 --***************************************************************      
+--B format:
     when b_format =>  --is b-command
       opc_b  := rOpcode_out(opc_b'range);
       disp18 := rOpcode_out(disp18'range);
@@ -59,7 +61,8 @@ BEGIN
       when others  => --no identifiable command
       end case;  --end b-command
       
---***************************************************************    
+--***************************************************************
+--R format:  
     when r_format =>  --is r-command
       sel_b <= rOpcode_out(reg_b'range);
       opc_r := rOpcode_out(opc_r'range);
@@ -72,29 +75,35 @@ BEGIN
         rTargetReg_in_dc <= rOpcode_out(reg_c'range);
         
         case opc_r is --operations with 1 source operand
-        when opc_lsl =>
-        when opc_lsr =>
-        when opc_asl =>
-        when opc_asr =>
+        when opc_lsl => rAluMode_in <= alu_lsl;
+        when opc_lsr => rAluMode_in <= alu_lsr;
+        when opc_asl => rAluMode_in <= alu_asl;
+        when opc_asr => rAluMode_in <= alu_asr;
+          
         when opc_rol_swaph =>
           extension := rOpcode_out(extension'range);
+          
           if extension = opc_rol then
+            rAluMode_in <= alu_rol;
           elsif extension = opc_swaph then
+            
           else
+            
           end if;
-        when opc_ror =>
-        when opc_extb =>
-        when opc_exth =>
-        when opc_swapb =>
-        when opc_not =>
+          
+        when opc_ror    => rAluMode_in <= alu_ror;
+        when opc_extb   =>
+        when opc_exth   =>
+        when opc_swapb  =>
+        when opc_not    =>
         when others =>
           sel_a   <= rOpcode_out(reg_a'range);
           sel_imm <= '0';
 
           case opc_r is -- arithmetic with 2 source operands
-          when opc_add  => rAluMode_in <= add;
+          when opc_add  => rAluMode_in <= alu_add;
           when opc_addx =>
-          when opc_sub  => rAluMode_in <= sub;
+          when opc_sub  => rAluMode_in <= alu_sub;
           when opc_subx =>
           when opc_cmpu =>
           when opc_cmps =>
@@ -119,6 +128,7 @@ BEGIN
       end case; --end r-command or jump
       
 --***************************************************************
+--I format:
     when others =>  --is i-command
       opc_i            := format;
       sel_c            <= rOpcode_out(reg_c'range);
@@ -129,7 +139,7 @@ BEGIN
       
       case opc_i is --determine i-command
       ----arithmetic
-      when opc_addi   =>  rAluMode_in <= add;
+      when opc_addi   =>  rAluMode_in <= alu_add;
       when opc_addli  =>
       when opc_addhi  =>
       when opc_cmpui  =>
