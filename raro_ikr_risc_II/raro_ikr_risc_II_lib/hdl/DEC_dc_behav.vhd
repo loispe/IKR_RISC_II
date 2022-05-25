@@ -25,11 +25,12 @@ BEGIN
   --variable format: std_logic_vector(opc_format'range);
   --variable rc: std_logic_vector(opc_c_reg'range);
   begin
-    format := rOpcode_out(format'range);
-    a_imm <= (others => '0');
+    format  := rOpcode_out(format'range);
+    a_imm   <= (others => '0');
     sel_imm <= '0';
-    sel_b <= (others => '0');
-    sel_c <= (others => '0');
+    sel_b   <= (others => '0');
+    sel_c   <= (others => '0');
+    rTargetReg_in_dc <= (others => '0');
     
     --format := rOpcode_out(opc_format'range);
     
@@ -40,10 +41,14 @@ BEGIN
     when opc_bsr =>
       disp26 := rOpcode_out(disp26'range);
       --do something
+      
+--***************************************************************      
     when b_format =>  --is b-command
-      opc_b := rOpcode_out(opc_b'range);
+      opc_b  := rOpcode_out(opc_b'range);
       disp18 := rOpcode_out(disp18'range);
-      reg_c := rOpcode_out(reg_c'range);
+      sel_c  <= rOpcode_out(reg_c'range);
+      rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+      
       case opc_b is  --determine b-command
       when opc_beq =>
       when opc_bne =>
@@ -51,16 +56,21 @@ BEGIN
       when opc_bgt =>
       when opc_ble =>
       when opc_bge =>
-      when others => --no identifiable command
+      when others  => --no identifiable command
       end case;  --end b-command
+      
+--***************************************************************    
     when r_format =>  --is r-command
-      reg_b := rOpcode_out(reg_b'range);
+      sel_b <= rOpcode_out(reg_b'range);
       opc_r := rOpcode_out(opc_r'range);
+      
       case opc_r is --determine r-command or jump
       when opc_jmp =>
       when opc_jsr =>
-      when others =>
-        reg_c := rOpcode_out(reg_c'range);
+      when others  =>
+        sel_c <= rOpcode_out(reg_c'range);
+        rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+        
         case opc_r is --operations with 1 source operand
         when opc_lsl =>
         when opc_lsr =>
@@ -78,27 +88,25 @@ BEGIN
         when opc_swapb =>
         when opc_not =>
         when others =>
-          reg_a := rOpcode_out(reg_a'range);
+          sel_a   <= rOpcode_out(reg_a'range);
+          sel_imm <= '0';
+
           case opc_r is -- arithmetic with 2 source operands
-          when opc_add =>
-          --do something
+          when opc_add  => rAluMode_in <= add;
           when opc_addx =>
-          --do something
-          when opc_sub =>
-          --do something
+          when opc_sub  => rAluMode_in <= sub;
           when opc_subx =>
-            --do something
           when opc_cmpu =>
-          --do something
           when opc_cmps =>
-            --do something
           when others =>
+            
             case opc_r is
             -- logic with 2 source operands
             when opc_and =>
             when opc_or =>
             when opc_xor =>
             when others =>
+              
               case opc_r is
                 --load/store
                 when opc_str =>
@@ -109,22 +117,25 @@ BEGIN
           end case;
         end case; --end r-command
       end case; --end r-command or jump
+      
+--***************************************************************
     when others =>  --is i-command
-      opc_i := format;
-      sel_c <= rOpcode_out(reg_c'range);
-      sel_b <= rOpcode_out(reg_b'range);
-      a_imm <= 16x"0" & rOpcode_out(imm16'range);
-      sel_imm <= '1';
+      opc_i            := format;
+      sel_c            <= rOpcode_out(reg_c'range);
+      rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+      sel_b            <= rOpcode_out(reg_b'range);
+      a_imm            <= 16x"0" & rOpcode_out(imm16'range);
+      sel_imm          <= '1';
+      
       case opc_i is --determine i-command
       ----arithmetic
-      when opc_addi => 
-        --a_imm <= 16x"0" & imm16;
-        rAluMode_in <= add;
-      when opc_addli =>
-      when opc_addhi =>
-      when opc_cmpui =>
-      when opc_cmpsi =>
-      when others => 
+      when opc_addi   =>  rAluMode_in <= add;
+      when opc_addli  =>
+      when opc_addhi  =>
+      when opc_cmpui  =>
+      when opc_cmpsi  =>
+      when others     => 
+        
         case opc_i is
         when opc_and0i =>
         when opc_and1i =>
@@ -134,18 +145,10 @@ BEGIN
           a_imm <= (others => '0');
           sel_b <= (others => '0');
           sel_c <= (others => '0');
+          rTargetReg_in_dc <= (others => '0');
         end case;
       end case; --end determine i-command
-
-    -- when opc_addi => 
-    --   alu_mode_dc <= add;
-    --   sel_c <= rOpcode_out(opc_c_reg'range);
-    --   sel_b <= rOpcode_out(opc_b_reg'range);
-    --   a_imm <= x"0000" & rOpcode_out(opc_imm'range);
-    -- when others => 
-    --   a_imm <= (others => '0');
-    --   sel_b <= (others => '0');
-    --   sel_c <= (others => '0');
+--***************************************************************
     end case; --end decoder
       
       

@@ -15,9 +15,7 @@ BEGIN
   
   process(rPc_out) is
   begin
-    if to_integer(unsigned(rPc_out)) < memory_depth - 1 then
-      rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
-    end if;
+    rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
   end process;
     
 END ARCHITECTURE behav;

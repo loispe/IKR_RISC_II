@@ -1,0 +1,2 @@
+DEFAULT_FILE atom reg_mx_me_behav.vhd
+DEFAULT_ARCHITECTURE atom behav

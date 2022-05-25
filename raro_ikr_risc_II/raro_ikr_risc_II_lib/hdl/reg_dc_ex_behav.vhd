@@ -12,10 +12,11 @@ BEGIN
   reg: process(clk, res_n) is
   begin
     if res_n = '0' then
-      rA_out <= (others => '0');
-      rB_out <= (others => '0');
-      rC_out <= (others => '0');
-      rNextPc_out_ex <= (others => '0');
+      rA_out            <= (others => '0');
+      rB_out            <= (others => '0');
+      rC_out            <= (others => '0');
+      rNextPc_out_ex    <= (others => '0');
+      rTargetReg_out_ex <= (others => '0');
       --rAluMode_out <= NOP;
     else
       if clk'event and clk = '1' then
@@ -24,6 +25,7 @@ BEGIN
         rC_out <= rC_in;
         rNextPc_out_ex <= rNextPc_in_dc;
         rAluMode_out <= rAluMode_in;
+        rTargetReg_out_ex <= rTargetReg_in_dc;
       end if;
     end if;
   end process;

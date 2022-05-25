@@ -53,7 +53,7 @@ BEGIN
     au_f := au_h(au_h'right) & au_l(au_l'left - 1 downto au_l'right);
       
     case rAlumode_out is
-    when add => f := au_f; c := au_c; v := au_v;
+    when add | sub => f := au_f; c := au_c; v := au_v;
 --    when opc_lsl => f := x(x'left - 1 downto x'right) & '0';        c := x(x'left); v := x(x'left) xor x(x'left - 1);
 --    when opc_lsr => f := '0' & x(x'left downto x'right + 1);        c := x(x'right); v := x(x'left) xor '0';
 --    when opc_rol => f := x(x'left - 1 downto x'right) & x(x'left);  c := x(x'left); v := x(x'left) xor x(x'left - 1);

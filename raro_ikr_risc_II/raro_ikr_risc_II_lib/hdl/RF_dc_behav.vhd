@@ -30,11 +30,13 @@ BEGIN
       for i in registers'range loop
         registers(i) <= (others => '0');
       end loop;
-      registers(2) <= 32x"02";
---    else
---      if clk'event and clk = '1' then
---        registers(sel_b) <= 
+      registers(2) <= 32x"05";
     end if;
+
+    if clk'event and clk ='1' then
+      registers(to_integer(unsigned(rTargetReg_out_wb))) <= rME_out;
+      registers(0) <= (others => '0');
+  end if;
   end process write;   
     
 END ARCHITECTURE behav;
