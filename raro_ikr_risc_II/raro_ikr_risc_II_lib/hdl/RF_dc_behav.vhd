@@ -32,6 +32,8 @@ BEGIN
       end loop;
       --registers(2) <= 32x"05";
       registers(2) <= b"1000_0000_0000_0000_0000_0000_0000_0001"; --for testing ror, rol
+      --registers(9) <= X"F000_0001";
+      --registers(10) <= X"F000_0011"; for testing subx, addx
     end if;
 
     if clk'event and clk ='1' then
