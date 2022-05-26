@@ -33,7 +33,7 @@ BEGIN
     y       := mux_ALU_A;
     c_word  := (others => '0');
     
-    if rAluMode_out = alu_add then
+    if rAluMode_out = alu_add or rAluMode_out = alu_addx then
       au_l := std_logic_vector(
       unsigned('0' & au_x(au_x'left - 1 downto au_x'right)) +
       unsigned('0' & au_y(au_y'left - 1 downto au_y'right)) + unsigned(c_word));
@@ -57,6 +57,7 @@ BEGIN
       
     case rAlumode_out is
     when alu_add | alu_sub => f := au_f; c := au_c; v := au_v;      --tested -> works
+    when alu_addx| alu_subx => f := (f'right downto f'right => au_c, others => '0'); c := au_c; v := au_v;  -- alu_addx tested -> works
     when alu_lsl    => f := x(x'left - 1 downto x'right) & '0';        --tested -> works
     when alu_lsr    => f := '0' & x(x'left downto x'right + 1);        --tested -> works
     when alu_rol    => f := x(x'left - 1 downto x'right) & x(x'left);  --tested -> works

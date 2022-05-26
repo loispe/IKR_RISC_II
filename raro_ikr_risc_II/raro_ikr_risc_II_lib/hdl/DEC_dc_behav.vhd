@@ -102,9 +102,9 @@ BEGIN
 
           case opc_r is -- arithmetic with 2 source operands
           when opc_add  => rAluMode_in <= alu_add;
-          when opc_addx =>
+          when opc_addx => rAluMode_in <= alu_addx;
           when opc_sub  => rAluMode_in <= alu_sub;
-          when opc_subx =>
+          when opc_subx => rAluMode_in <= alu_subx;
           when opc_cmpu =>
           when opc_cmps =>
           when others =>

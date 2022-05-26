@@ -25,8 +25,9 @@ PACKAGE isa_types IS
   
   --alu modes
   TYPE alu_mode_type IS (
-                    alu_add, alu_sub, alu_lsl, alu_lsr, alu_asl, alu_asr, alu_rol, alu_ror,
-                    alu_extb, alu_exth, alu_swapb, alu_swaph, alu_not, alu_jmp, alu_jsr
+                    alu_idle, alu_add, alu_sub, alu_lsl, alu_lsr, alu_asl, alu_asr, alu_rol, alu_ror,
+                    alu_extb, alu_exth, alu_swapb, alu_swaph, alu_not, alu_jmp, alu_jsr,
+                    alu_addx, alu_subx
                     );
 
   --Konstanten zum Unterscheiden zwischen i-Format, r-Format und b-Format
