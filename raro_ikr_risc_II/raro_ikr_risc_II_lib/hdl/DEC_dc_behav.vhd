@@ -141,8 +141,8 @@ BEGIN
       case opc_i is --determine i-command
       ----arithmetic
       when opc_addi   =>  rAluMode_in <= alu_add;
-      when opc_addli  =>  a_imm <= zeroWord & imm16; rAluMode_in <= alu_add;
-      when opc_addhi  =>  a_imm <= imm16 & zeroWord; rAluMode_in <= alu_add;
+      when opc_addli  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_add;
+      when opc_addhi  =>  a_imm <= imm16 & X"0000"; rAluMode_in <= alu_add;
       when opc_cmpui  =>
       when opc_cmpsi  =>
       when others     => 
