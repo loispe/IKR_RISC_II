@@ -64,6 +64,23 @@ BEGIN
     when alu_ror    => f := x(x'right) & x(x'left downto x'right + 1); --tested -> works
     when alu_asl    => f := x(x'left - 1 downto x'right) & '0';        --tested -> works
     when alu_asr    => f := x(x'left) & x(x'left downto x'right + 1);  --tested -> works
+    when alu_and    => f := x and y;
+    when alu_or     => f := x or y;
+    when alu_xor    => f := x xor y;
+    when alu_cmpu    => if unsigned(x) > unsigned(y) then
+                          f := 32x"1";
+                        elsif unsigned(x) = unsigned(y) then
+                          f := 32x"0";
+                        else 
+                          f := 32SX"FFFF";
+                        end if;
+    when alu_cmps    => if signed(x) > signed(y) then
+                          f := 32x"1";
+                        elsif signed(x) = signed(y) then
+                          f := 32x"0";
+                        else 
+                          f := 32SX"FFFF";
+                        end if;
     when alu_extb   =>
     when alu_exth   =>
     when alu_swapb  =>

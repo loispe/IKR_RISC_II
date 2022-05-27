@@ -105,15 +105,15 @@ BEGIN
           when opc_addx => rAluMode_in <= alu_addx;
           when opc_sub  => rAluMode_in <= alu_sub;
           when opc_subx => rAluMode_in <= alu_subx;
-          when opc_cmpu =>
-          when opc_cmps =>
+          when opc_cmpu => rAluMode_in <= alu_cmpu;
+          when opc_cmps => rAluMode_in <= alu_cmps;
           when others =>
             
             case opc_r is
             -- logic with 2 source operands
-            when opc_and =>
-            when opc_or =>
-            when opc_xor =>
+            when opc_and => rAluMode_in <= alu_and;
+            when opc_or =>  rAluMode_in <= alu_or;
+            when opc_xor => rAluMode_in <= alu_xor;
             when others =>
               
               case opc_r is
