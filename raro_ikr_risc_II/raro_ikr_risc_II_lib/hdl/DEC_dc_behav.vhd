@@ -134,14 +134,15 @@ BEGIN
       sel_c            <= rOpcode_out(reg_c'range);
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
       sel_b            <= rOpcode_out(reg_b'range);
-      a_imm            <= 16x"0" & rOpcode_out(imm16'range);
+      imm16            := rOpcode_out(imm16'range);
+      a_imm            <= imm16(imm16'left) & X"0000" & rOpcode_out(imm16'left-1 downto imm16'right);
       sel_imm          <= '1';
       
       case opc_i is --determine i-command
       ----arithmetic
       when opc_addi   =>  rAluMode_in <= alu_add;
-      when opc_addli  =>
-      when opc_addhi  =>
+      when opc_addli  =>  a_imm <= zeroWord & imm16; rAluMode_in <= alu_add;
+      when opc_addhi  =>  a_imm <= imm16 & zeroWord; rAluMode_in <= alu_add;
       when opc_cmpui  =>
       when opc_cmpsi  =>
       when others     => 
