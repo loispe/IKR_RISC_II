@@ -86,16 +86,16 @@ BEGIN
           if extension = opc_rol then
             rAluMode_in <= alu_rol;
           elsif extension = opc_swaph then
-            
-          else
+            rAluMode_in <= alu_swaph;
+          else  --no identifiable command
             
           end if;
           
         when opc_ror    => rAluMode_in <= alu_ror;
-        when opc_extb   =>
-        when opc_exth   =>
-        when opc_swapb  =>
-        when opc_not    =>
+        when opc_extb   => rAluMode_in <= alu_extb;
+        when opc_exth   => rAluMode_in <= alu_exth;
+        when opc_swapb  => rAluMode_in <= alu_swapb;
+        when opc_not    => rAluMode_in <= alu_not;
         when others =>
           sel_a   <= rOpcode_out(reg_a'range);
           sel_imm <= '0';
@@ -135,7 +135,7 @@ BEGIN
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
       sel_b            <= rOpcode_out(reg_b'range);
       imm16            := rOpcode_out(imm16'range);
-      a_imm            <= imm16(imm16'left) & X"0000" & rOpcode_out(imm16'left-1 downto imm16'right);
+      a_imm            <= imm16(imm16'left) & X"0000" & rOpcode_out(imm16'left-1 downto imm16'right); --erweitere vorzeichenrichtig
       sel_imm          <= '1';
       
       case opc_i is --determine i-command
@@ -143,15 +143,15 @@ BEGIN
       when opc_addi   =>  rAluMode_in <= alu_add;
       when opc_addli  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_add;
       when opc_addhi  =>  a_imm <= imm16 & X"0000"; rAluMode_in <= alu_add;
-      when opc_cmpui  =>
-      when opc_cmpsi  =>
+      when opc_cmpui  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_cmpu;
+      when opc_cmpsi  =>  rAluMode_in <= alu_cmps;
       when others     => 
         
         case opc_i is
-        when opc_and0i =>
-        when opc_and1i =>
-        when opc_ori =>
-        when opc_xori =>
+        when opc_and0i => a_imm <= X"0000" & imm16; rAluMode_in <= alu_and;
+        when opc_and1i => a_imm <= X"FFFF" & imm16; rAluMode_in <= alu_and;
+        when opc_ori =>   a_imm <= X"0000" & imm16; rAluMode_in <= alu_or;
+        when opc_xori =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_xor;
         when others => --no identifiable command
           a_imm <= (others => '0');
           sel_b <= (others => '0');

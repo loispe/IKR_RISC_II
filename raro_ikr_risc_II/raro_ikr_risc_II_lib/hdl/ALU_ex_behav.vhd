@@ -81,11 +81,11 @@ BEGIN
                         else 
                           f := 32SX"FFFF";
                         end if;
-    when alu_extb   =>
-    when alu_exth   =>
-    when alu_swapb  =>
-    when alu_swaph  =>
-    when alu_not    =>
+    when alu_extb   => f := x and x"0000_00FF"; f := f(7) & f(30 downto 8) & '0' & f(6 downto 0);
+    when alu_exth   => f := x and x"0000_FFFF"; f := f(15) & f(30 downto 16) & '0' & f(14 downto 0);
+    when alu_swapb  => f := x(23 downto 16) & x(31 downto 24) & x(7 downto 0) & x(15 downto 8);
+    when alu_swaph  => f := x(15 downto 0) & x(31 downto 16);
+    when alu_not    => f := not x;
     when alu_jmp    =>
     when alu_jsr    =>   
     when others     =>
