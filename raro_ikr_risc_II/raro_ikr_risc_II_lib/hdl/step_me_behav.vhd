@@ -34,5 +34,6 @@ BEGIN
   
   rME_in <= rALU_out when rMemMode_out_me = mem_idle else ram_out; 
   
+  
 END ARCHITECTURE behav;
 

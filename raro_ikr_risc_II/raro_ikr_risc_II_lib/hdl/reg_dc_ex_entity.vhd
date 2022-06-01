@@ -19,6 +19,10 @@ ENTITY reg_dc_ex IS
       rAluMode_in       : IN     alu_mode_type;
       rB_in             : IN     word;
       rC_in             : IN     word;
+      rFwd_sela_in_dc   : IN     std_logic;
+      rFwd_selb_in_dc   : IN     std_logic;
+      rFwd_selc_in_dc   : IN     std_logic;
+      rFwd_selsd_in_dc  : IN     std_logic;
       rMemMode_in_dc    : IN     mem_mode_type;
       rNextPc_in_dc     : IN     word;
       rTargetReg_in_dc  : IN     reg_addr_type;
@@ -27,6 +31,10 @@ ENTITY reg_dc_ex IS
       rAluMode_out      : OUT    alu_mode_type;
       rB_out            : OUT    word;
       rC_out            : OUT    word;
+      rFwd_sela_out_ex  : OUT    std_logic;
+      rFwd_selb_out_ex  : OUT    std_logic;
+      rFwd_selc_out_ex  : OUT    std_logic;
+      rFwd_selsd_out_ex : OUT    std_logic;
       rMemMode_out_ex   : OUT    mem_mode_type;
       rNextPC_out_ex    : OUT    word;
       rTargetReg_out_ex : OUT    reg_addr_type

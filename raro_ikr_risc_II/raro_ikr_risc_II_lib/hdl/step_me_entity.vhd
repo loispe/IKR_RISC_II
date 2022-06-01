@@ -14,13 +14,15 @@ USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.A
 
 ENTITY step_me IS
    PORT( 
-      clk             : IN     std_logic;
-      rALU_in         : IN     word;
-      rALU_out        : IN     word;
-      rMemMode_out_me : IN     mem_mode_type;
-      rStoreData_out  : IN     word;
-      res_n           : IN     std_logic;
-      rME_in          : OUT    word
+      clk               : IN     std_logic;
+      rALU_in           : IN     word;
+      rALU_out          : IN     word;
+      rFwd_selsd_out_me : IN     std_logic;
+      rME_out           : IN     word;
+      rMemMode_out_me   : IN     mem_mode_type;
+      rStoreData_out    : IN     word;
+      res_n             : IN     std_logic;
+      rME_in            : OUT    word
    );
 
 -- Declarations

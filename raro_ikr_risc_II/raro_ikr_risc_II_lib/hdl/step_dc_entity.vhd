@@ -23,6 +23,10 @@ ENTITY step_dc IS
       rAluMode_in       : OUT    alu_mode_type;
       rB_in             : OUT    word;
       rC_in             : OUT    word;
+      rFwd_sela_in_dc   : OUT    std_logic;
+      rFwd_selb_in_dc   : OUT    std_logic;
+      rFwd_selc_in_dc   : OUT    std_logic;
+      rFwd_selsd_in_dc  : OUT    std_logic;
       rMemMode_in_dc    : OUT    mem_mode_type;
       rTargetReg_in_dc  : OUT    reg_addr_type
    );

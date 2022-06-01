@@ -15,8 +15,11 @@ USE raro_ikr_risc_II_lib.internal_types.ALL;
 
 ENTITY MUX_ex_1 IS
    PORT( 
-      rA_out    : IN     word;
-      mux_ALU_A : OUT    word
+      rALU_out         : IN     word;
+      rA_out           : IN     word;
+      rFwd_sela_out_ex : IN     std_logic;
+      rME_out          : IN     word;
+      mux_ALU_A        : OUT    word
    );
 
 -- Declarations
