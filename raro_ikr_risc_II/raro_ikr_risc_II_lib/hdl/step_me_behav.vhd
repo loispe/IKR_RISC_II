@@ -7,8 +7,32 @@
 --
 -- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
 --
+
+
 ARCHITECTURE behav OF step_me IS
+  TYPE MEM IS ARRAY (0 to 31) of word;
+  signal ram_block : MEM;
+  signal ram_out   : word;
 BEGIN
-  rME_in <= rALU_out;
+  ram_access : process(clk, res_n) is
+  begin
+    if res_n = '0' then
+      for i in ram_block'range loop
+        ram_block(i) <= (others => '0');
+      end loop;
+    else
+      if clk'event and clk ='1' then
+        if rMemMode_out_me = mem_write then
+          ram_block (to_integer(unsigned(rALU_out))) <= rStoreData_out;
+        --elsif rMemMode_out = mem_read then
+          --ram_out <= ram_block(rALU_in);
+        end if;
+          ram_out <= ram_block(to_integer(unsigned(rALU_in)));
+      end if;
+    end if;
+  end process ram_access;
+  
+  rME_in <= rALU_out when rMemMode_out_me = mem_idle else ram_out; 
+  
 END ARCHITECTURE behav;
 

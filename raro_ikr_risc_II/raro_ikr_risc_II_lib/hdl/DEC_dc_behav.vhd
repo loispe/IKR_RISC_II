@@ -32,6 +32,7 @@ BEGIN
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
     rTargetReg_in_dc <= (others => '0');
+    rMemMode_in_dc <= mem_idle;
     
     --format := rOpcode_out(opc_format'range);
     
@@ -118,8 +119,8 @@ BEGIN
               
               case opc_r is
                 --load/store
-                when opc_str =>
-                when opc_ldr =>
+                when opc_str => rAluMode_in <= alu_add; rTargetReg_in_dc <= (others => '0'); rMemMode_in_dc <= mem_write;
+                when opc_ldr => rMemMode_in_dc <= mem_read;
                 when others =>  --no identifiable command
               end case;
             end case;
@@ -137,6 +138,7 @@ BEGIN
       imm16            := rOpcode_out(imm16'range);
       a_imm            <= imm16(imm16'left) & X"0000" & rOpcode_out(imm16'left-1 downto imm16'right); --erweitere vorzeichenrichtig
       sel_imm          <= '1';
+      rMemMode_in_dc   <= mem_idle;
       
       case opc_i is --determine i-command
       ----arithmetic
@@ -145,19 +147,18 @@ BEGIN
       when opc_addhi  =>  a_imm <= imm16 & X"0000"; rAluMode_in <= alu_add;
       when opc_cmpui  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_cmpu;
       when opc_cmpsi  =>  rAluMode_in <= alu_cmps;
-      when others     => 
-        
-        case opc_i is
-        when opc_and0i => a_imm <= X"0000" & imm16; rAluMode_in <= alu_and;
-        when opc_and1i => a_imm <= X"FFFF" & imm16; rAluMode_in <= alu_and;
-        when opc_ori =>   a_imm <= X"0000" & imm16; rAluMode_in <= alu_or;
-        when opc_xori =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_xor;
-        when others => --no identifiable command
-          a_imm <= (others => '0');
-          sel_b <= (others => '0');
-          sel_c <= (others => '0');
-          rTargetReg_in_dc <= (others => '0');
-        end case;
+      --logical
+      when opc_and0i => a_imm <= X"0000" & imm16; rAluMode_in <= alu_and;
+      when opc_and1i => a_imm <= X"FFFF" & imm16; rAluMode_in <= alu_and;
+      when opc_ori   => a_imm <= X"0000" & imm16; rAluMode_in <= alu_or;
+      when opc_xori  => a_imm <= X"0000" & imm16; rAluMode_in <= alu_xor;
+      when opc_std   => rAluMode_in <= alu_add; rTargetReg_in_dc <= (others => '0'); rMemMode_in_dc <= mem_write;
+      when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
+      when others => --no identifiable command
+        a_imm <= (others => '0');
+        sel_b <= (others => '0');
+        sel_c <= (others => '0');
+        rTargetReg_in_dc <= (others => '0');
       end case; --end determine i-command
 --***************************************************************
     end case; --end decoder

@@ -17,6 +17,8 @@ BEGIN
       rC_out            <= (others => '0');
       rNextPc_out_ex    <= (others => '0');
       rTargetReg_out_ex <= (others => '0');
+      rMemMode_out_ex   <= mem_idle;
+      
       --rAluMode_out <= NOP;
     else
       if clk'event and clk = '1' then
@@ -26,6 +28,7 @@ BEGIN
         rNextPc_out_ex <= rNextPc_in_dc;
         rAluMode_out <= rAluMode_in;
         rTargetReg_out_ex <= rTargetReg_in_dc;
+        rMemMode_out_ex   <= rMemMode_in_dc;
       end if;
     end if;
   end process;

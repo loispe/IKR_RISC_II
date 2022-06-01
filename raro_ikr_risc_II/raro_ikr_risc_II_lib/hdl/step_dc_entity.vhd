@@ -8,6 +8,7 @@
 --
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 LIBRARY raro_ikr_risc_II_lib;
 USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.ALL;
 
@@ -22,7 +23,7 @@ ENTITY step_dc IS
       rAluMode_in       : OUT    alu_mode_type;
       rB_in             : OUT    word;
       rC_in             : OUT    word;
-      rMemMode_in_dc    : OUT    std_logic_vector (15 DOWNTO 0);
+      rMemMode_in_dc    : OUT    mem_mode_type;
       rTargetReg_in_dc  : OUT    reg_addr_type
    );
 

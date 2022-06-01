@@ -8,14 +8,18 @@
 --
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 LIBRARY raro_ikr_risc_II_lib;
 USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.ALL;
 
 ENTITY step_me IS
    PORT( 
+      clk             : IN     std_logic;
+      rALU_in         : IN     word;
       rALU_out        : IN     word;
-      rMemMode_out_me : IN     std_logic_vector (15 DOWNTO 0);
+      rMemMode_out_me : IN     mem_mode_type;
       rStoreData_out  : IN     word;
+      res_n           : IN     std_logic;
       rME_in          : OUT    word
    );
 

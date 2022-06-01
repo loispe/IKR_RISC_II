@@ -17,7 +17,7 @@ ENTITY DEC_dc IS
       rOpcode_out      : IN     word;
       a_imm            : OUT    word;
       rAluMode_in      : OUT    alu_mode_type;
-      rMemMode_in      : OUT    std_logic_vector (15 DOWNTO 0);
+      rMemMode_in_dc   : OUT    mem_mode_type;
       rTargetReg_in_dc : OUT    reg_addr_type;
       sel_a            : OUT    reg_addr_type;
       sel_b            : OUT    reg_addr_type;

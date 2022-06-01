@@ -12,15 +12,17 @@ BEGIN
   reg: process(clk, res_n) is
   begin
     if res_n = '0' then
-      rALU_out        <= (others => '0');
-      rStoreData_out  <= (others => '0');
+      rALU_out           <= (others => '0');
+      rStoreData_out     <= (others => '0');
       rTargetReg_out_me  <= (others => '0');
+      rMemMode_out_me    <= mem_idle;
       --rAluMode_out <= NOP;  --nop ist addi in reg0
     else
       if clk'event and clk = '1' then
         rALU_out <= rALU_in;
         rStoreData_out <= rStoreData_in;
         rTargetReg_out_me <= rTargetReg_out_ex;
+        rMemMode_out_me <= rMemMode_out_ex;
       end if;
     end if;
   end process reg;
