@@ -29,9 +29,16 @@ PACKAGE isa_types IS
                     alu_extb, alu_exth, alu_swapb, alu_swaph, alu_not, alu_jmp, alu_jsr,
                     alu_addx, alu_subx, alu_and, alu_or, alu_xor, alu_cmps, alu_cmpu
                     );
+
+  --data mememoy modes                  
   TYPE mem_mode_type IS (
                     mem_idle, mem_read, mem_write
-                  );                  
+                  );           
+  
+  --forwarding modes                  
+  TYPE fwd_mode_type IS (
+                    fwd_idle, fwd_rME, fwd_rALU
+                    );
 
   --Konstanten zum Unterscheiden zwischen i-Format, r-Format und b-Format
   CONSTANT r_format : cmd_beginning := 6X"3F";
