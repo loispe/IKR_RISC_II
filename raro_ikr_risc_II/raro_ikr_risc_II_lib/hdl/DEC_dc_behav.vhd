@@ -31,8 +31,12 @@ BEGIN
     sel_imm <= '0';
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
-    rTargetReg_in_dc <= (others => '0');
-    rMemMode_in_dc <= mem_idle;
+    rTargetReg_in_dc  <= (others => '0');
+    rMemMode_in_dc    <= mem_idle;
+    rFwd_sela_in_dc   <= fwd_idle;
+    rFwd_selb_in_dc   <= fwd_idle;
+    rFwd_selc_in_dc   <= fwd_idle;
+    rFwd_selsd_in_dc  <= fwd_idle;     
     
     --format := rOpcode_out(opc_format'range);
     
