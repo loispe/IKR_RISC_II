@@ -38,6 +38,10 @@ ARCHITECTURE struct OF step_dc IS
       sel_a            : OUT    reg_addr_type ;
       sel_b            : OUT    reg_addr_type ;
       sel_c            : OUT    reg_addr_type ;
+      rFwd_sela_in_dc  : OUT    fwd_mode_type ;
+      rFwd_selb_in_dc  : OUT    fwd_mode_type ;
+      rFwd_selc_in_dc  : OUT    fwd_mode_type ; 
+      rFwd_selsd_in_dc : OUT    fwd_mode_type ;  
       sel_imm          : OUT    std_logic 
    );
    END COMPONENT;
@@ -85,7 +89,11 @@ BEGIN
          sel_a            => sel_a,
          sel_b            => sel_b,
          sel_c            => sel_c,
-         sel_imm          => sel_imm
+         sel_imm          => sel_imm,
+         rFwd_sela_in_dc  => rFwd_sela_in_dc,
+         rFwd_selb_in_dc  => rFwd_selb_in_dc,
+         rFwd_selc_in_dc  => rFwd_selc_in_dc,
+         rFwd_selsd_in_dc => rFwd_selsd_in_dc  
       );
    U_2 : MUX_dc
       PORT MAP (

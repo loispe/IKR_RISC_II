@@ -29,15 +29,15 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
    SIGNAL rB_out            : word;
    SIGNAL rC_in             : word;
    SIGNAL rC_out            : word;
-   SIGNAL rFwd_sela_in_dc   : std_logic;
-   SIGNAL rFwd_sela_out_ex  : std_logic;
-   SIGNAL rFwd_selb_in_dc   : std_logic;
-   SIGNAL rFwd_selb_out_ex  : std_logic;
-   SIGNAL rFwd_selc_in_dc   : std_logic;
-   SIGNAL rFwd_selc_out_ex  : std_logic;
-   SIGNAL rFwd_selsd_in_dc  : std_logic;
-   SIGNAL rFwd_selsd_out_ex : std_logic;
-   SIGNAL rFwd_selsd_out_me : std_logic;
+   SIGNAL rFwd_sela_in_dc   : fwd_mode_type;
+   SIGNAL rFwd_sela_out_ex  : fwd_mode_type;
+   SIGNAL rFwd_selb_in_dc   : fwd_mode_type;
+   SIGNAL rFwd_selb_out_ex  : fwd_mode_type;
+   SIGNAL rFwd_selc_in_dc   : fwd_mode_type;
+   SIGNAL rFwd_selc_out_ex  : fwd_mode_type;
+   SIGNAL rFwd_selsd_in_dc  : fwd_mode_type;
+   SIGNAL rFwd_selsd_out_ex : fwd_mode_type;
+   SIGNAL rFwd_selsd_out_me : fwd_mode_type;
    SIGNAL rME_in            : word;
    SIGNAL rME_out           : word;
    SIGNAL rMemMode_in_dc    : mem_mode_type;
@@ -71,10 +71,10 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rAluMode_in       : IN     alu_mode_type ;
       rB_in             : IN     word ;
       rC_in             : IN     word ;
-      rFwd_sela_in_dc   : IN     std_logic ;
-      rFwd_selb_in_dc   : IN     std_logic ;
-      rFwd_selc_in_dc   : IN     std_logic ;
-      rFwd_selsd_in_dc  : IN     std_logic ;
+      rFwd_sela_in_dc   : IN     fwd_mode_type ;
+      rFwd_selb_in_dc   : IN     fwd_mode_type ;
+      rFwd_selc_in_dc   : IN     fwd_mode_type ;
+      rFwd_selsd_in_dc  : IN     fwd_mode_type ;
       rMemMode_in_dc    : IN     mem_mode_type ;
       rNextPc_in_dc     : IN     word ;
       rTargetReg_in_dc  : IN     reg_addr_type ;
@@ -83,10 +83,10 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rAluMode_out      : OUT    alu_mode_type ;
       rB_out            : OUT    word ;
       rC_out            : OUT    word ;
-      rFwd_sela_out_ex  : OUT    std_logic ;
-      rFwd_selb_out_ex  : OUT    std_logic ;
-      rFwd_selc_out_ex  : OUT    std_logic ;
-      rFwd_selsd_out_ex : OUT    std_logic ;
+      rFwd_sela_out_ex  : OUT    fwd_mode_type ;
+      rFwd_selb_out_ex  : OUT    fwd_mode_type ;
+      rFwd_selc_out_ex  : OUT    fwd_mode_type ;
+      rFwd_selsd_out_ex : OUT    fwd_mode_type ;
       rMemMode_out_ex   : OUT    mem_mode_type ;
       rNextPC_out_ex    : OUT    word ;
       rTargetReg_out_ex : OUT    reg_addr_type 
@@ -96,13 +96,13 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
    PORT (
       clk               : IN     std_logic ;
       rALU_in           : IN     word ;
-      rFwd_selsd_out_ex : IN     std_logic ;
+      rFwd_selsd_out_ex : IN     fwd_mode_type ;
       rMemMode_out_ex   : IN     mem_mode_type ;
       rStoreData_in     : IN     word ;
       rTargetReg_out_ex : IN     reg_addr_type ;
       res_n             : IN     std_logic ;
       rALU_out          : OUT    word ;
-      rFwd_selsd_out_me : OUT    std_logic ;
+      rFwd_selsd_out_me : OUT    fwd_mode_type ;
       rMemMode_out_me   : OUT    mem_mode_type ;
       rStoreData_out    : OUT    word ;
       rTargetReg_out_me : OUT    reg_addr_type 
@@ -147,10 +147,10 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rAluMode_in       : OUT    alu_mode_type ;
       rB_in             : OUT    word ;
       rC_in             : OUT    word ;
-      rFwd_sela_in_dc   : OUT    std_logic ;
-      rFwd_selb_in_dc   : OUT    std_logic ;
-      rFwd_selc_in_dc   : OUT    std_logic ;
-      rFwd_selsd_in_dc  : OUT    std_logic ;
+      rFwd_sela_in_dc   : OUT    fwd_mode_type ;
+      rFwd_selb_in_dc   : OUT    fwd_mode_type ;
+      rFwd_selc_in_dc   : OUT    fwd_mode_type ;
+      rFwd_selsd_in_dc  : OUT    fwd_mode_type ;
       rMemMode_in_dc    : OUT    mem_mode_type ;
       rTargetReg_in_dc  : OUT    reg_addr_type 
    );
@@ -162,9 +162,9 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rAluMode_out     : IN     alu_mode_type ;
       rB_out           : IN     word ;
       rC_out           : IN     word ;
-      rFwd_sela_out_ex : IN     std_logic ;
-      rFwd_selb_out_ex : IN     std_logic ;
-      rFwd_selc_out_ex : IN     std_logic ;
+      rFwd_sela_out_ex : IN     fwd_mode_type ;
+      rFwd_selb_out_ex : IN     fwd_mode_type ;
+      rFwd_selc_out_ex : IN     fwd_mode_type ;
       rME_out          : IN     word ;
       rNextPC_out_ex   : IN     word ;
       rALU_in          : OUT    word ;
@@ -182,7 +182,7 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       clk               : IN     std_logic ;
       rALU_in           : IN     word ;
       rALU_out          : IN     word ;
-      rFwd_selsd_out_me : IN     std_logic ;
+      rFwd_selsd_out_me : IN     fwd_mode_type ;
       rME_out           : IN     word ;
       rMemMode_out_me   : IN     mem_mode_type ;
       rStoreData_out    : IN     word ;

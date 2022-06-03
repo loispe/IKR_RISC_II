@@ -16,13 +16,13 @@ ENTITY reg_ex_me IS
    PORT( 
       clk               : IN     std_logic;
       rALU_in           : IN     word;
-      rFwd_selsd_out_ex : IN     std_logic;
+      rFwd_selsd_out_ex : IN     fwd_mode_type;
       rMemMode_out_ex   : IN     mem_mode_type;
       rStoreData_in     : IN     word;
       rTargetReg_out_ex : IN     reg_addr_type;
       res_n             : IN     std_logic;
       rALU_out          : OUT    word;
-      rFwd_selsd_out_me : OUT    std_logic;
+      rFwd_selsd_out_me : OUT    fwd_mode_type;
       rMemMode_out_me   : OUT    mem_mode_type;
       rStoreData_out    : OUT    word;
       rTargetReg_out_me : OUT    reg_addr_type
