@@ -14,22 +14,15 @@ ARCHITECTURE behav OF step_if IS
   type memory_type is array(0 to memory_depth - 1) of word;
   --type memory_type is array(natural range <>) of word;  --nicht synthetisierbar
   constant rom: memory_type :=  (
-                                --0 => 6x"3F" & 5x"03" & 5x"02" & 6x"2D" & 5x"-" & 5x"01",                   --ror rc = 3 rb = 2 (b"1000_0000_0000_0000_0000_0000_0000_0001")
-                                0 => 6x"3F" & 5x"9" & 5x"02" & 6x"14" & 5x"-" & 5x"02",    --str rc = 9 rb = 2 (=5) ra = 2 (=5) 
-                                4 => 6x"3F" & 5x"8" & 5x"02" & 6x"10" & 5x"-" & 5x"02",    --ldr rc = 8 rb = 2 (=5) ra = 2 (=5)
-                                8 => 6x"14" & 5x"9" & 5x"02" & 16d"11",                    --std
-                                12 =>6x"10" & 5x"E" & 5x"02" & 16d"11",                    --ldd
-                                --14 => 6x"3F" & 5x"04" & 5x"01" & 6x"02" & 5x"-" & 5x"3", --sub rc = 4 rb = 1 (=9) ra = 3 (=E)
-                                /* 0 => 6x"3F" & 5x"3" & 5x"9" & 6x"00" & 5x"-" & 5x"A",   --add rc = 3 rb = 9 ra = 10 
-                                1 => 6x"3F" & 5x"3" & 5x"9" & 6x"20" & 5x"-" & 5x"A",     --addx rc = 3 rb = 9 ra = 10 
-                                2 => 6x"3F" & 5x"4" & 5x"A" & 6x"22" & 5x"-" & 5x"9",  --subx rc = 4 rb = 10 ra = 2
-                                3 => 6x"3F" & 5x"4" & 5x"9" & 6x"02" & 5x"-" & 5x"A",  --sub rc = 4 rb = 9 ra = 10 
-                                --Testing addx, subx
-                                */
-                                /*0 => 6x"01" & 5x"01" & 5x"00" & X"DDDD",
-                                3 => 6X"02" & 5X"03" & 5X"01" & X"DDDD",  --testing addli and addhi
-                                */
-                                --10 =>  6x"3F" & 5x"3" & 5x"3" & 6x"00" & 5x"-" & 5x"1"
+                                0      => 6X"14" & 5X"A" & 5X"0" & 16D"5",                  -- std  rc = 10, rb = 0, imm = 5
+                                1      => 6X"00" & 5X"1" & 5X"0" & 16D"5",                  -- addi rc = 1,  rb = 0, imm = 5
+                                2      => 6X"00" & 5X"2" & 5X"0" & 16D"10",                 -- addi rc = 2,  rb = 0, imm = 10
+                                3      => 6X"3F" & 5X"3" & 5X"1" & 6x"0" & 5x"-" & 5x"2",   -- add  rc = 3,  rb = 1, ra = 2
+                                4      => 6X"3F" & 5X"4" & 5X"2" & 6x"0" & 5x"-" & 5x"0",   -- add  rc = 4,  rb = 2, ra = 0
+                                5      => 6X"10" & 5X"5" & 5X"1" & 16D"0",                  -- ldd  rc = 5,  rb = 1, imm = 0
+                                6      => 6X"14" & 5X"5" & 5X"2" & 16D"0",                  -- std  rc = 5, rb = 2, imm = 0
+                                7      => 6X"10" & 5X"6" & 5X"1" & 16D"0",                  -- ldd  rc = 6,  rb = 1, imm = 0
+                                8      => 6X"3F" & 5X"7" & 5X"6" & 6x"0" & 5x"-" & 5x"2",   -- add  rc = 7,  rb = 6, ra = 2
                                 others => 32x"0"                                
                                 
                                 );
