@@ -17,7 +17,7 @@ ENTITY MUX_ex_2 IS
    PORT( 
       rALU_out         : IN     word;
       rB_out           : IN     word;
-      rFwd_selb_out_ex : IN     std_logic;
+      rFwd_selb_out_ex : IN     fwd_mode_type;
       rME_out          : IN     word;
       mux_ALU_B        : OUT    word
    );

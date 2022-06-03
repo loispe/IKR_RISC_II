@@ -9,6 +9,10 @@
 --
 ARCHITECTURE behav OF MUX_ex_3 IS
 BEGIN
-  rStoreData_in <= rC_out;
+  with rFwd_selc_out_ex select  
+    rStoreData_in <=  rC_out    when fwd_idle,
+                      rME_out   when fwd_rME,
+                      rALU_out  when fwd_rALU,
+                      rC_out    when others;
 END ARCHITECTURE behav;
 
