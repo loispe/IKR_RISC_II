@@ -38,8 +38,7 @@ BEGIN
     rFwd_sela_in_dc   <= fwd_idle;
     rFwd_selb_in_dc   <= fwd_idle;
     rFwd_selc_in_dc   <= fwd_idle;
-    rFwd_selsd_in_dc  <= fwd_idle;
-    sel_rWB_in <= sel_rME_out;     
+    rFwd_selsd_in_dc  <= fwd_idle;     
     
     --format := rOpcode_out(opc_format'range);
     
@@ -223,6 +222,7 @@ BEGIN
                         else
                           rFwd_selc_in_dc <= fwd_idle;
                         end if;
+
                         
       when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
       when others => --no identifiable command
