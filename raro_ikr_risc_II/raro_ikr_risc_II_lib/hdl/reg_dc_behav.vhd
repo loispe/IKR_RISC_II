@@ -14,10 +14,15 @@ BEGIN
     if res_n = '0' then
       rOpcode_out <= (others => '0');
       rNextPc_in_dc <= (others => '0');
+      sel_rME_out <= (others => '0');
+      sel_rWB_out <= (others => '0');
+
     else
       if clk'event and clk = '1' then
         rOpcode_out <= rOpcode_in;
         rNextPc_in_dc <= rPc_in;
+        sel_rME_out <= sel_rME_in;
+        sel_rWB_out <= sel_rWB_in;
       end if;
     end if;
   end process;

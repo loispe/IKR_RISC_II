@@ -18,8 +18,12 @@ ENTITY reg_if_dc IS
       rOpcode_in    : IN     word;
       rPc_in        : IN     word;
       res_n         : IN     std_logic;
+      sel_rME_in    : IN    reg_addr_type;
+      sel_rWB_in    : IN    reg_addr_type;
       rNextPc_in_dc : OUT    word;
-      rOpcode_out   : OUT    word
+      rOpcode_out   : OUT    word;
+      sel_rME_out   : OUT    reg_addr_type;
+      sel_rWB_out   : OUT    reg_addr_type
    );
 
 -- Declarations
