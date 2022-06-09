@@ -31,8 +31,8 @@ ARCHITECTURE struct OF step_dc IS
    COMPONENT DEC_dc
    PORT (
       rOpcode_out      : IN     word ;
-      sel_rME_out      : IN     reg_addr_type;
-      sel_rWB_out      : IN     reg_addr_type;
+      sel_rME_in       : IN    reg_addr_type;
+      sel_rWB_in       : IN    reg_addr_type;
       a_imm            : OUT    word ;
       rAluMode_in      : OUT    alu_mode_type ;
       rMemMode_in_dc   : OUT    mem_mode_type ;
@@ -44,9 +44,8 @@ ARCHITECTURE struct OF step_dc IS
       rFwd_selb_in_dc  : OUT    fwd_mode_type ;
       rFwd_selc_in_dc  : OUT    fwd_mode_type ; 
       rFwd_selsd_in_dc : OUT    fwd_mode_type ;  
-      sel_imm          : OUT    std_logic;
-      sel_rME_in       : OUT    reg_addr_type;
-      sel_rWB_in       : OUT    reg_addr_type
+      sel_imm          : OUT    std_logic
+      
    );
    END COMPONENT;
    COMPONENT MUX_dc
@@ -86,8 +85,6 @@ BEGIN
    U_0 : DEC_dc
       PORT MAP (
          rOpcode_out      => rOpcode_out,
-         sel_rME_out      => sel_rME_out,
-         sel_rWB_out      => sel_rWB_out,
          a_imm            => a_imm,
          rAluMode_in      => rAluMode_in,
          rMemMode_in_dc   => rMemMode_in_dc,

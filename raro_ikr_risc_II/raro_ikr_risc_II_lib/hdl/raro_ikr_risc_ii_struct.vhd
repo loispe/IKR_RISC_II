@@ -55,10 +55,6 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
    SIGNAL rTargetReg_out_ex : reg_addr_type;
    SIGNAL rTargetReg_out_me : reg_addr_type;
    SIGNAL rTargetReg_out_wb : reg_addr_type;
-   SIGNAL sel_rME_in        : reg_addr_type;
-   SIGNAL sel_rWB_in        : reg_addr_type;
-   SIGNAL sel_rME_out       : reg_addr_type;
-   SIGNAL sel_rWB_out       : reg_addr_type;
 
 
    -- Component Declarations
@@ -94,6 +90,7 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rMemMode_out_ex   : OUT    mem_mode_type ;
       rNextPC_out_ex    : OUT    word ;
       rTargetReg_out_ex : OUT    reg_addr_type 
+
    );
    END COMPONENT;
    COMPONENT reg_ex_me
@@ -118,12 +115,8 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rOpcode_in    : IN     word;
       rPc_in        : IN     word;
       res_n         : IN     std_logic;
-      sel_rME_in    : IN     reg_addr_type;
-      sel_rWB_in    : IN     reg_addr_type;
       rNextPc_in_dc : OUT    word;
-      rOpcode_out   : OUT    word;
-      sel_rME_out   : OUT    reg_addr_type;
-      sel_rWB_out   : OUT    reg_addr_type
+      rOpcode_out   : OUT    word
    );
    END COMPONENT;
    COMPONENT reg_me_wb
@@ -151,8 +144,8 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rOpcode_out       : IN     word;
       rTargetReg_out_wb : IN     reg_addr_type;
       res_n             : IN     std_logic;
-      sel_rME_out       : IN     reg_addr_type;
-      sel_rWB_out       : IN     reg_addr_type;
+      sel_rME_in        : IN     reg_addr_type;
+      sel_rWB_in        : IN     reg_addr_type;
       rA_in             : OUT    word;
       rAluMode_in       : OUT    alu_mode_type;
       rB_in             : OUT    word;
@@ -162,9 +155,7 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
       rFwd_selc_in_dc   : OUT    fwd_mode_type;
       rFwd_selsd_in_dc  : OUT    fwd_mode_type;
       rMemMode_in_dc    : OUT    mem_mode_type;
-      rTargetReg_in_dc  : OUT    reg_addr_type;
-      sel_rME_in        : OUT    reg_addr_type;
-      sel_rWB_in        : OUT    reg_addr_type 
+      rTargetReg_in_dc  : OUT    reg_addr_type
    );
    END COMPONENT;
    COMPONENT step_ex
@@ -275,11 +266,7 @@ BEGIN
          rPc_in        => rPc_in,
          res_n         => res_n,
          rNextPc_in_dc => rNextPc_in_dc,
-         rOpcode_out   => rOpcode_out,
-         sel_rME_out   => sel_rME_out,
-         sel_rWB_out   => sel_rWB_out,
-         sel_rME_in    => sel_rME_in,
-         sel_rWB_in    => sel_rWB_in
+         rOpcode_out   => rOpcode_out
       );
    U_11 : reg_me_wb
       PORT MAP (
@@ -314,10 +301,8 @@ BEGIN
          rFwd_selsd_in_dc  => rFwd_selsd_in_dc,
          rMemMode_in_dc    => rMemMode_in_dc,
          rTargetReg_in_dc  => rTargetReg_in_dc,
-         sel_rME_out       => sel_rME_out,
-         sel_rWB_out       => sel_rWB_out,
-         sel_rME_in        => sel_rME_in,
-         sel_rWB_in        => sel_rWB_in
+         sel_rME_in        => rTargetReg_out_ex,
+         sel_rWB_in        => rTargetReg_out_me
       );
    U_7 : step_ex
       PORT MAP (

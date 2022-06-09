@@ -38,8 +38,7 @@ BEGIN
     rFwd_sela_in_dc   <= fwd_idle;
     rFwd_selb_in_dc   <= fwd_idle;
     rFwd_selc_in_dc   <= fwd_idle;
-    rFwd_selsd_in_dc  <= fwd_idle;
-    sel_rWB_in <= sel_rME_out;     
+    rFwd_selsd_in_dc  <= fwd_idle;     
     
     --format := rOpcode_out(opc_format'range);
     
@@ -57,7 +56,6 @@ BEGIN
       opc_b  := rOpcode_out(opc_b'range);
       disp18 := rOpcode_out(disp18'range);
       sel_c  <= rOpcode_out(reg_c'range);
-      sel_rME_in <= (others => '0');  --no registers changed
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
       
       case opc_b is  --determine b-command
@@ -79,9 +77,9 @@ BEGIN
       
       if reg_b = 5X"0" then
         rFwd_selb_in_dc <= fwd_idle;
-      elsif reg_b = sel_rME_out then
+      elsif reg_b = sel_rME_in then
         rFwd_selb_in_dc <= fwd_ME;
-      elsif reg_b = sel_rWB_out then
+      elsif reg_b = sel_rWB_in then
         rFwd_selb_in_dc <= fwd_WB;
       else
         rFwd_selb_in_dc <= fwd_idle;
@@ -92,7 +90,6 @@ BEGIN
       when opc_jsr =>
       when others  =>
         sel_c <= rOpcode_out(reg_c'range);
-        sel_rME_in <= rOpcode_out(reg_c'range); -- Speichere Zielregister für Forwarding
         rTargetReg_in_dc <= rOpcode_out(reg_c'range);
         
         case opc_r is --operations with 1 source operand
@@ -124,9 +121,9 @@ BEGIN
           
           if reg_a = 5X"0" then
             rFwd_sela_in_dc <= fwd_idle;
-          elsif reg_a = sel_rME_out then
+          elsif reg_a = sel_rME_in then
             rFwd_sela_in_dc <= fwd_ME;
-          elsif reg_a = sel_rWB_out then
+          elsif reg_a = sel_rWB_in then
             rFwd_sela_in_dc <= fwd_WB;
           else
             rFwd_sela_in_dc <= fwd_idle;
@@ -151,15 +148,14 @@ BEGIN
               case opc_r is
                 --load/store
                 when opc_str => rAluMode_in <= alu_add; rTargetReg_in_dc <= (others => '0'); rMemMode_in_dc <= mem_write;
-                                sel_rME_in <= (others => '0');  --no registers changed
                                 rFwd_selb_in_dc <= fwd_idle;
                                 reg_c := rOpcode_out(reg_c'range); 
                                 
                                 if reg_c = 5X"0" then
                                   rFwd_selc_in_dc <= fwd_idle;
-                                elsif reg_c = sel_rME_out then
+                                elsif reg_c = sel_rME_in then
                                   rFwd_selc_in_dc <= fwd_ME;
-                                elsif reg_c = sel_rWB_out then
+                                elsif reg_c = sel_rWB_in then
                                   rFwd_selc_in_dc <= fwd_WB;
                                 else
                                   rFwd_selc_in_dc <= fwd_idle;
@@ -177,7 +173,6 @@ BEGIN
     when others =>  --is i-command
       opc_i            := format;
       sel_c            <= rOpcode_out(reg_c'range);
-      sel_rME_in       <= rOpcode_out(reg_c'range);
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
       reg_b            := rOpcode_out(reg_b'range);
       sel_b            <= rOpcode_out(reg_b'range);
@@ -188,9 +183,9 @@ BEGIN
 
       if reg_b = 5X"0" then
         rFwd_selb_in_dc <= fwd_idle;
-      elsif reg_b = sel_rME_out then
+      elsif reg_b = sel_rME_in then
         rFwd_selb_in_dc <= fwd_ME;
-      elsif reg_b = sel_rWB_out then
+      elsif reg_b = sel_rWB_in then
         rFwd_selb_in_dc <= fwd_WB;
       else
         rFwd_selb_in_dc <= fwd_idle;
@@ -211,18 +206,18 @@ BEGIN
       when opc_std   => rAluMode_in <= alu_add; 
                         rTargetReg_in_dc <= (others => '0'); 
                         rMemMode_in_dc <= mem_write;
-                        sel_rME_in <= (others => '0');  --no registers changed
                         rFwd_selb_in_dc <= fwd_idle;
 
                         if reg_a = 5X"0" then
                           rFwd_sela_in_dc <= fwd_idle;
-                        elsif reg_c = sel_rME_out then
+                        elsif reg_c = sel_rME_in then
                           rFwd_selc_in_dc <= fwd_ME;
-                        elsif reg_c = sel_rWB_out then
+                        elsif reg_c = sel_rWB_in then
                           rFwd_selc_in_dc <= fwd_WB;
                         else
                           rFwd_selc_in_dc <= fwd_idle;
                         end if;
+
                         
       when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
       when others => --no identifiable command

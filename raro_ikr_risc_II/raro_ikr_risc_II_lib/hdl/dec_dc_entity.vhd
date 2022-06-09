@@ -15,8 +15,8 @@ USE raro_ikr_risc_II_lib.isa_types.ALL;
 ENTITY DEC_dc IS
    PORT( 
       rOpcode_out      : IN     word ;
-      sel_rME_out      : IN     reg_addr_type;
-      sel_rWB_out      : IN     reg_addr_type;
+      sel_rME_in       : IN     reg_addr_type;
+      sel_rWB_in       : IN     reg_addr_type;
       a_imm            : OUT    word ;
       rAluMode_in      : OUT    alu_mode_type ;
       rMemMode_in_dc   : OUT    mem_mode_type ;
@@ -28,9 +28,7 @@ ENTITY DEC_dc IS
       rFwd_selb_in_dc  : OUT    fwd_mode_type ;
       rFwd_selc_in_dc  : OUT    fwd_mode_type ; 
       rFwd_selsd_in_dc : OUT    fwd_mode_type ;  
-      sel_imm          : OUT    std_logic;
-      sel_rME_in       : OUT    reg_addr_type;
-      sel_rWB_in       : OUT    reg_addr_type
+      sel_imm          : OUT    std_logic      
    );
 
 -- Declarations
