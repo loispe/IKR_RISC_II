@@ -11,8 +11,9 @@
 
 ARCHITECTURE behav OF step_me IS
   TYPE MEM IS ARRAY (0 to 31) of word;
-  signal ram_block : MEM;
-  signal ram_out   : word;
+  signal ram_block :  MEM;
+  signal ram_out   :  word;
+  signal q_storeData: word;
 BEGIN
   ram_access : process(clk, res_n) is
   begin
@@ -23,7 +24,7 @@ BEGIN
     else
       if clk'event and clk ='1' then
         if rMemMode_out_me = mem_write then
-          ram_block (to_integer(unsigned(rALU_out))) <= rStoreData_out;
+          ram_block (to_integer(unsigned(rALU_out))) <= q_storeData;
         --elsif rMemMode_out = mem_read then
           --ram_out <= ram_block(rALU_in);
         end if;
@@ -32,8 +33,13 @@ BEGIN
     end if;
   end process ram_access;
   
+
   rME_in <= rALU_out when rMemMode_out_me = mem_idle else ram_out; 
   
+  with rFwd_selsd_out_me select
+  q_storeData <=  rStoreData_out    when fwd_idle,
+                  rME_out           when fwd_WB,
+                  rStoreData_out    when others;
   
 END ARCHITECTURE behav;
 

@@ -17,7 +17,7 @@ ENTITY MUX_ex_3 IS
    PORT( 
       rALU_out         : IN     word;
       rC_out           : IN     word;
-      rFwd_selc_out_ex : IN     std_logic;
+      rFwd_selc_out_ex : IN     fwd_mode_type;
       rME_out          : IN     word;
       rStoreData_in    : OUT    word
    );

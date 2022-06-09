@@ -33,9 +33,13 @@ BEGIN
     sel_imm <= '0';
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
-    rTargetReg_in_dc <= (others => '0');
-    rMemMode_in_dc <= mem_idle;
-    reg_WB <= reg_ME;
+    rTargetReg_in_dc  <= (others => '0');
+    rMemMode_in_dc    <= mem_idle;
+    rFwd_sela_in_dc   <= fwd_idle;
+    rFwd_selb_in_dc   <= fwd_idle;
+    rFwd_selc_in_dc   <= fwd_idle;
+    rFwd_selsd_in_dc  <= fwd_idle;
+    reg_WB <= reg_ME;     
     
     --format := rOpcode_out(opc_format'range);
     
@@ -74,11 +78,11 @@ BEGIN
       opc_r := rOpcode_out(opc_r'range);
       
       if reg_b = reg_ME then
-        fwd_sel_b <= ME;
+        rFwd_selb_in_dc <= fwd_ME;
       elsif reg_b = reg_WB then
-        fwd_sel_b <= WB;
+        rFwd_selb_in_dc <= fwd_WB;
       else
-        fwd_sel_b <= NONE;
+        rFwd_selb_in_dc <= fwd_idle;
       end if;
 
       case opc_r is --determine r-command or jump
@@ -117,11 +121,11 @@ BEGIN
           sel_imm <= '0';
 
           if reg_a = reg_ME then
-            fwd_sel_a <= ME;
+            rFwd_sela_in_dc <= fwd_ME;
           elsif reg_a = reg_WB then
-            fwd_sel_a <= WB;
+            rFwd_sela_in_dc <= fwd_WB;
           else
-            fwd_sel_a <= NONE;
+            rFwd_sela_in_dc <= fwd_idle;
           end if;
 
           case opc_r is -- arithmetic with 2 source operands
@@ -144,14 +148,14 @@ BEGIN
                 --load/store
                 when opc_str => rAluMode_in <= alu_add; rTargetReg_in_dc <= (others => '0'); rMemMode_in_dc <= mem_write;
                                 reg_ME <= (others => '0');  --no registers changed
-                                fwd_sel_b <= NONE;
+                                rFwd_selb_in_dc <= fwd_idle;
                                 reg_c := rOpcode_out(reg_c'range); 
                                 if reg_c = reg_ME then
-                                  fwd_sel_c <= ME;
+                                  rFwd_selc_in_dc <= fwd_ME;
                                 elsif reg_c = reg_WB then
-                                  fwd_sel_c <= WB;
+                                  rFwd_selc_in_dc <= fwd_WB;
                                 else
-                                  fwd_sel_c <= NONE;
+                                  rFwd_selc_in_dc <= fwd_idle;
                                 end if;
                 when opc_ldr => rMemMode_in_dc <= mem_read;
                 when others =>  --no identifiable command
@@ -176,11 +180,11 @@ BEGIN
       rMemMode_in_dc   <= mem_idle;
 
       if reg_b = reg_ME then
-        fwd_sel_b <= ME;
+        rFwd_selb_in_dc <= fwd_ME;
       elsif reg_b = reg_WB then
-        fwd_sel_b <= WB;
+        rFwd_selb_in_dc <= fwd_WB;
       else
-        fwd_sel_b <= NONE;
+        rFwd_selb_in_dc <= fwd_idle;
       end if;
       
       case opc_i is --determine i-command
@@ -199,13 +203,13 @@ BEGIN
                         rTargetReg_in_dc <= (others => '0'); 
                         rMemMode_in_dc <= mem_write;
                         reg_ME <= (others => '0');  --no registers changed
-                        fwd_sel_b <= NONE;
+                        rFwd_selb_in_dc <= fwd_idle;
                         if reg_c = reg_ME then
-                          fwd_sel_c <= ME;
+                          rFwd_selc_in_dc <= fwd_ME;
                         elsif reg_c = reg_WB then
-                          fwd_sel_c <= WB;
+                          rFwd_selc_in_dc <= fwd_WB;
                         else
-                          fwd_sel_c <= NONE;
+                          rFwd_selc_in_dc <= fwd_idle;
                         end if;
       when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
       when others => --no identifiable command

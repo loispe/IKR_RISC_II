@@ -9,6 +9,10 @@
 --
 ARCHITECTURE behav OF MUX_ex_2 IS
 BEGIN
-  mux_ALU_B <= rB_out;
+  with rFwd_selb_out_ex select  
+    mux_ALU_B <=  rB_out    when fwd_idle,
+                  rME_out   when fwd_WB,
+                  rALU_out  when fwd_ME,
+                  rB_out    when others;
 END ARCHITECTURE behav;
 

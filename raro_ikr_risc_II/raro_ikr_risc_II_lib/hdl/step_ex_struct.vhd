@@ -38,7 +38,7 @@ ARCHITECTURE struct OF step_ex IS
    PORT (
       rALU_out         : IN     word ;
       rA_out           : IN     word ;
-      rFwd_sela_out_ex : IN     std_logic ;
+      rFwd_sela_out_ex : IN     fwd_mode_type ;
       rME_out          : IN     word ;
       mux_ALU_A        : OUT    word 
    );
@@ -47,7 +47,7 @@ ARCHITECTURE struct OF step_ex IS
    PORT (
       rALU_out         : IN     word ;
       rB_out           : IN     word ;
-      rFwd_selb_out_ex : IN     std_logic ;
+      rFwd_selb_out_ex : IN     fwd_mode_type ;
       rME_out          : IN     word ;
       mux_ALU_B        : OUT    word 
    );
@@ -56,7 +56,7 @@ ARCHITECTURE struct OF step_ex IS
    PORT (
       rALU_out         : IN     word ;
       rC_out           : IN     word ;
-      rFwd_selc_out_ex : IN     std_logic ;
+      rFwd_selc_out_ex : IN     fwd_mode_type ;
       rME_out          : IN     word ;
       rStoreData_in    : OUT    word 
    );

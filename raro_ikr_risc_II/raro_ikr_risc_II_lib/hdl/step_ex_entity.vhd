@@ -19,9 +19,9 @@ ENTITY step_ex IS
       rAluMode_out     : IN     alu_mode_type;
       rB_out           : IN     word;
       rC_out           : IN     word;
-      rFwd_sela_out_ex : IN     std_logic;
-      rFwd_selb_out_ex : IN     std_logic;
-      rFwd_selc_out_ex : IN     std_logic;
+      rFwd_sela_out_ex : IN     fwd_mode_type;
+      rFwd_selb_out_ex : IN     fwd_mode_type;
+      rFwd_selc_out_ex : IN     fwd_mode_type;
       rME_out          : IN     word;
       rNextPC_out_ex   : IN     word;
       rALU_in          : OUT    word;

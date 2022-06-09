@@ -28,7 +28,11 @@ ARCHITECTURE behav OF step_if IS
                                 );
   
 BEGIN
-  rOpcode_in <= rom(to_integer(unsigned(rPc_out)));
+  
+  rOpcode_in <= rom(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) < memory_depth - 1 else 32x"0";
+
+  --rOpcode_in <= rom(to_integer(unsigned(rPc_out)));
+
       
 END ARCHITECTURE behav;
 

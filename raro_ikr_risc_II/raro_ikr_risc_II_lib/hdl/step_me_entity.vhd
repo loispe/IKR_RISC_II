@@ -17,7 +17,7 @@ ENTITY step_me IS
       clk               : IN     std_logic;
       rALU_in           : IN     word;
       rALU_out          : IN     word;
-      rFwd_selsd_out_me : IN     std_logic;
+      rFwd_selsd_out_me : IN     fwd_mode_type;
       rME_out           : IN     word;
       rMemMode_out_me   : IN     mem_mode_type;
       rStoreData_out    : IN     word;
