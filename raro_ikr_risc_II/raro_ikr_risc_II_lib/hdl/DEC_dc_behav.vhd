@@ -152,13 +152,11 @@ BEGIN
                                 reg_c := rOpcode_out(reg_c'range); 
                                 
                                 if reg_c = 5X"0" then
-                                  rFwd_selc_in_dc <= fwd_idle;
+                                  rFwd_selsd_in_dc <= fwd_idle;
                                 elsif reg_c = sel_rME_in then
-                                  rFwd_selc_in_dc <= fwd_ME;
-                                elsif reg_c = sel_rWB_in then
-                                  rFwd_selc_in_dc <= fwd_WB;
+                                  rFwd_selsd_in_dc <= fwd_WB;
                                 else
-                                  rFwd_selc_in_dc <= fwd_idle;
+                                  rFwd_selsd_in_dc <= fwd_idle;
                                 end if;
                 when opc_ldr => rMemMode_in_dc <= mem_read;
                 when others =>  --no identifiable command
@@ -173,6 +171,7 @@ BEGIN
     when others =>  --is i-command
       opc_i            := format;
       sel_c            <= rOpcode_out(reg_c'range);
+      reg_c            := rOpcode_out(reg_c'range);
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
       reg_b            := rOpcode_out(reg_b'range);
       sel_b            <= rOpcode_out(reg_b'range);
@@ -206,16 +205,14 @@ BEGIN
       when opc_std   => rAluMode_in <= alu_add; 
                         rTargetReg_in_dc <= (others => '0'); 
                         rMemMode_in_dc <= mem_write;
-                        rFwd_selb_in_dc <= fwd_idle;
+                        rFwd_selc_in_dc <= fwd_idle;
 
-                        if reg_a = 5X"0" then
-                          rFwd_sela_in_dc <= fwd_idle;
+                        if reg_c = 5X"0" then
+                          rFWd_selsd_in_dc <= fwd_idle; 
                         elsif reg_c = sel_rME_in then
-                          rFwd_selc_in_dc <= fwd_ME;
-                        elsif reg_c = sel_rWB_in then
-                          rFwd_selc_in_dc <= fwd_WB;
+                          rFWd_selsd_in_dc <= fwd_WB;
                         else
-                          rFwd_selc_in_dc <= fwd_idle;
+                          rFwd_selsd_in_dc <= fwd_idle;
                         end if;
 
                         
