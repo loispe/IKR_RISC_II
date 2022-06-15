@@ -9,11 +9,14 @@
 --
 LIBRARY ieee;
 use ieee.numeric_std.all;
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.mem_contents.all;
 
 ARCHITECTURE behav OF step_if IS
   type memory_type is array(0 to memory_depth - 1) of word;
   --type memory_type is array(natural range <>) of word;  --nicht synthetisierbar
-  constant rom: memory_type :=  (
+  /*constant rom: memory_type :=  
+                              (
                                 0      => 6X"14" & 5X"A" & 5X"0" & 16D"5",                  -- std  rc = 10, rb = 0, imm = 5
                                 1      => 6X"00" & 5X"1" & 5X"0" & 16D"5",                  -- addi rc = 1,  rb = 0, imm = 5
                                 2      => 6X"00" & 5X"2" & 5X"0" & 16D"10",                 -- addi rc = 2,  rb = 0, imm = 10
@@ -25,11 +28,11 @@ ARCHITECTURE behav OF step_if IS
                                 8      => 6X"3F" & 5X"7" & 5X"6" & 6x"0" & 5x"-" & 5x"2",   -- add  rc = 7,  rb = 6, ra = 2
                                 others => 32x"0"                                
                                 
-                                );
+                                );*/
   
 BEGIN
   
-  rOpcode_in <= rom(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) <= memory_depth - 1 else 32x"0";
+  rOpcode_in <= mem_content(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) <= memory_depth - 1 else 32x"0";
 
   --rOpcode_in <= rom(to_integer(unsigned(rPc_out)));
 

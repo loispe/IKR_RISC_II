@@ -1,0 +1,14 @@
+addi r2 := r0, #5
+addli r9 := r0, #$CAFE
+addhi r9 := r9, #$CAFE
+addli r10 := r0, #$AFFE
+addhi r10 := r10, #$AFFE
+std(r0, 5) := r10
+addi r1 := r0, #5
+addi r2 := r0, #10
+add  r3 := r1, r2
+add  r4 := r2, r0
+ldd  r5 := (r1, 0)
+std(r2, 0) := r5
+ldd  r6 := (r1, 0)
+add  r7 := r6, r2

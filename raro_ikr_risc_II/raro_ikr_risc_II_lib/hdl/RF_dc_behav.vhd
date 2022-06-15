@@ -30,10 +30,10 @@ BEGIN
       for i in registers'range loop
         registers(i) <= (others => '0');
       end loop;
-      registers(2) <= 32x"05";
+      /*registers(2) <= 32x"05";
       --registers(2) <= b"1000_0000_0000_0000_0000_0000_0000_0001"; --for testing ror, rol
       registers(9) <= X"CAFECAFE";
-      registers(10) <= X"AFFEAFFE"; --for testing subx, addx
+      registers(10) <= X"AFFEAFFE"; --for testing subx, addx*/
     end if;
 
     if clk'event and clk ='0' then
