@@ -43,6 +43,8 @@ BEGIN
     sel_rME_in        := rTargetReg_out_ex;
     sel_rWB_in        := rTargetReg_out_me;
     stall_dc          <= '0';
+    disp              <= (others => '0');
+    sbpu_mode         <= idle;
     
     --format := rOpcode_out(opc_format'range);
     
@@ -51,9 +53,13 @@ BEGIN
     case format is  --begin decoding
     when opc_bra =>
       disp26 := rOpcode_out(disp26'range);
+      sbpu_mode <= st_uncnd;
+      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
       --do something
     when opc_bsr =>
       disp26 := rOpcode_out(disp26'range);
+      sbpu_mode <= st_uncnd;
+      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
       --do something
       
 --***************************************************************      
@@ -73,11 +79,18 @@ BEGIN
       
       case opc_b is  --determine b-command
       when opc_beq =>
+        sbpu_mode <= st_cnd;
       when opc_bne =>
+        sbpu_mode <= st_cnd;
       when opc_blt =>
+        sbpu_mode <= st_cnd;
       when opc_bgt =>
+        sbpu_mode <= st_cnd;
       when opc_ble =>
+        sbpu_mode <= st_cnd;
       when opc_bge =>
+        sbpu_mode <= st_cnd;
+        
       when others  => --NOP
         rAluMode_in <= alu_add;
         sel_a       <= (others => '0');

@@ -1,4 +1,4 @@
--- VHDL Entity raro_ikr_risc_II_lib.mux_init.interface
+-- VHDL Entity raro_ikr_risc_II_lib.sbpu.interface
 --
 -- Created:
 --          by - lspetrck.meyer (pc091)
@@ -12,15 +12,16 @@ USE ieee.numeric_std.all;
 LIBRARY raro_ikr_risc_II_lib;
 USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.ALL;
 
-ENTITY mux_init IS
+ENTITY sbpu IS
    PORT( 
-      rPc_out    : IN     word;
-      sbpu_PC    : IN     word;
-      sbta_valid : IN     std_logic;
-      rPc_in     : OUT    word
+      disp          : IN     word;
+      rNextPc_in_dc : IN     word;
+      sbpu_mode     : IN     sbpu_mode_type;
+      sbpu_PC       : OUT    word;
+      sbta_valid    : OUT    std_logic
    );
 
 -- Declarations
 
-END mux_init ;
+END sbpu ;
 
