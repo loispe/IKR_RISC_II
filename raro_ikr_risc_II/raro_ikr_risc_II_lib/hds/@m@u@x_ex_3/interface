@@ -32,7 +32,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 20,0
+suid 25,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -77,11 +77,11 @@ lang 11
 decl (Decl
 n "rALU_out"
 t "word"
-o 11
-suid 16,0
+o 1
+suid 21,0
 )
 )
-uid 400,0
+uid 458,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -90,22 +90,22 @@ decl (Decl
 n "rC_out"
 t "word"
 o 5
-suid 17,0
+suid 22,0
 )
 )
-uid 402,0
+uid 460,0
 )
 *16 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "rFwd_selc_out_ex"
-t "std_logic"
-o 18
-suid 18,0
+t "fwd_mode_type"
+o 8
+suid 23,0
 )
 )
-uid 404,0
+uid 462,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -113,11 +113,11 @@ lang 11
 decl (Decl
 n "rME_out"
 t "word"
-o 12
-suid 19,0
+o 9
+suid 24,0
 )
 )
-uid 406,0
+uid 464,0
 )
 *18 (LogPort
 port (LogicalPort
@@ -127,10 +127,10 @@ decl (Decl
 n "rStoreData_in"
 t "word"
 o 12
-suid 20,0
+suid 25,0
 )
 )
-uid 408,0
+uid 466,0
 )
 ]
 )
@@ -186,31 +186,31 @@ uid 85,0
 litem &14
 pos 0
 dimension 20
-uid 401,0
+uid 459,0
 )
 *25 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 403,0
+uid 461,0
 )
 *26 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 405,0
+uid 463,0
 )
 *27 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 407,0
+uid 465,0
 )
 *28 (MRCItem
 litem &18
 pos 4
 dimension 20
-uid 409,0
+uid 467,0
 )
 ]
 )
@@ -441,23 +441,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface.info"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface.user"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -473,15 +473,15 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3"
 )
 (vvPair
 variable "d_logical"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/MUX_ex_3"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/MUX_ex_3"
 )
 (vvPair
 variable "date"
-value "06/01/22"
+value "06/15/22"
 )
 (vvPair
 variable "day"
@@ -493,7 +493,7 @@ value "Wednesday"
 )
 (vvPair
 variable "dd"
-value "01"
+value "15"
 )
 (vvPair
 variable "entity_name"
@@ -517,11 +517,11 @@ value "interface"
 )
 (vvPair
 variable "graphical_source_author"
-value "kntntply"
+value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "06/01/22"
+value "06/15/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -533,7 +533,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:50:14"
+value "12:08:28"
 )
 (vvPair
 variable "group"
@@ -573,11 +573,11 @@ value "June"
 )
 (vvPair
 variable "p"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/@m@u@x_ex_3/interface"
 )
 (vvPair
 variable "p_logical"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/MUX_ex_3/interface"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/MUX_ex_3/interface"
 )
 (vvPair
 variable "package_name"
@@ -633,7 +633,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "17:50:14"
+value "12:08:28"
 )
 (vvPair
 variable "unit"
@@ -641,7 +641,7 @@ value "MUX_ex_3"
 )
 (vvPair
 variable "user"
-value "kntntply"
+value "lspetrck"
 )
 (vvPair
 variable "version"
@@ -668,10 +668,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *62 (CptPort
-uid 375,0
+uid 433,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 376,0
+uid 434,0
 ro 90
 va (VaSet
 vasetType 1
@@ -680,11 +680,11 @@ fg "0,65535,0"
 xt "250,38625,1000,39375"
 )
 tg (CPTG
-uid 377,0
+uid 435,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 378,0
+uid 436,0
 va (VaSet
 font "courier,8,0"
 )
@@ -695,7 +695,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 379,0
+uid 437,0
 va (VaSet
 font "courier,8,0"
 )
@@ -708,16 +708,16 @@ lang 11
 decl (Decl
 n "rALU_out"
 t "word"
-o 11
-suid 16,0
+o 1
+suid 21,0
 )
 )
 )
 *63 (CptPort
-uid 380,0
+uid 438,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 381,0
+uid 439,0
 ro 90
 va (VaSet
 vasetType 1
@@ -726,11 +726,11 @@ fg "0,65535,0"
 xt "250,35625,1000,36375"
 )
 tg (CPTG
-uid 382,0
+uid 440,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 383,0
+uid 441,0
 va (VaSet
 font "courier,8,0"
 )
@@ -741,7 +741,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 384,0
+uid 442,0
 va (VaSet
 font "courier,8,0"
 )
@@ -755,15 +755,15 @@ decl (Decl
 n "rC_out"
 t "word"
 o 5
-suid 17,0
+suid 22,0
 )
 )
 )
 *64 (CptPort
-uid 385,0
+uid 443,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 386,0
+uid 444,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -771,11 +771,11 @@ fg "0,65535,0"
 xt "6625,38333,7375,39083"
 )
 tg (CPTG
-uid 387,0
+uid 445,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 388,0
+uid 446,0
 ro 270
 va (VaSet
 font "courier,8,0"
@@ -787,29 +787,29 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 389,0
+uid 447,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,3600,63500,4500"
-st "rFwd_selc_out_ex : IN     std_logic  ;
+xt "44000,3600,65500,4500"
+st "rFwd_selc_out_ex : IN     fwd_mode_type  ;
 "
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "rFwd_selc_out_ex"
-t "std_logic"
-o 18
-suid 18,0
+t "fwd_mode_type"
+o 8
+suid 23,0
 )
 )
 )
 *65 (CptPort
-uid 390,0
+uid 448,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 391,0
+uid 449,0
 ro 90
 va (VaSet
 vasetType 1
@@ -818,11 +818,11 @@ fg "0,65535,0"
 xt "250,37625,1000,38375"
 )
 tg (CPTG
-uid 392,0
+uid 450,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 393,0
+uid 451,0
 va (VaSet
 font "courier,8,0"
 )
@@ -833,7 +833,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 394,0
+uid 452,0
 va (VaSet
 font "courier,8,0"
 )
@@ -846,16 +846,16 @@ lang 11
 decl (Decl
 n "rME_out"
 t "word"
-o 12
-suid 19,0
+o 9
+suid 24,0
 )
 )
 )
 *66 (CptPort
-uid 395,0
+uid 453,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 396,0
+uid 454,0
 ro 90
 va (VaSet
 vasetType 1
@@ -864,11 +864,11 @@ fg "0,65535,0"
 xt "13000,34625,13750,35375"
 )
 tg (CPTG
-uid 397,0
+uid 455,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 398,0
+uid 456,0
 va (VaSet
 font "courier,8,0"
 )
@@ -880,7 +880,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 399,0
+uid 457,0
 va (VaSet
 font "courier,8,0"
 )
@@ -895,7 +895,7 @@ decl (Decl
 n "rStoreData_in"
 t "word"
 o 12
-suid 20,0
+suid 25,0
 )
 )
 )
@@ -1611,6 +1611,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 409,0
+lastUid 467,0
 activeModelName "Symbol:CDM"
 )
