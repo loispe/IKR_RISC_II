@@ -22,7 +22,8 @@ BEGIN
   variable opc_b: opc_b_format;
   variable extension: opc_r_format_ext;
   variable reg_a: opc_a_reg;
-  
+  variable sel_rME_in: reg_addr_type;
+  variable sel_rWB_in: reg_addr_type;
   
   --variable format: std_logic_vector(opc_format'range);
   --variable rc: std_logic_vector(opc_c_reg'range);
@@ -39,8 +40,13 @@ BEGIN
     rFwd_selb_in_dc   <= fwd_idle;
     rFwd_selc_in_dc   <= fwd_idle;
     rFwd_selsd_in_dc  <= fwd_idle;     
+    sel_rME_in        := rTargetReg_out_ex;
+    sel_rWB_in        := rTargetReg_out_me;
+    stall_dc          <= '0';
     
     --format := rOpcode_out(opc_format'range);
+    
+     
     
     case format is  --begin decoding
     when opc_bra =>
@@ -56,7 +62,14 @@ BEGIN
       opc_b  := rOpcode_out(opc_b'range);
       disp18 := rOpcode_out(disp18'range);
       sel_c  <= rOpcode_out(reg_c'range);
+      reg_c  := rOpcode_out(reg_c'range);
       rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+      
+      if rMemMode_out_ex = mem_read and rTargetReg_out_ex = reg_c then
+        stall_dc <= '1';
+        opc_b    := opc_nop_b;
+      end if;
+      
       
       case opc_b is  --determine b-command
       when opc_beq =>
@@ -65,10 +78,16 @@ BEGIN
       when opc_bgt =>
       when opc_ble =>
       when opc_bge =>
-      when others  => --no identifiable command
+      when others  => --NOP
+        rAluMode_in <= alu_add;
+        sel_a       <= (others => '0');
+        sel_b       <= (others => '0');
+        sel_c       <= (others => '0');
+        rTargetReg_in_dc <= (others => '0');
+        
       end case;  --end b-command
       
---***************************************************************
+--**************************************************************
 --R format:  
     when r_format =>  --is r-command
       reg_b := rOpcode_out(reg_b'range);
@@ -83,6 +102,11 @@ BEGIN
         rFwd_selb_in_dc <= fwd_WB;
       else
         rFwd_selb_in_dc <= fwd_idle;
+      end if;
+      
+      if rMemMode_out_ex = mem_read and (rTargetReg_out_ex = reg_a or rTargetReg_out_ex = reg_b) and opc_r /= opc_str then
+        stall_dc <= '1';
+        opc_r    := opc_nop_r;
       end if;
 
       case opc_r is --determine r-command or jump
@@ -159,7 +183,13 @@ BEGIN
                                   rFwd_selsd_in_dc <= fwd_idle;
                                 end if;
                 when opc_ldr => rMemMode_in_dc <= mem_read;
-                when others =>  --no identifiable command
+                when others =>  --NOP
+                  rAluMode_in <= alu_add;
+                  sel_a       <= (others => '0');
+                  sel_b       <= (others => '0');
+                  sel_c       <= (others => '0');
+                  rTargetReg_in_dc <= (others => '0');
+                  
               end case;
             end case;
           end case;
@@ -190,6 +220,12 @@ BEGIN
         rFwd_selb_in_dc <= fwd_idle;
       end if;
       
+      if rMemMode_out_ex = mem_read and rTargetReg_out_ex = reg_b and opc_i /= opc_std then
+        stall_dc <= '1';
+        opc_i    := opc_nop_i;
+        
+      end if;
+      
       case opc_i is --determine i-command
       ----arithmetic
       when opc_addi   =>  rAluMode_in <= alu_add;
@@ -218,9 +254,10 @@ BEGIN
                         
       when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
       when others => --no identifiable command
-        a_imm <= (others => '0');
-        sel_b <= (others => '0');
-        sel_c <= (others => '0');
+        rAluMode_in <= alu_add;
+        sel_a       <= (others => '0');
+        sel_b       <= (others => '0');
+        sel_c       <= (others => '0');
         rTargetReg_in_dc <= (others => '0');
       end case; --end determine i-command
 --***************************************************************

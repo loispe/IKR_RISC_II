@@ -45,6 +45,7 @@ PACKAGE isa_types IS
   CONSTANT b_format : cmd_beginning := 6X"3E";
   --sonst Format I
 
+
   --opcodes bra und bsi
   CONSTANT opc_bra: cmd_beginning := 6X"3C";
   CONSTANT opc_bsr: cmd_beginning := 6X"3D";
@@ -52,12 +53,13 @@ PACKAGE isa_types IS
 
   --opcodes format b
   --------------------------------------------------------------------
-  CONSTANT opc_beq: opc_b_format := 3X"0";
-  CONSTANT opc_bne: opc_b_format := 3X"1";
-  CONSTANT opc_blt: opc_b_format := 3X"2";
-  CONSTANT opc_bgt: opc_b_format := 3X"3";
-  CONSTANT opc_ble: opc_b_format := 3X"4";
-  CONSTANT opc_bge: opc_b_format := 3X"5";
+  CONSTANT opc_beq:   opc_b_format := 3X"0";
+  CONSTANT opc_bne:   opc_b_format := 3X"1";
+  CONSTANT opc_blt:   opc_b_format := 3X"2";
+  CONSTANT opc_bgt:   opc_b_format := 3X"3";
+  CONSTANT opc_ble:   opc_b_format := 3X"4";
+  CONSTANT opc_bge:   opc_b_format := 3X"5";
+  CONSTANT opc_nop_b: opc_b_format := 3X"6";
   --------------------------------------------------------------------  
 
   --opcodes format r
@@ -92,6 +94,7 @@ PACKAGE isa_types IS
   CONSTANT opc_exth: opc_r_format   := 6X"31";
   CONSTANT opc_swapb: opc_r_format  := 6X"32";
   CONSTANT opc_not: opc_r_format    := 6X"33";
+  CONSTANT opc_nop_r: opc_r_format  := 6X"34";
   --------------------------------------------------------------------
 
     --opcodes format i
@@ -108,8 +111,9 @@ PACKAGE isa_types IS
   CONSTANT opc_ori: opc_i_format := 6X"06";
   CONSTANT opc_xori: opc_i_format := 6X"07";
   --Speicherbefehle
-  CONSTANT opc_ldd: opc_i_format := 6X"10";
-  CONSTANT opc_std: opc_i_format := 6X"14";
+  CONSTANT opc_ldd:   opc_i_format := 6X"10";
+  CONSTANT opc_std:   opc_i_format := 6X"14";
+  CONSTANT opc_nop_i: opc_i_format := 6X"15";
   --------------------------------------------------------------------
   
 END isa_types;

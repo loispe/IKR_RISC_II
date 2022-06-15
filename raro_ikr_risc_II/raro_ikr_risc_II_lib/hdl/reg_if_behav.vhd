@@ -16,7 +16,9 @@ BEGIN
       rPc_out <= (others => '0');
     else
       if clk'event and clk = '1' then
-        rPc_out <= rPc_in;
+        if stall_dc = '0' then
+          rPc_out <= rPc_in;
+        end if;
       end if;
     end if;
   end process; 

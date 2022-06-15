@@ -28,7 +28,9 @@ BEGIN
         --elsif rMemMode_out = mem_read then
           --ram_out <= ram_block(rALU_in);
         end if;
-          ram_out <= ram_block(to_integer(unsigned(rALU_in)));
+          if (to_integer(unsigned(rALU_in)) >= MEM'left) and (to_integer(unsigned(rALU_in)) <= MEM'right) then
+            ram_out <= ram_block(to_integer(unsigned(rALU_in)));
+          end if;
       end if;
     end if;
   end process ram_access;

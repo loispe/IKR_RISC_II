@@ -174,7 +174,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "12:08:28"
+value "12:34:45"
 )
 (vvPair
 variable "group"
@@ -274,7 +274,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "12:08:28"
+value "12:34:45"
 )
 (vvPair
 variable "unit"
@@ -1057,8 +1057,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-200,-3500,700"
-st "SIGNAL ALU_out          : word
-"
+st "SIGNAL ALU_out          : word"
 )
 )
 *33 (PortIoIn
@@ -1122,8 +1121,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-11000,-7000,-10100"
-st "rA_out           : word
-"
+st "rA_out           : word"
 )
 )
 *35 (PortIoOut
@@ -1186,8 +1184,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-2900,-7000,-2000"
-st "rALU_in          : word
-"
+st "rALU_in          : word"
 )
 )
 *37 (PortIoIn
@@ -1251,8 +1248,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-9200,-7000,-8300"
-st "rB_out           : word
-"
+st "rB_out           : word"
 )
 )
 *39 (PortIoIn
@@ -1316,8 +1312,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-8300,-7000,-7400"
-st "rC_out           : word
-"
+st "rC_out           : word"
 )
 )
 *41 (PortIoOut
@@ -1380,8 +1375,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-2000,-7000,-1100"
-st "rStoreData_in    : word
-"
+st "rStoreData_in    : word"
 )
 )
 *43 (PortIoIn
@@ -1445,8 +1439,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-3800,-7000,-2900"
-st "rNextPC_out_ex   : word
-"
+st "rNextPC_out_ex   : word"
 )
 )
 *45 (Net
@@ -1464,8 +1457,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,1600,-3500,2500"
-st "SIGNAL mux_ALU_B        : word
-"
+st "SIGNAL mux_ALU_B        : word"
 )
 )
 *46 (Net
@@ -1483,8 +1475,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,700,-3500,1600"
-st "SIGNAL mux_ALU_A        : word
-"
+st "SIGNAL mux_ALU_A        : word"
 )
 )
 *47 (PortIoIn
@@ -1548,8 +1539,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-10100,-2500,-9200"
-st "rAluMode_out     : alu_mode_type
-"
+st "rAluMode_out     : alu_mode_type"
 )
 )
 *49 (PortIoIn
@@ -1613,8 +1603,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-11900,-7000,-11000"
-st "rALU_out         : word
-"
+st "rALU_out         : word"
 )
 )
 *51 (PortIoIn
@@ -1678,8 +1667,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-4700,-7000,-3800"
-st "rME_out          : word
-"
+st "rME_out          : word"
 )
 )
 *53 (PortIoIn
@@ -1743,8 +1731,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-7400,-2500,-6500"
-st "rFwd_sela_out_ex : fwd_mode_type
-"
+st "rFwd_sela_out_ex : fwd_mode_type"
 )
 )
 *55 (PortIoIn
@@ -1808,8 +1795,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-6500,-2500,-5600"
-st "rFwd_selb_out_ex : fwd_mode_type
-"
+st "rFwd_selb_out_ex : fwd_mode_type"
 )
 )
 *57 (PortIoIn
@@ -1873,8 +1859,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "-19000,-5600,-2500,-4700"
-st "rFwd_selc_out_ex : fwd_mode_type
-"
+st "rFwd_selc_out_ex : fwd_mode_type"
 )
 )
 *59 (Wire
@@ -2980,7 +2965,7 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,3,2044,1125"
-viewArea "-59841,-23848,73858,47873"
+viewArea "-59841,-23848,73858,45822"
 cachedDiagramExtent "-36500,-13700,88000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-80000,-51000"
