@@ -8,7 +8,7 @@
 -- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
 --
 ARCHITECTURE behav OF DEC_dc IS
-
+  signal dbpu_mode: dbpu_mode_type;
 BEGIN
   decode: process (all) is
   variable format: cmd_beginning;
@@ -45,6 +45,7 @@ BEGIN
     stall_dc          <= '0';
     disp              <= (others => '0');
     sbpu_mode         <= idle;
+    dbpu_mode         <= idle;
     
     --format := rOpcode_out(opc_format'range);
     
@@ -55,12 +56,13 @@ BEGIN
       disp26 := rOpcode_out(disp26'range);
       sbpu_mode <= st_uncnd;
       disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
-      --do something
+      
     when opc_bsr =>
       disp26 := rOpcode_out(disp26'range);
       sbpu_mode <= st_uncnd;
-      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
-      --do something
+      dbpu_mode <= relayPC;
+      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);  
+      
       
 --***************************************************************      
 --B format:

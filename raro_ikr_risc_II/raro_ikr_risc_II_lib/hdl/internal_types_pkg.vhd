@@ -17,6 +17,9 @@ PACKAGE internal_types IS
   TYPE sbpu_mode_type IS (
                     idle, st_cnd, st_uncnd
                     );
+  TYPE dbpu_mode_type IS (
+                    idle, cnd, relayPC
+                    );
   
   
 END internal_types;
