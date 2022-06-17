@@ -15,7 +15,11 @@ BEGIN
   
   process(rPc_out) is
   begin
-    rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
+    IF sbta_valid = '1' THEN
+      rPC_in <= sbpu_pc;
+    ELSE
+      rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
+    END IF;
   end process;
     
 END ARCHITECTURE behav;
