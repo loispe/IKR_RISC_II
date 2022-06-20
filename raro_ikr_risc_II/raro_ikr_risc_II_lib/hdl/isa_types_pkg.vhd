@@ -9,6 +9,8 @@
 --
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.internal_types.all;
 
 PACKAGE isa_types IS
   SUBTYPE cmd_beginning IS    std_logic_vector(31 downto 26); --Erste 6 Bit des Befehls 
