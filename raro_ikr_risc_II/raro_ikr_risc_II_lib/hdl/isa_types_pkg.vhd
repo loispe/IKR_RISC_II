@@ -45,6 +45,7 @@ PACKAGE isa_types IS
   CONSTANT b_format : cmd_beginning := 6X"3E";
   --sonst Format I
 
+  CONSTANT NOP : word := (others => '0');
 
   --opcodes bra und bsi
   CONSTANT opc_bra: cmd_beginning := 6X"3C";
