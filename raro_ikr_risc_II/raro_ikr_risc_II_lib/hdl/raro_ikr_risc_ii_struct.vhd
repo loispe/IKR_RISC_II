@@ -201,6 +201,7 @@ ARCHITECTURE struct OF raro_ikr_risc_II IS
    COMPONENT step_if
    PORT (
       rPc_out    : IN     word ;
+      sbta_valid : IN     std_logic;
       rOpcode_in : OUT    word 
    );
    END COMPONENT;
@@ -366,6 +367,7 @@ BEGIN
    U_3 : step_if
       PORT MAP (
          rPc_out    => rPc_out,
+         sbta_valid => sbta_valid,
          rOpcode_in => rOpcode_in
       );
    U_9 : step_me
