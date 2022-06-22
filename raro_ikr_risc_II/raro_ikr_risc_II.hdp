@@ -1,3 +1,5 @@
+[DesignChecker]
+raro_ikr_risc_II_lib = $HDS_PROJECT_DIR/raro_ikr_risc_II_lib/designcheck
 [ModelSim]
 raro_ikr_risc_II_lib = $HDS_PROJECT_DIR/raro_ikr_risc_II_lib/work
 [hdl]

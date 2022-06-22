@@ -32,19 +32,14 @@ ARCHITECTURE behav OF step_if IS
   
 BEGIN
   PROCESS (all) 
-  VARIABLE sel  : std_logic_vector (1 downto 0);
+  VARIABLE sel  : std_logic;
   BEGIN
-    sel := sbta_valid & '0'/*dbta_valid*/;
-    CASE sel is
-      WHEN "10" =>
-        rOpcode_in <= NOP;
-      WHEN "01" =>
-        rOpcode_in <= NOP;
-      WHEN "11" =>
-        rOpcode_in <= NOP;
-      WHEN OTHERS =>
-        rOpcode_in <= mem_content(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) <= memory_depth - 1 else 32x"0";
-    END CASE;
+    sel := sbta_valid OR dbta_valid;
+    IF sel = '0' THEN
+      rOpcode_in <= mem_content(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) <= memory_depth - 1 else 32x"0";
+    ELSE
+      rOpcode_in <= NOP;
+    END IF;
   END PROCESS;
 
   --rOpcode_in <= rom(to_integer(unsigned(rPc_out)));

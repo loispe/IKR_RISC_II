@@ -17,7 +17,7 @@ ENTITY sbpu IS
       disp          : IN     word;
       rNextPc_in_dc : IN     word;
       sbpu_mode     : IN     sbpu_mode_type;
-      sbpu_PC       : OUT    word;
+      rSbpu_PC_in   : OUT    word;
       sbta_valid    : OUT    std_logic
    );
 

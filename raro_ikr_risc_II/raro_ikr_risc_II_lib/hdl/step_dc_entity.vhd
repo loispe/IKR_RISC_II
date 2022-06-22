@@ -15,6 +15,7 @@ USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.A
 ENTITY step_dc IS
    PORT( 
       clk               : IN     std_logic;
+      dbta_valid        : IN     std_logic;
       rME_out           : IN     word;
       rMemMode_out_ex   : IN     mem_mode_type;
       rOpcode_out       : IN     word;
@@ -27,6 +28,7 @@ ENTITY step_dc IS
       rAluMode_in       : OUT    alu_mode_type;
       rB_in             : OUT    word;
       rC_in             : OUT    word;
+      rDbpu_mode_in     : OUT    dbpu_mode_type;
       rFwd_sela_in_dc   : OUT    fwd_mode_type;
       rFwd_selb_in_dc   : OUT    fwd_mode_type;
       rFwd_selc_in_dc   : OUT    fwd_mode_type;

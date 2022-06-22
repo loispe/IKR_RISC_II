@@ -1,16 +1,22 @@
-addi r2 := r0, #5
-addli r9 := r0, #$CAFE
-addhi r9 := r9, #$CAFE
-addli r10 := r0, #$AFFE
-addhi r10 := r10, #$AFFE
-bsr lbl
-std(r0, 5) := r10
 addi r1 := r0, #5
-addi r2 := r0, #10
-add  r3 := r1, r2
-add  r4 := r2, r0
-lbl: ldd  r5 := (r1, 0)
-std(r2, 0) := r5
-ldd  r6 := (r1, 0)
-add  r7 := r6, r2
-jmp r31
+addi r11 := r0, #1
+addi r10:= r0, #6
+sub  r2 := r0, r10
+cmpu r3 := r1, r2
+cmps r4 := r1, r2
+bsr  bl
+beq  r0, lbl
+bsr  bl
+bne  r2, lbl
+bsr  bl
+blt  r3, lbl
+bsr  bl
+bgt  r3, lbl
+bsr  bl
+ble  r2, lbl
+bsr  bl
+bge  r3, lbl
+bsr  bl
+
+lbl: add r31:=r31, r11
+bl: jmp r31

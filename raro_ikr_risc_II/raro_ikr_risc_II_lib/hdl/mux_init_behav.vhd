@@ -14,12 +14,17 @@ ARCHITECTURE behav OF mux_init IS
 BEGIN
   
   process(rPc_out) is
+  VARIABLE SEL : std_logic_vector (1 downto 0);
   begin
-    IF sbta_valid = '1' THEN
-      rPC_in <= sbpu_pc;
-    ELSE
-      rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
-    END IF;
+    SEL := sbta_valid & dbta_valid;
+    CASE SEL IS
+      WHEN "10" =>
+        rPC_in <= rSbpu_pc_in;
+      WHEN "01" | "11" =>
+        rPC_in <= Dbpu_PC;        
+      WHEN OTHERS =>
+        rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
+    END CASE;
   end process;
     
 END ARCHITECTURE behav;

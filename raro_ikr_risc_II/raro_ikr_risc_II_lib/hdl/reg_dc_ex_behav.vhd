@@ -16,12 +16,15 @@ BEGIN
       rB_out            <= (others => '0');
       rC_out            <= (others => '0');
       rNextPc_out_ex    <= (others => '0');
+      rAluMode_out      <= alu_idle;
       rTargetReg_out_ex <= (others => '0');
       rMemMode_out_ex   <= mem_idle;
       rFwd_sela_out_ex  <= fwd_idle;
       rFwd_selb_out_ex  <= fwd_idle;
       rFwd_selc_out_ex  <= fwd_idle;
-      rFwd_selsd_out_ex <= fwd_idle;  
+      rFwd_selsd_out_ex <= fwd_idle;
+      rDbpu_mode_out    <= dbpu_idle;  
+      rSbpu_PC_out      <= (others => '0');
       
       --rAluMode_out <= NOP;
     else
@@ -37,6 +40,8 @@ BEGIN
         rFwd_selb_out_ex  <= rFwd_selb_in_dc;
         rFwd_selc_out_ex  <= rFwd_selc_in_dc;
         rFwd_selsd_out_ex <= rFwd_selsd_in_dc; 
+        rDbpu_mode_out    <= rDbpu_mode_in;  
+        rSbpu_PC_out      <= rSbpu_PC_in;
       end if;
     end if;
   end process;

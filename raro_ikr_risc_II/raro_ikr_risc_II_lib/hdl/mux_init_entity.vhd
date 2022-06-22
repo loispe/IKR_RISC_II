@@ -14,10 +14,12 @@ USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.A
 
 ENTITY mux_init IS
    PORT( 
-      rPc_out    : IN     word;
-      sbpu_PC    : IN     word;
-      sbta_valid : IN     std_logic;
-      rPc_in     : OUT    word
+      dbpu_PC     : IN     word;
+      dbta_valid  : IN     std_logic;
+      rPc_out     : IN     word;
+      rSbpu_PC_in : IN     word;
+      sbta_valid  : IN     std_logic;
+      rPc_in      : OUT    word
    );
 
 -- Declarations

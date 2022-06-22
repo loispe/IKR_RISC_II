@@ -24,6 +24,8 @@ ENTITY step_ex IS
       rFwd_selc_out_ex : IN     fwd_mode_type;
       rME_out          : IN     word;
       rNextPC_out_ex   : IN     word;
+      sel_ALU_PC       : IN     std_logic;
+      mux_ALU_B        : OUT    word;
       rALU_in          : OUT    word;
       rStoreData_in    : OUT    word
    );

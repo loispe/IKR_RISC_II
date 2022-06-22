@@ -18,7 +18,7 @@ PACKAGE internal_types IS
                     idle, st_cnd, st_uncnd
                     );
   TYPE dbpu_mode_type IS (
-                    idle, cnd, relayPC
+                    dbpu_idle, relayPC, beq, bne, bgt, blt, bge, ble, jmp, jsr
                     );
   
   

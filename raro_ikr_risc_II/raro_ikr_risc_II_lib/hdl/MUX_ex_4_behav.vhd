@@ -9,6 +9,6 @@
 --
 ARCHITECTURE behav OF MUX_ex_4 IS
 BEGIN
-  rALU_in <= ALU_out;
+  rALU_in <= ALU_out WHEN sel_ALU_PC = '0' ELSE rNextPC_out_ex;
 END ARCHITECTURE behav;
 

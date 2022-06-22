@@ -13,13 +13,13 @@ BEGIN
   BEGIN
     CASE sbpu_mode IS
       WHEN  st_uncnd =>
-              sbpu_PC <= std_logic_vector(unsigned(rNextPC_in_dc) + unsigned(disp));
+              rSbpu_PC_in <= std_logic_vector(signed(rNextPC_in_dc) + signed(disp));
               sbta_valid <= '1';
       WHEN  st_cnd  =>  
-              sbpu_PC <= std_logic_vector(unsigned(rNextPC_in_dc) + unsigned(disp));
+              rSbpu_PC_in <= std_logic_vector(signed(rNextPC_in_dc) + signed(disp));
               sbta_valid <= '0';
       WHEN  OTHERS  =>
-              sbpu_PC <= rNextPC_in_dc;
+              rSbpu_PC_in <= rNextPC_in_dc;
               sbta_valid <= '0';
     END CASE;
   END PROCESS;

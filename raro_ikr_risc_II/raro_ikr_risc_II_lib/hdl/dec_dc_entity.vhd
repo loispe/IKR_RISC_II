@@ -21,6 +21,7 @@ ENTITY DEC_dc IS
       a_imm             : OUT    word;
       disp              : OUT    word;
       rAluMode_in       : OUT    alu_mode_type;
+      rDbpu_mode_in     : OUT    dbpu_mode_type;
       rFwd_sela_in_dc   : OUT    fwd_mode_type;
       rFwd_selb_in_dc   : OUT    fwd_mode_type;
       rFwd_selc_in_dc   : OUT    fwd_mode_type;

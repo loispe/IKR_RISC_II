@@ -8,7 +8,6 @@
 -- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
 --
 ARCHITECTURE behav OF DEC_dc IS
-  signal dbpu_mode: dbpu_mode_type;
 BEGIN
   decode: process (all) is
   variable format: cmd_beginning;
@@ -45,7 +44,7 @@ BEGIN
     stall_dc          <= '0';
     disp              <= (others => '0');
     sbpu_mode         <= idle;
-    dbpu_mode         <= idle;
+    rDbpu_mode_in     <= dbpu_idle;
     
     --format := rOpcode_out(opc_format'range);
     
@@ -55,14 +54,19 @@ BEGIN
     when opc_bra =>
       disp26 := rOpcode_out(disp26'range);
       sbpu_mode <= st_uncnd;
+      rDbpu_mode_in <= dbpu_idle;
       disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
+      sel_c  <= rOpcode_out(reg_c'range);
       
     when opc_bsr =>
       disp26 := rOpcode_out(disp26'range);
       sbpu_mode <= st_uncnd;
-      dbpu_mode <= relayPC;
-      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);  
-      
+      rDbpu_mode_in <= relayPC;
+      disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
+      --save nextPC
+      rTargetReg_in_dc <= (others => '1');
+      sel_c  <= rOpcode_out(reg_c'range);
+
       
 --***************************************************************      
 --B format:
@@ -82,16 +86,22 @@ BEGIN
       case opc_b is  --determine b-command
       when opc_beq =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= beq;
       when opc_bne =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= bne;
       when opc_blt =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= blt;
       when opc_bgt =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= bgt;
       when opc_ble =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= ble;
       when opc_bge =>
         sbpu_mode <= st_cnd;
+        rDbpu_mode_in <= bge;
         
       when others  => --NOP
         rAluMode_in <= alu_add;
@@ -126,7 +136,13 @@ BEGIN
 
       case opc_r is --determine r-command or jump
       when opc_jmp =>
+        rDbpu_mode_in <= jmp;
       when opc_jsr =>
+        rDbpu_mode_in <= jsr;
+        rTargetReg_in_dc <= (others => '1');
+        
+        --save nextPC
+        
       when others  =>
         sel_c <= rOpcode_out(reg_c'range);
         rTargetReg_in_dc <= rOpcode_out(reg_c'range);

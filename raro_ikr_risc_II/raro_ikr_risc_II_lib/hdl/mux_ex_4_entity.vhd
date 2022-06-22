@@ -17,6 +17,7 @@ ENTITY MUX_ex_4 IS
    PORT( 
       ALU_out        : IN     word;
       rNextPC_out_ex : IN     word;
+      sel_ALU_PC     : IN     std_logic;
       rALU_in        : OUT    word
    );
 

@@ -14,6 +14,7 @@ USE raro_ikr_risc_II_lib.internal_types.all;USE raro_ikr_risc_II_lib.isa_types.A
 
 ENTITY step_if IS
    PORT( 
+      dbta_valid : IN     std_logic;
       rPc_out    : IN     word;
       sbta_valid : IN     std_logic;
       rOpcode_in : OUT    word
