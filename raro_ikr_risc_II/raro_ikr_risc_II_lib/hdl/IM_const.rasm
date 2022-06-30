@@ -20,3 +20,5 @@ bsr  bl
 
 lbl: add r31:=r31, r11
 bl: jmp r31
+
+addi r10:= r0, #6

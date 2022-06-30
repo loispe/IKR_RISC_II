@@ -13,7 +13,7 @@ use IEEE.numeric_std.all;
 ARCHITECTURE behav OF mux_init IS
 BEGIN
   
-  process(rPc_out) is
+  process(all) is
   VARIABLE SEL : std_logic_vector (1 downto 0);
   begin
     SEL := sbta_valid & dbta_valid;
