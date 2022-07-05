@@ -21,18 +21,30 @@ BEGIN
      WHEN  relayPC =>
        sel_ALU_PC <= '1';
      WHEN  beq  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) = 0;
+       IF signed(rStoreData_in) = 0 THEN
+          dbta_valid <= '1';
+       END IF;
      WHEN  bne  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) /= 0;
+       IF signed(rStoreData_in) /= 0 THEN
+          dbta_valid <= '1';
+       END IF;
        --bne
      WHEN  bgt  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) > 0;
+       IF  signed(rStoreData_in) > 0 THEN
+          dbta_valid <= '1';
+       END IF;
      WHEN  blt  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) < 0;
+       IF signed(rStoreData_in) < 0 THEN
+          dbta_valid <= '1';
+       END IF;
      WHEN  bge  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) >= 0;
+        IF signed(rStoreData_in) >= 0  THEN
+          dbta_valid <= '1';
+        END IF;
      WHEN  ble  =>
-       dbta_valid <= '1' WHEN signed(rStoreData_in) <= 0;
+        IF signed(rStoreData_in) <= 0 THEN
+            dbta_valid <= '1';
+        END IF;
      WHEN  jmp  =>
        dbta_valid <= '1';
        dbpu_PC  <= mux_ALU_B;

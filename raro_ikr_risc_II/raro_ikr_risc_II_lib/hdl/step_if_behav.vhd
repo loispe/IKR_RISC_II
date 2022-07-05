@@ -36,7 +36,11 @@ BEGIN
   BEGIN
     sel := sbta_valid OR dbta_valid;
     IF sel = '0' THEN
-      rOpcode_in <= mem_content(to_integer(unsigned(rPc_out))) when to_integer(unsigned(rPc_out)) <= memory_depth - 1 else 32x"0";
+      IF to_integer(unsigned(rPc_out)) <= memory_depth - 1 THEN
+          rOpcode_in <= mem_content(to_integer(unsigned(rPc_out)));
+      ELSE 
+          rOpcode_in <= 32x"0";
+      END IF;
     ELSE
       rOpcode_in <= NOP;
     END IF;
