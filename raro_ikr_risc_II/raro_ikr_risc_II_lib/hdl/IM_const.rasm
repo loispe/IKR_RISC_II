@@ -1,24 +1,42 @@
-addi r1 := r0, #5
-addi r11 := r0, #1
-addi r10:= r0, #6
-sub  r2 := r0, r10
-cmpu r3 := r1, r2
-cmps r4 := r1, r2
-bsr  bl
-beq  r0, lbl
-bsr  bl
-bne  r2, lbl
-bsr  bl
-blt  r3, lbl
-bsr  bl
-bgt  r3, lbl
-bsr  bl
-ble  r2, lbl
-bsr  bl
-bge  r3, lbl
-bsr  bl
+	addi r10 := r0, #1024
+	addi r11 := r0, #1100
+	
+	addi r7 := r0, #5
 
-lbl: add r31:=r31, r11
-bl: jmp r31
+init_1: str(r10, r6) := r6
+	addi r6 := r6, #1
+	cmpu r1 := r6, r7
+	bne r1, init_1
 
-addi r10:= r0, #6
+	add r6 := r0, r0
+	addi r9 := r0, #1
+init_2:	add r8 := r6, r11
+	str(r8, r0) := r7
+	sub r7 := r7, r9
+	addi r6 := r6, #1
+	cmps r1 := r7, r0
+	bne r1, init_2
+	bsr cmp_arr
+	jmp r0
+
+cmp_arr:add r3 := r0,r0
+loop: 	ldr r1 := (r10,r3)
+	ldr r2 := (r11,r3)
+	sub r22 := r2,r1
+	bne r22,diff
+	beq r22,same
+
+diff:	str (r10, r3) := r2
+	addi r3 := r3, #1
+	ldr r1 := (r10, r3)
+	ldr r2 := (r11, r3)
+	cmps r2 := r1, r2
+	bra loop
+
+same:	ldr r2 := (r10, r0)
+	lsr r4 := r2
+	str(r10, r3) := r4
+	rol r5 := r2
+	str(r11, r3) := r5
+	addi r3 := r3, #1
+	jmp r31

@@ -31,6 +31,7 @@ BEGIN
     format  := rOpcode_out(format'range);
     a_imm   <= (others => '0');
     sel_imm <= '0';
+	 sel_a   <= (others => '0');
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
     rTargetReg_in_dc  <= (others => '0');
@@ -45,6 +46,10 @@ BEGIN
     disp              <= (others => '0');
     sbpu_mode         <= idle;
     rDbpu_mode_in     <= dbpu_idle;
+	 rAluMode_in		 <= alu_idle;
+	 reg_a				 := (others => '0');
+	 reg_b				 := (others => '0');
+	 reg_c				 := (others => '0');
 
     
     -- if dbta valid then we're flushing

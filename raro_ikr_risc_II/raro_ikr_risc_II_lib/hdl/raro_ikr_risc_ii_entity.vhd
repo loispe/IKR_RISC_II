@@ -9,10 +9,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.internal_types.all;
+
 ENTITY raro_ikr_risc_II IS
    PORT( 
-      clk   : IN     std_logic;
-      res_n : IN     std_logic
+      clk     : IN     std_logic;
+      res_n   : IN     std_logic;
+      survive : OUT    word
    );
 
 -- Declarations

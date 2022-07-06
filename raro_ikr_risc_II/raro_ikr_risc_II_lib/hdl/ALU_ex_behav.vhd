@@ -26,7 +26,9 @@ BEGIN
   
   begin
     
-    au_x    := mux_ALU_A;
+    f := (others => '0');
+	 
+	 au_x    := mux_ALU_A;
     au_y    := mux_ALU_B;
     
     x       := mux_ALU_B; -- x = B since this seems to be the convention. Check if this is true and adopt for au_x/y if necessary

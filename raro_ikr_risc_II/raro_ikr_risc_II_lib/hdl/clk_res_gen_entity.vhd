@@ -9,6 +9,10 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.internal_types.ALL;
+
+
 ENTITY clk_res_gen IS
    PORT( 
       clk   : OUT    std_logic;

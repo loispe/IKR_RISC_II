@@ -20,10 +20,13 @@ BEGIN
     CASE SEL IS
       WHEN "10" =>
         rPC_in <= rSbpu_pc_in;
+        survive <= rSbpu_pc_in;
       WHEN "01" | "11" =>
         rPC_in <= Dbpu_PC;        
+        survive <= Dbpu_PC;
       WHEN OTHERS =>
         rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
+        survive <= std_logic_vector(unsigned(rPc_out) + 1);
     END CASE;
   end process;
     

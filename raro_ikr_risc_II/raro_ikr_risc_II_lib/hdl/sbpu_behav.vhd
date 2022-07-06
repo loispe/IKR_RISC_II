@@ -9,7 +9,7 @@
 --
 ARCHITECTURE behav OF sbpu IS
 BEGIN
-  PROCESS(sbpu_mode) IS
+  PROCESS(all) IS
   BEGIN
     CASE sbpu_mode IS
       WHEN  st_uncnd =>

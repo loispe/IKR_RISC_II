@@ -19,7 +19,8 @@ ENTITY mux_init IS
       rPc_out     : IN     word;
       rSbpu_PC_in : IN     word;
       sbta_valid  : IN     std_logic;
-      rPc_in      : OUT    word
+      rPc_in      : OUT    word;
+      survive     : OUT    word
    );
 
 -- Declarations

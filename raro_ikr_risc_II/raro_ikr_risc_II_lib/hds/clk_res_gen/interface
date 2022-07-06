@@ -7,9 +7,15 @@ dmPackageRefs [
 library "ieee"
 unitName "std_logic_1164"
 )
+(DmPackageRef
+library "raro_ikr_risc_II_lib"
+unitName "internal_types"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"raro_ikr_risc_II_lib"
 ]
 )
 version "27.1"
@@ -17,7 +23,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 2,0
+suid 4,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -64,10 +70,10 @@ decl (Decl
 n "clk"
 t "std_logic"
 o 1
-suid 1,0
+suid 3,0
 )
 )
-uid 61,0
+uid 155,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -77,10 +83,10 @@ decl (Decl
 n "res_n"
 t "std_logic"
 o 2
-suid 2,0
+suid 4,0
 )
 )
-uid 63,0
+uid 157,0
 )
 ]
 )
@@ -136,13 +142,13 @@ uid 85,0
 litem &14
 pos 0
 dimension 20
-uid 62,0
+uid 156,0
 )
 *22 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 64,0
+uid 158,0
 )
 ]
 )
@@ -373,23 +379,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface.info"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface.user"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -405,15 +411,15 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen"
 )
 (vvPair
 variable "d_logical"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen"
 )
 (vvPair
 variable "date"
-value "05/11/22"
+value "07/06/22"
 )
 (vvPair
 variable "day"
@@ -425,7 +431,7 @@ value "Wednesday"
 )
 (vvPair
 variable "dd"
-value "11"
+value "06"
 )
 (vvPair
 variable "entity_name"
@@ -449,11 +455,11 @@ value "interface"
 )
 (vvPair
 variable "graphical_source_author"
-value "lspetrck"
+value "kntntply"
 )
 (vvPair
 variable "graphical_source_date"
-value "05/11/22"
+value "07/06/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -465,7 +471,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "17:40:31"
+value "16:11:02"
 )
 (vvPair
 variable "group"
@@ -484,8 +490,28 @@ variable "library"
 value "raro_ikr_risc_II_lib"
 )
 (vvPair
+variable "library_downstream_HdsLintPlugin"
+value "$HDS_PROJECT_DIR/raro_ikr_risc_II_lib/designcheck"
+)
+(vvPair
+variable "library_downstream_ModelSimCompiler"
+value "$HDS_PROJECT_DIR/raro_ikr_risc_II_lib/work"
+)
+(vvPair
+variable "library_downstream_QISDataPrep"
+value "$HDS_PROJECT_DIR/raro_ikr_risc_II_lib/qis"
+)
+(vvPair
+variable "library_downstream_QISPARInvoke"
+value "$HDS_PROJECT_DIR/raro_ikr_risc_II_lib/qis"
+)
+(vvPair
+variable "library_downstream_QISPGMInvoke"
+value "$HDS_PROJECT_DIR/raro_ikr_risc_II_lib/qis"
+)
+(vvPair
 variable "mm"
-value "05"
+value "07"
 )
 (vvPair
 variable "module_name"
@@ -493,19 +519,19 @@ value "clk_res_gen"
 )
 (vvPair
 variable "month"
-value "May"
+value "Jul"
 )
 (vvPair
 variable "month_long"
-value "May"
+value "July"
 )
 (vvPair
 variable "p"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface"
 )
 (vvPair
 variable "p_logical"
-value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface"
+value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/clk_res_gen/interface"
 )
 (vvPair
 variable "package_name"
@@ -561,7 +587,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "17:40:31"
+value "16:11:02"
 )
 (vvPair
 variable "unit"
@@ -569,7 +595,7 @@ value "clk_res_gen"
 )
 (vvPair
 variable "user"
-value "lspetrck"
+value "kntntply"
 )
 (vvPair
 variable "version"
@@ -596,10 +622,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *56 (CptPort
-uid 51,0
+uid 145,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 52,0
+uid 146,0
 ro 90
 va (VaSet
 vasetType 1
@@ -608,11 +634,11 @@ fg "0,65535,0"
 xt "27000,8625,27750,9375"
 )
 tg (CPTG
-uid 53,0
+uid 147,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 54,0
+uid 148,0
 va (VaSet
 font "courier,8,0"
 )
@@ -624,12 +650,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 55,0
+uid 149,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,1800,58000,2700"
-st "clk   : OUT    std_logic  ;"
+st "clk   : OUT    std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -638,15 +665,15 @@ decl (Decl
 n "clk"
 t "std_logic"
 o 1
-suid 1,0
+suid 3,0
 )
 )
 )
 *57 (CptPort
-uid 56,0
+uid 150,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 57,0
+uid 151,0
 ro 90
 va (VaSet
 vasetType 1
@@ -655,11 +682,11 @@ fg "0,65535,0"
 xt "27000,11625,27750,12375"
 )
 tg (CPTG
-uid 58,0
+uid 152,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 59,0
+uid 153,0
 va (VaSet
 font "courier,8,0"
 )
@@ -671,12 +698,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 60,0
+uid 154,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,2700,57000,3600"
-st "res_n : OUT    std_logic "
+st "res_n : OUT    std_logic 
+"
 )
 thePort (LogicalPort
 lang 11
@@ -685,7 +713,7 @@ decl (Decl
 n "res_n"
 t "std_logic"
 o 2
-suid 2,0
+suid 4,0
 )
 )
 )
@@ -1116,9 +1144,13 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,2700"
+xt "0,900,22500,5400"
 st "LIBRARY ieee;
-USE ieee.std_logic_1164.all;"
+USE ieee.std_logic_1164.all;
+
+LIBRARY raro_ikr_risc_II_lib;
+USE raro_ikr_risc_II_lib.internal_types.ALL;
+"
 tm "PackageList"
 )
 ]
@@ -1397,6 +1429,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 121,0
+lastUid 158,0
 activeModelName "Symbol:CDM"
 )
