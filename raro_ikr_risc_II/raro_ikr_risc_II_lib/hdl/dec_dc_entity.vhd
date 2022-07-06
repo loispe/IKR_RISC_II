@@ -14,6 +14,7 @@ USE raro_ikr_risc_II_lib.isa_types.ALL;
 
 ENTITY DEC_dc IS
    PORT( 
+      dbta_valid        : IN     std_logic;
       rMemMode_out_ex   : IN     mem_mode_type;
       rOpcode_out       : IN     word;
       rTargetReg_out_ex : IN     reg_addr_type;
