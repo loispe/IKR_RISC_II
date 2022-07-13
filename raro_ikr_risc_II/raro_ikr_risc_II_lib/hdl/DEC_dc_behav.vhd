@@ -31,7 +31,7 @@ BEGIN
     format  := rOpcode_out(format'range);
     a_imm   <= (others => '0');
     sel_imm <= '0';
-	 sel_a   <= (others => '0');
+	  sel_a   <= (others => '0');
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
     rTargetReg_in_dc  <= (others => '0');
@@ -46,10 +46,10 @@ BEGIN
     disp              <= (others => '0');
     sbpu_mode         <= idle;
     rDbpu_mode_in     <= dbpu_idle;
-	 rAluMode_in		 <= alu_idle;
-	 reg_a				 := (others => '0');
-	 reg_b				 := (others => '0');
-	 reg_c				 := (others => '0');
+	  rAluMode_in		 <= alu_idle;
+	  reg_a				 := (others => '0');
+	  reg_b				 := (others => '0');
+  	 reg_c				 := (others => '0');
 
     
     -- if dbta valid then we're flushing
@@ -60,14 +60,21 @@ BEGIN
         disp26 := rOpcode_out(disp26'range);
         sbpu_mode <= st_uncnd;
         rDbpu_mode_in <= dbpu_idle;
-        disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
+        --erweitere vorzeichenrichtig
+        disp(disp26'left downto disp26'right) <= disp26;
+        disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
+        
         sel_c  <= rOpcode_out(reg_c'range);
         
       when opc_bsr =>
         disp26 := rOpcode_out(disp26'range);
         sbpu_mode <= st_uncnd;
         rDbpu_mode_in <= relayPC;
-        disp <= disp26(disp26'left) & 6X"0" & disp26(disp26'left-1 downto disp26'right);
+        
+        --erweitere vorzeichenrichtig
+        disp(disp26'left downto disp26'right) <= disp26;
+        disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
+        
         --save nextPC
         rTargetReg_in_dc <= (others => '1');
         sel_c  <= rOpcode_out(reg_c'range);
@@ -87,6 +94,19 @@ BEGIN
           opc_b    := opc_nop_b;
         end if;
         
+        if reg_c = 5X"0" then
+          rFwd_selc_in_dc <= fwd_idle;
+        elsif reg_c = sel_rME_in then
+          rFwd_selc_in_dc <= fwd_ME;
+        elsif reg_c = sel_rWB_in then
+          rFwd_selc_in_dc <= fwd_WB;
+        else
+          rFwd_selc_in_dc <= fwd_idle;
+        end if;
+        
+         --erweitere vorzeichenrichtig
+        disp(disp18'left downto disp18'right) <= disp18;
+        disp(disp'left downto disp18'left+1) <= (others => disp18(disp18'left));
         
         case opc_b is  --determine b-command
         when opc_beq =>
@@ -242,7 +262,7 @@ BEGIN
         reg_b            := rOpcode_out(reg_b'range);
         sel_b            <= rOpcode_out(reg_b'range);
         imm16            := rOpcode_out(imm16'range);
-        a_imm            <= imm16(imm16'left) & X"0000" & rOpcode_out(imm16'left-1 downto imm16'right); --erweitere vorzeichenrichtig
+        a_imm            <= X"0000" & imm16; --erweitere vorzeichenlos
         sel_imm          <= '1';
         rMemMode_in_dc   <= mem_idle;
 
@@ -264,16 +284,20 @@ BEGIN
         
         case opc_i is --determine i-command
         ----arithmetic
-        when opc_addi   =>  rAluMode_in <= alu_add;
-        when opc_addli  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_add;
+        when opc_addi   =>  rAluMode_in <= alu_add; 
+                            a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));
+                            
+                              
+        when opc_addli  =>  rAluMode_in <= alu_add;
         when opc_addhi  =>  a_imm <= imm16 & X"0000"; rAluMode_in <= alu_add;
-        when opc_cmpui  =>  a_imm <= X"0000" & imm16; rAluMode_in <= alu_cmpu;
-        when opc_cmpsi  =>  rAluMode_in <= alu_cmps;
+        when opc_cmpui  =>  rAluMode_in <= alu_cmpu;
+        when opc_cmpsi  =>  rAluMode_in <= alu_cmps; 
+                            a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));
         --logical
-        when opc_and0i => a_imm <= X"0000" & imm16; rAluMode_in <= alu_and;
+        when opc_and0i => rAluMode_in <= alu_and;
         when opc_and1i => a_imm <= X"FFFF" & imm16; rAluMode_in <= alu_and;
-        when opc_ori   => a_imm <= X"0000" & imm16; rAluMode_in <= alu_or;
-        when opc_xori  => a_imm <= X"0000" & imm16; rAluMode_in <= alu_xor;
+        when opc_ori   => rAluMode_in <= alu_or;
+        when opc_xori  => rAluMode_in <= alu_xor;
         when opc_std   => rAluMode_in <= alu_add; 
                           rTargetReg_in_dc <= (others => '0'); 
                           rMemMode_in_dc <= mem_write;

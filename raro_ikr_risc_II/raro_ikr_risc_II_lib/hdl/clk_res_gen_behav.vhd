@@ -11,9 +11,9 @@ ARCHITECTURE behav OF clk_res_gen IS
 BEGIN
   osc: process is
   begin
-    clk <= '0';
+    std_clk <= '0';
     wait for 10 ns;
-    clk <= '1';
+    std_clk <= '1';
     wait for 10 ns;
   end process osc;
 

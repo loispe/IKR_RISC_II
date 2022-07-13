@@ -23,7 +23,7 @@ appVersion "2020.2 Built on 12 Apr 2020 at 11:28:22"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 4,0
+suid 6,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -67,26 +67,26 @@ port (LogicalPort
 lang 11
 m 1
 decl (Decl
-n "clk"
+n "res_n"
 t "std_logic"
-o 1
-suid 3,0
+o 2
+suid 5,0
 )
 )
-uid 155,0
+uid 192,0
 )
 *15 (LogPort
 port (LogicalPort
 lang 11
 m 1
 decl (Decl
-n "res_n"
+n "std_clk"
 t "std_logic"
-o 2
-suid 4,0
+o 4
+suid 6,0
 )
 )
-uid 157,0
+uid 194,0
 )
 ]
 )
@@ -142,13 +142,13 @@ uid 85,0
 litem &14
 pos 0
 dimension 20
-uid 156,0
+uid 193,0
 )
 *22 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 158,0
+uid 195,0
 )
 ]
 )
@@ -419,7 +419,7 @@ value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ik
 )
 (vvPair
 variable "date"
-value "07/06/22"
+value "07/13/22"
 )
 (vvPair
 variable "day"
@@ -431,7 +431,7 @@ value "Wednesday"
 )
 (vvPair
 variable "dd"
-value "06"
+value "13"
 )
 (vvPair
 variable "entity_name"
@@ -459,7 +459,7 @@ value "kntntply"
 )
 (vvPair
 variable "graphical_source_date"
-value "07/06/22"
+value "07/13/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -471,7 +471,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "16:11:02"
+value "14:42:02"
 )
 (vvPair
 variable "group"
@@ -587,7 +587,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "16:11:02"
+value "14:42:02"
 )
 (vvPair
 variable "unit"
@@ -622,58 +622,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *56 (CptPort
-uid 145,0
+uid 182,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 146,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "27000,8625,27750,9375"
-)
-tg (CPTG
-uid 147,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 148,0
-va (VaSet
-font "courier,8,0"
-)
-xt "24500,8550,26000,9450"
-st "clk"
-ju 2
-blo "26000,9250"
-tm "CptPortNameMgr"
-)
-)
-dt (MLText
-uid 149,0
-va (VaSet
-font "courier,8,0"
-)
-xt "44000,1800,58000,2700"
-st "clk   : OUT    std_logic  ;
-"
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "clk"
-t "std_logic"
-o 1
-suid 3,0
-)
-)
-)
-*57 (CptPort
-uid 150,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 151,0
+uid 183,0
 ro 90
 va (VaSet
 vasetType 1
@@ -682,11 +634,11 @@ fg "0,65535,0"
 xt "27000,11625,27750,12375"
 )
 tg (CPTG
-uid 152,0
+uid 184,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 153,0
+uid 185,0
 va (VaSet
 font "courier,8,0"
 )
@@ -698,12 +650,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 154,0
+uid 186,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,57000,3600"
-st "res_n : OUT    std_logic 
+xt "44000,1800,59000,2700"
+st "res_n   : OUT    std_logic  ;
 "
 )
 thePort (LogicalPort
@@ -713,7 +665,55 @@ decl (Decl
 n "res_n"
 t "std_logic"
 o 2
-suid 4,0
+suid 5,0
+)
+)
+)
+*57 (CptPort
+uid 187,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 188,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "27000,8625,27750,9375"
+)
+tg (CPTG
+uid 189,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 190,0
+va (VaSet
+font "courier,8,0"
+)
+xt "22500,8550,26000,9450"
+st "std_clk"
+ju 2
+blo "26000,9250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 191,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,2700,58000,3600"
+st "std_clk : OUT    std_logic 
+"
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "std_clk"
+t "std_logic"
+o 4
+suid 6,0
 )
 )
 )
@@ -1149,8 +1149,7 @@ st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 LIBRARY raro_ikr_risc_II_lib;
-USE raro_ikr_risc_II_lib.internal_types.ALL;
-"
+USE raro_ikr_risc_II_lib.internal_types.ALL;"
 tm "PackageList"
 )
 ]
@@ -1429,6 +1428,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 158,0
+lastUid 195,0
 activeModelName "Symbol:CDM"
 )
