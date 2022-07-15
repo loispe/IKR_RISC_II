@@ -10,7 +10,7 @@
 
 
 ARCHITECTURE behav OF step_me IS
-  TYPE MEM IS ARRAY (0 to 2047) of word;
+  TYPE MEM IS ARRAY (0 to 63) of word;
   signal ram_block :  MEM;
   signal ram_out   :  word;
   signal q_storeData: word;

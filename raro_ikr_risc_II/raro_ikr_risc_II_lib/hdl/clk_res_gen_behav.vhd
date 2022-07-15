@@ -12,9 +12,9 @@ BEGIN
   osc: process is
   begin
     std_clk <= '0';
-    wait for 10 ns;
+    wait for 20 ns;
     std_clk <= '1';
-    wait for 10 ns;
+    wait for 20 ns;
   end process osc;
 
   res: process is

@@ -431,23 +431,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb.info"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb.user"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb.user"
 )
 (vvPair
 variable "SourceDir"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -463,27 +463,27 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i"
 )
 (vvPair
 variable "d_logical"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_II"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_II"
 )
 (vvPair
 variable "date"
-value "07/13/22"
+value "07/15/22"
 )
 (vvPair
 variable "day"
-value "Wed"
+value "Fri"
 )
 (vvPair
 variable "day_long"
-value "Wednesday"
+value "Friday"
 )
 (vvPair
 variable "dd"
-value "13"
+value "15"
 )
 (vvPair
 variable "entity_name"
@@ -507,11 +507,11 @@ value "symbol"
 )
 (vvPair
 variable "graphical_source_author"
-value "kntntply"
+value "lspetrck"
 )
 (vvPair
 variable "graphical_source_date"
-value "07/13/22"
+value "07/15/22"
 )
 (vvPair
 variable "graphical_source_group"
@@ -523,7 +523,7 @@ value "pc091"
 )
 (vvPair
 variable "graphical_source_time"
-value "16:15:37"
+value "15:58:40"
 )
 (vvPair
 variable "group"
@@ -579,11 +579,11 @@ value "July"
 )
 (vvPair
 variable "p"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_@i@i/symbol.sb"
 )
 (vvPair
 variable "p_logical"
-value "/u/home/stud/kntntply/Documents/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_II/symbol.sb"
+value "/u/home/stud/lspetrck/Documents/raro/raro_ikr_risc_II/raro_ikr_risc_II/raro_ikr_risc_II_lib/hds/raro_ikr_risc_II/symbol.sb"
 )
 (vvPair
 variable "package_name"
@@ -639,7 +639,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "16:15:37"
+value "15:58:40"
 )
 (vvPair
 variable "unit"
@@ -647,7 +647,7 @@ value "raro_ikr_risc_II"
 )
 (vvPair
 variable "user"
-value "kntntply"
+value "lspetrck"
 )
 (vvPair
 variable "version"
@@ -1609,6 +1609,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 800,0
+lastUid 869,0
 activeModelName "Symbol:CDM"
 )

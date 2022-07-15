@@ -1,5 +1,5 @@
-	addi r10 := r0, #100
-	addi r11 := r0, #120
+	addi r10 := r0, #50
+	addi r11 := r0, #60
 	
 	addi r7 := r0, #5
 
