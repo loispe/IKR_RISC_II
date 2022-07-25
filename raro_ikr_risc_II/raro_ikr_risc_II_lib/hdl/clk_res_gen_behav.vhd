@@ -1,14 +1,14 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.clk_res_gen.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.clk_res_gen.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 17:40:31 05/11/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF clk_res_gen IS
-BEGIN
+architecture behav of clk_res_gen is
+begin
   osc: process is
   begin
     std_clk <= '0';
@@ -25,5 +25,5 @@ BEGIN
     wait;
   end process res;
 
-END ARCHITECTURE behav;
+end architecture behav;
 

@@ -1,49 +1,49 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.reg_dc_ex.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.reg_dc_ex.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 17:16:56 05/18/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF reg_dc_ex IS
-BEGIN
+architecture behav of reg_dc_ex is
+begin
   reg: process(clk, res_n) is
   begin
     if res_n = '0' then
-      rA_out            <= (others => '0');
-      rB_out            <= (others => '0');
-      rC_out            <= (others => '0');
-      rNextPc_out_ex    <= (others => '0');
-      rAluMode_out      <= alu_idle;
-      rTargetReg_out_ex <= (others => '0');
-      rMemMode_out_ex   <= mem_idle;
-      rFwd_sela_out_ex  <= fwd_idle;
-      rFwd_selb_out_ex  <= fwd_idle;
-      rFwd_selc_out_ex  <= fwd_idle;
-      rFwd_selsd_out_ex <= fwd_idle;
-      rDbpu_mode_out    <= dbpu_idle;  
-      rSbpu_PC_out      <= (others => '0');
+      ra_out            <= (others => '0');
+      rb_out            <= (others => '0');
+      rc_out            <= (others => '0');
+      rnextpc_out_ex    <= (others => '0');
+      ralumode_out      <= alu_idle;
+      rtargetreg_out_ex <= (others => '0');
+      rmemmode_out_ex   <= mem_idle;
+      rfwd_sela_out_ex  <= fwd_idle;
+      rfwd_selb_out_ex  <= fwd_idle;
+      rfwd_selc_out_ex  <= fwd_idle;
+      rfwd_selsd_out_ex <= fwd_idle;
+      rdbpu_mode_out    <= dbpu_idle;  
+      rsbpu_pc_out      <= (others => '0');
       
-      --rAluMode_out <= NOP;
+      --ralumode_out <= nop;
     else
       if clk'event and clk = '1' then
-        rA_out <= rA_in;
-        rB_out <= rB_in;
-        rC_out <= rC_in;
-        rNextPc_out_ex    <= rNextPc_in_dc;
-        rAluMode_out      <= rAluMode_in;
-        rTargetReg_out_ex <= rTargetReg_in_dc;
-        rMemMode_out_ex   <= rMemMode_in_dc;
-        rFwd_sela_out_ex  <= rFwd_sela_in_dc;
-        rFwd_selb_out_ex  <= rFwd_selb_in_dc;
-        rFwd_selc_out_ex  <= rFwd_selc_in_dc;
-        rFwd_selsd_out_ex <= rFwd_selsd_in_dc; 
-        rDbpu_mode_out    <= rDbpu_mode_in;  
-        rSbpu_PC_out      <= rSbpu_PC_in;
+        ra_out <= ra_in;
+        rb_out <= rb_in;
+        rc_out <= rc_in;
+        rnextpc_out_ex    <= rnextpc_in_dc;
+        ralumode_out      <= ralumode_in;
+        rtargetreg_out_ex <= rtargetreg_in_dc;
+        rmemmode_out_ex   <= rmemmode_in_dc;
+        rfwd_sela_out_ex  <= rfwd_sela_in_dc;
+        rfwd_selb_out_ex  <= rfwd_selb_in_dc;
+        rfwd_selc_out_ex  <= rfwd_selc_in_dc;
+        rfwd_selsd_out_ex <= rfwd_selsd_in_dc; 
+        rdbpu_mode_out    <= rdbpu_mode_in;  
+        rsbpu_pc_out      <= rsbpu_pc_in;
       end if;
     end if;
   end process;
-END ARCHITECTURE behav;
+end architecture behav;
 

@@ -1,27 +1,27 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.RF_dc.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.rf_dc.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 15:53:58 05/18/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
 
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-USE IEEE.numeric_std.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-ARCHITECTURE behav OF RF_dc IS
+architecture behav of rf_dc is
   type reg_type is array (0 to 31) of word;
   signal registers: reg_type;
   
-BEGIN
+begin
   read: process (all) is
   begin
     rf_mux_a <= registers(to_integer(unsigned(sel_a)));
-    rB_in <= registers(to_integer(unsigned(sel_b)));
-    rC_in <= registers(to_integer(unsigned(sel_c)));
+    rb_in <= registers(to_integer(unsigned(sel_b)));
+    rc_in <= registers(to_integer(unsigned(sel_c)));
   end process read;
   
   write: process (clk, res_n) is
@@ -31,10 +31,10 @@ BEGIN
         registers(i) <= (others => '0');
       end loop;
     elsif clk'event and clk ='0' then
-        registers(to_integer(unsigned(rTargetReg_out_wb))) <= rME_out;
+        registers(to_integer(unsigned(rtargetreg_out_wb))) <= rme_out;
         registers(0) <= (others => '0');
     end if;
   end process write;   
     
-END ARCHITECTURE behav;
+end architecture behav;
 

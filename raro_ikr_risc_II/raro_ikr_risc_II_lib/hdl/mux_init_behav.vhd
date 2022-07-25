@@ -1,34 +1,34 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.mux_init.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.mux_init.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 16:48:26 05/11/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-library IEEE;
-use IEEE.numeric_std.all;
+library ieee;
+use ieee.numeric_std.all;
 
-ARCHITECTURE behav OF mux_init IS
-BEGIN
+architecture behav of mux_init is
+begin
   
   process(all) is
-  VARIABLE SEL : std_logic_vector (1 downto 0);
+  variable sel : std_logic_vector (1 downto 0);
   begin
-    SEL := sbta_valid & dbta_valid;
-    CASE SEL IS
-      WHEN "10" =>
-        rPC_in <= rSbpu_pc_in;
-        survive <= rSbpu_pc_in;
-      WHEN "01" | "11" =>
-        rPC_in <= Dbpu_PC;        
-        survive <= Dbpu_PC;
-      WHEN OTHERS =>
-        rPc_in <= std_logic_vector(unsigned(rPc_out) + 1);
-        survive <= std_logic_vector(unsigned(rPc_out) + 1);
-    END CASE;
+    sel := sbta_valid & dbta_valid;
+    case sel is
+      when "10" =>
+        rpc_in <= rsbpu_pc_in;
+        survive <= rsbpu_pc_in;
+      when "01" | "11" =>
+        rpc_in <= dbpu_pc;        
+        survive <= dbpu_pc;
+      when others =>
+        rpc_in <= std_logic_vector(unsigned(rpc_out) + 1);
+        survive <= std_logic_vector(unsigned(rpc_out) + 1);
+    end case;
   end process;
     
-END ARCHITECTURE behav;
+end architecture behav;
 

@@ -1,58 +1,58 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.dbpu.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.dbpu.behav
 --
--- Created:
+-- created:
 --          by - kntntply.meyer (pc091)
 --          at - 14:59:51 06/22/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF dbpu IS
-BEGIN
-  PROCESS (all) IS
-  BEGIN
+architecture behav of dbpu is
+begin
+  process (all) is
+  begin
     dbta_valid <= '0';
-    dbpu_PC <= rSbpu_PC_out;
-    sel_ALU_PC <= '0';
+    dbpu_pc <= rsbpu_pc_out;
+    sel_alu_pc <= '0';
     
-    CASE rDbpu_mode_out IS
-     WHEN  dbpu_idle =>
+    case rdbpu_mode_out is
+     when  dbpu_idle =>
        --do nothing
-     WHEN  relayPC =>
-       sel_ALU_PC <= '1';
-     WHEN  beq  =>
-       IF signed(rStoreData_in) = 0 THEN
+     when  relaypc =>
+       sel_alu_pc <= '1';
+     when  beq  =>
+       if signed(rstoredata_in) = 0 then
           dbta_valid <= '1';
-       END IF;
-     WHEN  bne  =>
-       IF signed(rStoreData_in) /= 0 THEN
+       end if;
+     when  bne  =>
+       if signed(rstoredata_in) /= 0 then
           dbta_valid <= '1';
-       END IF;
+       end if;
        --bne
-     WHEN  bgt  =>
-       IF  signed(rStoreData_in) > 0 THEN
+     when  bgt  =>
+       if  signed(rstoredata_in) > 0 then
           dbta_valid <= '1';
-       END IF;
-     WHEN  blt  =>
-       IF signed(rStoreData_in) < 0 THEN
+       end if;
+     when  blt  =>
+       if signed(rstoredata_in) < 0 then
           dbta_valid <= '1';
-       END IF;
-     WHEN  bge  =>
-        IF signed(rStoreData_in) >= 0  THEN
+       end if;
+     when  bge  =>
+        if signed(rstoredata_in) >= 0  then
           dbta_valid <= '1';
-        END IF;
-     WHEN  ble  =>
-        IF signed(rStoreData_in) <= 0 THEN
+        end if;
+     when  ble  =>
+        if signed(rstoredata_in) <= 0 then
             dbta_valid <= '1';
-        END IF;
-     WHEN  jmp  =>
+        end if;
+     when  jmp  =>
        dbta_valid <= '1';
-       dbpu_PC  <= mux_ALU_B;
-     WHEN  jsr  =>
+       dbpu_pc  <= mux_alu_b;
+     when  jsr  =>
        dbta_valid <= '1';
-       sel_ALU_PC <= '1';
-       dbpu_PC  <= mux_ALU_B;
-    END CASE;
-  END  PROCESS;
-END ARCHITECTURE behav;
+       sel_alu_pc <= '1';
+       dbpu_pc  <= mux_alu_b;
+    end case;
+  end  process;
+end architecture behav;
 

@@ -1,14 +1,14 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.MUX_ex_4.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.mux_ex_4.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc086)
 --          at - 18:01:05 05/24/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF MUX_ex_4 IS
-BEGIN
-  rALU_in <= ALU_out WHEN sel_ALU_PC = '0' ELSE rNextPC_out_ex;
-END ARCHITECTURE behav;
+architecture behav of mux_ex_4 is
+begin
+  ralu_in <= alu_out when sel_alu_pc = '0' else rnextpc_out_ex;
+end architecture behav;
 

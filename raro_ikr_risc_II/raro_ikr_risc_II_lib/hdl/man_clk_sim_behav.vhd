@@ -1,15 +1,15 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.man_clk_sim.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.man_clk_sim.behav
 --
--- Created:
+-- created:
 --          by - kntntply.meyer (pc091)
 --          at - 14:37:48 07/13/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF man_clk_sim IS
-BEGIN
+architecture behav of man_clk_sim is
+begin
   sel_clk <= '0';
   man_clk <= '0';
-END ARCHITECTURE behav;
+end architecture behav;
 

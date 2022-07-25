@@ -1,41 +1,41 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.mux_clock.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.mux_clock.behav
 --
--- Created:
+-- created:
 --          by - kntntply.meyer (pc091)
 --          at - 14:33:07 07/13/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF mux_clock IS
-  CONSTANT clk_div : integer := 25_000_000;
-  SIGNAL   clk_sig : std_logic;
-BEGIN
-  divider: PROCESS(std_clk, res_n)IS
-  VARIABLE cnt     : integer   := 0;
-  VARIABLE cur_val : std_logic := '0';
-  BEGIN
+architecture behav of mux_clock is
+  constant clk_div : integer := 25_000_000;
+  signal   clk_sig : std_logic;
+begin
+  divider: process(std_clk, res_n)is
+  variable cnt     : integer   := 0;
+  variable cur_val : std_logic := '0';
+  begin
     
-    IF res_n = '0' THEN
+    if res_n = '0' then
       clk_sig <= '0';
-    ELSE
-      IF std_clk'event AND std_clk = '1' THEN
-        IF cnt = clk_div  THEN
+    else
+      if std_clk'event and std_clk = '1' then
+        if cnt = clk_div  then
           cnt := 0;
-          IF cur_val = '1' THEN
+          if cur_val = '1' then
             clk_sig <= '0';
-          ELSE
+          else
             clk_sig <= '1';
-          END IF;
-          cur_val := NOT cur_val;
-        ELSE
+          end if;
+          cur_val := not cur_val;
+        else
           cnt := cnt + 1;
-        END IF;
-      END IF;
-    END IF;    
-  END PROCESS divider;
+        end if;
+      end if;
+    end if;    
+  end process divider;
     
-  clk <= clk_sig WHEN sel_clk = '0' ELSE man_clk;
+  clk <= clk_sig when sel_clk = '0' else man_clk;
   
-END ARCHITECTURE behav;
+end architecture behav;
 

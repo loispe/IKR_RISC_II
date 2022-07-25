@@ -1,14 +1,14 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.DEC_dc.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.dec_dc.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 14:42:05 05/18/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF DEC_dc IS
-BEGIN
+architecture behav of dec_dc is
+begin
   decode: process (all) is
   variable format: cmd_beginning;
   variable disp26: disp26_type;
@@ -21,87 +21,87 @@ BEGIN
   variable opc_b: opc_b_format;
   variable extension: opc_r_format_ext;
   variable reg_a: opc_a_reg;
-  variable sel_rME_in: reg_addr_type;
-  variable sel_rWB_in: reg_addr_type;
+  variable sel_rme_in: reg_addr_type;
+  variable sel_rwb_in: reg_addr_type;
   
   --variable format: std_logic_vector(opc_format'range);
   --variable rc: std_logic_vector(opc_c_reg'range);
   
   begin
-    format  := rOpcode_out(format'range);
+    format  := ropcode_out(format'range);
     a_imm   <= (others => '0');
     sel_imm <= '0';
 	  sel_a   <= (others => '0');
     sel_b   <= (others => '0');
     sel_c   <= (others => '0');
-    rTargetReg_in_dc  <= (others => '0');
-    rMemMode_in_dc    <= mem_idle;
-    rFwd_sela_in_dc   <= fwd_idle;
-    rFwd_selb_in_dc   <= fwd_idle;
-    rFwd_selc_in_dc   <= fwd_idle;
-    rFwd_selsd_in_dc  <= fwd_idle;     
-    sel_rME_in        := rTargetReg_out_ex;
-    sel_rWB_in        := rTargetReg_out_me;
+    rtargetreg_in_dc  <= (others => '0');
+    rmemmode_in_dc    <= mem_idle;
+    rfwd_sela_in_dc   <= fwd_idle;
+    rfwd_selb_in_dc   <= fwd_idle;
+    rfwd_selc_in_dc   <= fwd_idle;
+    rfwd_selsd_in_dc  <= fwd_idle;     
+    sel_rme_in        := rtargetreg_out_ex;
+    sel_rwb_in        := rtargetreg_out_me;
     stall_dc          <= '0';
     disp              <= (others => '0');
     sbpu_mode         <= idle;
-    rDbpu_mode_in     <= dbpu_idle;
-	  rAluMode_in		 <= alu_idle;
+    rdbpu_mode_in     <= dbpu_idle;
+	  ralumode_in		 <= alu_idle;
 	  reg_a				 := (others => '0');
 	  reg_b				 := (others => '0');
   	 reg_c				 := (others => '0');
 
     
     -- if dbta valid then we're flushing
-    IF dbta_valid = '0' THEN  
+    if dbta_valid = '0' then  
     
       case format is  --begin decoding
       when opc_bra =>
-        disp26 := rOpcode_out(disp26'range);
+        disp26 := ropcode_out(disp26'range);
         sbpu_mode <= st_uncnd;
-        rDbpu_mode_in <= dbpu_idle;
+        rdbpu_mode_in <= dbpu_idle;
         --erweitere vorzeichenrichtig
         disp(disp26'left downto disp26'right) <= disp26;
         disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
         
-        sel_c  <= rOpcode_out(reg_c'range);
+        sel_c  <= ropcode_out(reg_c'range);
         
       when opc_bsr =>
-        disp26 := rOpcode_out(disp26'range);
+        disp26 := ropcode_out(disp26'range);
         sbpu_mode <= st_uncnd;
-        rDbpu_mode_in <= relayPC;
+        rdbpu_mode_in <= relaypc;
         
         --erweitere vorzeichenrichtig
         disp(disp26'left downto disp26'right) <= disp26;
         disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
         
-        --save nextPC
-        rTargetReg_in_dc <= (others => '1');
-        sel_c  <= rOpcode_out(reg_c'range);
+        --save nextpc
+        rtargetreg_in_dc <= (others => '1');
+        sel_c  <= ropcode_out(reg_c'range);
 
         
   --***************************************************************      
-  --B format:
+  --b format:
       when b_format =>  --is b-command
-        opc_b  := rOpcode_out(opc_b'range);
-        disp18 := rOpcode_out(disp18'range);
-        sel_c  <= rOpcode_out(reg_c'range);
-        reg_c  := rOpcode_out(reg_c'range);
-        rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+        opc_b  := ropcode_out(opc_b'range);
+        disp18 := ropcode_out(disp18'range);
+        sel_c  <= ropcode_out(reg_c'range);
+        reg_c  := ropcode_out(reg_c'range);
+        rtargetreg_in_dc <= ropcode_out(reg_c'range);
         
-        if rMemMode_out_ex = mem_read and rTargetReg_out_ex = reg_c then
+        if rmemmode_out_ex = mem_read and rtargetreg_out_ex = reg_c then
           stall_dc <= '1';
           opc_b    := opc_nop_b;
         end if;
         
-        if reg_c = 5X"0" then
-          rFwd_selc_in_dc <= fwd_idle;
-        elsif reg_c = sel_rME_in then
-          rFwd_selc_in_dc <= fwd_ME;
-        elsif reg_c = sel_rWB_in then
-          rFwd_selc_in_dc <= fwd_WB;
+        if reg_c = 5x"0" then
+          rfwd_selc_in_dc <= fwd_idle;
+        elsif reg_c = sel_rme_in then
+          rfwd_selc_in_dc <= fwd_me;
+        elsif reg_c = sel_rwb_in then
+          rfwd_selc_in_dc <= fwd_wb;
         else
-          rFwd_selc_in_dc <= fwd_idle;
+          rfwd_selc_in_dc <= fwd_idle;
         end if;
         
          --erweitere vorzeichenrichtig
@@ -111,140 +111,140 @@ BEGIN
         case opc_b is  --determine b-command
         when opc_beq =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= beq;
+          rdbpu_mode_in <= beq;
         when opc_bne =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= bne;
+          rdbpu_mode_in <= bne;
         when opc_blt =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= blt;
+          rdbpu_mode_in <= blt;
         when opc_bgt =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= bgt;
+          rdbpu_mode_in <= bgt;
         when opc_ble =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= ble;
+          rdbpu_mode_in <= ble;
         when opc_bge =>
           sbpu_mode <= st_cnd;
-          rDbpu_mode_in <= bge;
+          rdbpu_mode_in <= bge;
           
-        when others  => --NOP
-          rAluMode_in <= alu_add;
+        when others  => --nop
+          ralumode_in <= alu_add;
           sel_a       <= (others => '0');
           sel_b       <= (others => '0');
           sel_c       <= (others => '0');
-          rTargetReg_in_dc <= (others => '0');
+          rtargetreg_in_dc <= (others => '0');
           
         end case;  --end b-command
         
   --**************************************************************
-  --R format:  
+  --r format:  
       when r_format =>  --is r-command
-        reg_b := rOpcode_out(reg_b'range);
-        sel_b <= rOpcode_out(reg_b'range);
-        opc_r := rOpcode_out(opc_r'range);
+        reg_b := ropcode_out(reg_b'range);
+        sel_b <= ropcode_out(reg_b'range);
+        opc_r := ropcode_out(opc_r'range);
         
-        if reg_b = 5X"0" then
-          rFwd_selb_in_dc <= fwd_idle;
-        elsif reg_b = sel_rME_in then
-          rFwd_selb_in_dc <= fwd_ME;
-        elsif reg_b = sel_rWB_in then
-          rFwd_selb_in_dc <= fwd_WB;
+        if reg_b = 5x"0" then
+          rfwd_selb_in_dc <= fwd_idle;
+        elsif reg_b = sel_rme_in then
+          rfwd_selb_in_dc <= fwd_me;
+        elsif reg_b = sel_rwb_in then
+          rfwd_selb_in_dc <= fwd_wb;
         else
-          rFwd_selb_in_dc <= fwd_idle;
+          rfwd_selb_in_dc <= fwd_idle;
         end if;
         
-        if rMemMode_out_ex = mem_read and (rTargetReg_out_ex = reg_a or rTargetReg_out_ex = reg_b) and opc_r /= opc_str then
+        if rmemmode_out_ex = mem_read and (rtargetreg_out_ex = reg_a or rtargetreg_out_ex = reg_b) and opc_r /= opc_str then
           stall_dc <= '1';
           opc_r    := opc_nop_r;
         end if;
 
         case opc_r is --determine r-command or jump
         when opc_jmp =>
-          rDbpu_mode_in <= jmp;
+          rdbpu_mode_in <= jmp;
         when opc_jsr =>
-          rDbpu_mode_in <= jsr;
-          rTargetReg_in_dc <= (others => '1');
+          rdbpu_mode_in <= jsr;
+          rtargetreg_in_dc <= (others => '1');
           
-          --save nextPC
+          --save nextpc
           
         when others  =>
-          sel_c <= rOpcode_out(reg_c'range);
-          rTargetReg_in_dc <= rOpcode_out(reg_c'range);
+          sel_c <= ropcode_out(reg_c'range);
+          rtargetreg_in_dc <= ropcode_out(reg_c'range);
           
           case opc_r is --operations with 1 source operand
-          when opc_lsl => rAluMode_in <= alu_lsl;
-          when opc_lsr => rAluMode_in <= alu_lsr;
-          when opc_asl => rAluMode_in <= alu_asl;
-          when opc_asr => rAluMode_in <= alu_asr;
+          when opc_lsl => ralumode_in <= alu_lsl;
+          when opc_lsr => ralumode_in <= alu_lsr;
+          when opc_asl => ralumode_in <= alu_asl;
+          when opc_asr => ralumode_in <= alu_asr;
             
           when opc_rol_swaph =>
-            extension := rOpcode_out(extension'range);
+            extension := ropcode_out(extension'range);
             
             if extension = opc_rol then
-              rAluMode_in <= alu_rol;
+              ralumode_in <= alu_rol;
             elsif extension = opc_swaph then
-              rAluMode_in <= alu_swaph;
+              ralumode_in <= alu_swaph;
             else  --no identifiable command
               
             end if;
             
-          when opc_ror    => rAluMode_in <= alu_ror;
-          when opc_extb   => rAluMode_in <= alu_extb;
-          when opc_exth   => rAluMode_in <= alu_exth;
-          when opc_swapb  => rAluMode_in <= alu_swapb;
-          when opc_not    => rAluMode_in <= alu_not;
+          when opc_ror    => ralumode_in <= alu_ror;
+          when opc_extb   => ralumode_in <= alu_extb;
+          when opc_exth   => ralumode_in <= alu_exth;
+          when opc_swapb  => ralumode_in <= alu_swapb;
+          when opc_not    => ralumode_in <= alu_not;
           when others =>
-            reg_a   := rOpcode_out(reg_a'range);
-            sel_a   <= rOpcode_out(reg_a'range);
+            reg_a   := ropcode_out(reg_a'range);
+            sel_a   <= ropcode_out(reg_a'range);
             sel_imm <= '0';
             
-            if reg_a = 5X"0" then
-              rFwd_sela_in_dc <= fwd_idle;
-            elsif reg_a = sel_rME_in then
-              rFwd_sela_in_dc <= fwd_ME;
-            elsif reg_a = sel_rWB_in then
-              rFwd_sela_in_dc <= fwd_WB;
+            if reg_a = 5x"0" then
+              rfwd_sela_in_dc <= fwd_idle;
+            elsif reg_a = sel_rme_in then
+              rfwd_sela_in_dc <= fwd_me;
+            elsif reg_a = sel_rwb_in then
+              rfwd_sela_in_dc <= fwd_wb;
             else
-              rFwd_sela_in_dc <= fwd_idle;
+              rfwd_sela_in_dc <= fwd_idle;
             end if;
 
             case opc_r is -- arithmetic with 2 source operands
-            when opc_add  => rAluMode_in <= alu_add;
-            when opc_addx => rAluMode_in <= alu_addx;
-            when opc_sub  => rAluMode_in <= alu_sub;
-            when opc_subx => rAluMode_in <= alu_subx;
-            when opc_cmpu => rAluMode_in <= alu_cmpu;
-            when opc_cmps => rAluMode_in <= alu_cmps;
+            when opc_add  => ralumode_in <= alu_add;
+            when opc_addx => ralumode_in <= alu_addx;
+            when opc_sub  => ralumode_in <= alu_sub;
+            when opc_subx => ralumode_in <= alu_subx;
+            when opc_cmpu => ralumode_in <= alu_cmpu;
+            when opc_cmps => ralumode_in <= alu_cmps;
             when others =>
               
               case opc_r is
               -- logic with 2 source operands
-              when opc_and => rAluMode_in <= alu_and;
-              when opc_or =>  rAluMode_in <= alu_or;
-              when opc_xor => rAluMode_in <= alu_xor;
+              when opc_and => ralumode_in <= alu_and;
+              when opc_or =>  ralumode_in <= alu_or;
+              when opc_xor => ralumode_in <= alu_xor;
               when others =>
                 
                 case opc_r is
                   --load/store
-                  when opc_str => rAluMode_in <= alu_add; rTargetReg_in_dc <= (others => '0'); rMemMode_in_dc <= mem_write;
-                                  rFwd_selb_in_dc <= fwd_idle;
-                                  reg_c := rOpcode_out(reg_c'range); 
+                  when opc_str => ralumode_in <= alu_add; rtargetreg_in_dc <= (others => '0'); rmemmode_in_dc <= mem_write;
+                                  rfwd_selb_in_dc <= fwd_idle;
+                                  reg_c := ropcode_out(reg_c'range); 
                                   
-                                  if reg_c = 5X"0" then
-                                    rFwd_selsd_in_dc <= fwd_idle;
-                                  elsif reg_c = sel_rME_in then
-                                    rFwd_selsd_in_dc <= fwd_WB;
+                                  if reg_c = 5x"0" then
+                                    rfwd_selsd_in_dc <= fwd_idle;
+                                  elsif reg_c = sel_rme_in then
+                                    rfwd_selsd_in_dc <= fwd_wb;
                                   else
-                                    rFwd_selsd_in_dc <= fwd_idle;
+                                    rfwd_selsd_in_dc <= fwd_idle;
                                   end if;
-                  when opc_ldr => rMemMode_in_dc <= mem_read;
-                  when others =>  --NOP
-                    rAluMode_in <= alu_add;
+                  when opc_ldr => rmemmode_in_dc <= mem_read;
+                  when others =>  --nop
+                    ralumode_in <= alu_add;
                     sel_a       <= (others => '0');
                     sel_b       <= (others => '0');
                     sel_c       <= (others => '0');
-                    rTargetReg_in_dc <= (others => '0');
+                    rtargetreg_in_dc <= (others => '0');
                     
                 end case;
               end case;
@@ -253,30 +253,30 @@ BEGIN
         end case; --end r-command or jump
         
   --***************************************************************
-  --I format:
+  --i format:
       when others =>  --is i-command
         opc_i            := format;
-        sel_c            <= rOpcode_out(reg_c'range);
-        reg_c            := rOpcode_out(reg_c'range);
-        rTargetReg_in_dc <= rOpcode_out(reg_c'range);
-        reg_b            := rOpcode_out(reg_b'range);
-        sel_b            <= rOpcode_out(reg_b'range);
-        imm16            := rOpcode_out(imm16'range);
-        a_imm            <= X"0000" & imm16; --erweitere vorzeichenlos
+        sel_c            <= ropcode_out(reg_c'range);
+        reg_c            := ropcode_out(reg_c'range);
+        rtargetreg_in_dc <= ropcode_out(reg_c'range);
+        reg_b            := ropcode_out(reg_b'range);
+        sel_b            <= ropcode_out(reg_b'range);
+        imm16            := ropcode_out(imm16'range);
+        a_imm            <= x"0000" & imm16; --erweitere vorzeichenlos
         sel_imm          <= '1';
-        rMemMode_in_dc   <= mem_idle;
+        rmemmode_in_dc   <= mem_idle;
 
-        if reg_b = 5X"0" then
-          rFwd_selb_in_dc <= fwd_idle;
-        elsif reg_b = sel_rME_in then
-          rFwd_selb_in_dc <= fwd_ME;
-        elsif reg_b = sel_rWB_in then
-          rFwd_selb_in_dc <= fwd_WB;
+        if reg_b = 5x"0" then
+          rfwd_selb_in_dc <= fwd_idle;
+        elsif reg_b = sel_rme_in then
+          rfwd_selb_in_dc <= fwd_me;
+        elsif reg_b = sel_rwb_in then
+          rfwd_selb_in_dc <= fwd_wb;
         else
-          rFwd_selb_in_dc <= fwd_idle;
+          rfwd_selb_in_dc <= fwd_idle;
         end if;
         
-        if rMemMode_out_ex = mem_read and rTargetReg_out_ex = reg_b and opc_i /= opc_std then
+        if rmemmode_out_ex = mem_read and rtargetreg_out_ex = reg_b and opc_i /= opc_std then
           stall_dc <= '1';
           opc_i    := opc_nop_i;
           
@@ -284,48 +284,48 @@ BEGIN
         
         case opc_i is --determine i-command
         ----arithmetic
-        when opc_addi   =>  rAluMode_in <= alu_add; 
+        when opc_addi   =>  ralumode_in <= alu_add; 
                             a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));
                             
                               
-        when opc_addli  =>  rAluMode_in <= alu_add;
-        when opc_addhi  =>  a_imm <= imm16 & X"0000"; rAluMode_in <= alu_add;
-        when opc_cmpui  =>  rAluMode_in <= alu_cmpu;
-        when opc_cmpsi  =>  rAluMode_in <= alu_cmps; 
+        when opc_addli  =>  ralumode_in <= alu_add;
+        when opc_addhi  =>  a_imm <= imm16 & x"0000"; ralumode_in <= alu_add;
+        when opc_cmpui  =>  ralumode_in <= alu_cmpu;
+        when opc_cmpsi  =>  ralumode_in <= alu_cmps; 
                             a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));
         --logical
-        when opc_and0i => rAluMode_in <= alu_and;
-        when opc_and1i => a_imm <= X"FFFF" & imm16; rAluMode_in <= alu_and;
-        when opc_ori   => rAluMode_in <= alu_or;
-        when opc_xori  => rAluMode_in <= alu_xor;
-        when opc_std   => rAluMode_in <= alu_add; 
-                          rTargetReg_in_dc <= (others => '0'); 
-                          rMemMode_in_dc <= mem_write;
-                          rFwd_selc_in_dc <= fwd_idle;
+        when opc_and0i => ralumode_in <= alu_and;
+        when opc_and1i => a_imm <= x"ffff" & imm16; ralumode_in <= alu_and;
+        when opc_ori   => ralumode_in <= alu_or;
+        when opc_xori  => ralumode_in <= alu_xor;
+        when opc_std   => ralumode_in <= alu_add; 
+                          rtargetreg_in_dc <= (others => '0'); 
+                          rmemmode_in_dc <= mem_write;
+                          rfwd_selc_in_dc <= fwd_idle;
 
-                          if reg_c = 5X"0" then
-                            rFWd_selsd_in_dc <= fwd_idle; 
-                          elsif reg_c = sel_rME_in then
-                            rFWd_selsd_in_dc <= fwd_WB;
+                          if reg_c = 5x"0" then
+                            rfwd_selsd_in_dc <= fwd_idle; 
+                          elsif reg_c = sel_rme_in then
+                            rfwd_selsd_in_dc <= fwd_wb;
                           else
-                            rFwd_selsd_in_dc <= fwd_idle;
+                            rfwd_selsd_in_dc <= fwd_idle;
                           end if;
 
                           
-        when opc_ldd   => rAluMode_in <= alu_add; rMemMode_in_dc <= mem_read;
+        when opc_ldd   => ralumode_in <= alu_add; rmemmode_in_dc <= mem_read;
         when others => --no identifiable command
-          rAluMode_in <= alu_add;
+          ralumode_in <= alu_add;
           sel_a       <= (others => '0');
           sel_b       <= (others => '0');
           sel_c       <= (others => '0');
-          rTargetReg_in_dc <= (others => '0');
+          rtargetreg_in_dc <= (others => '0');
         end case; --end determine i-command
   --***************************************************************
       end case; --end decoder
       
-    END IF;    --executes NOP if dbta valid
+    end if;    --executes nop if dbta valid
   end process decode;
     
   
-END ARCHITECTURE behav;
+end architecture behav;
 

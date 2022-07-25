@@ -1,18 +1,18 @@
 --
--- VHDL Architecture raro_ikr_risc_II_lib.MUX_ex_2.behav
+-- vhdl architecture raro_ikr_risc_ii_lib.mux_ex_2.behav
 --
--- Created:
+-- created:
 --          by - lspetrck.meyer (pc091)
 --          at - 17:37:28 05/18/22
 --
--- using Mentor Graphics HDL Designer(TM) 2020.2 Built on 12 Apr 2020 at 11:28:22
+-- using mentor graphics hdl designer(tm) 2020.2 built on 12 apr 2020 at 11:28:22
 --
-ARCHITECTURE behav OF MUX_ex_2 IS
-BEGIN
-  with rFwd_selb_out_ex select  
-    mux_ALU_B <=  rB_out    when fwd_idle,
-                  rME_out   when fwd_WB,
-                  rALU_out  when fwd_ME,
-                  rB_out    when others;
-END ARCHITECTURE behav;
+architecture behav of mux_ex_2 is
+begin
+  with rfwd_selb_out_ex select  
+    mux_alu_b <=  rb_out    when fwd_idle,
+                  rme_out   when fwd_wb,
+                  ralu_out  when fwd_me,
+                  rb_out    when others;
+end architecture behav;
 
