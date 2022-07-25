@@ -13,5 +13,8 @@ More details on the architecture will follow
 - Intel Quartus
 - Git
 
+## To-Dos
+- Define case sensitivity to enhance readability. Either keep everything in lowercase or change to uppercase for ports, generics, ... 
+
 ## Change Log
 7/25/2022: Duplicated repo from university github to private account
