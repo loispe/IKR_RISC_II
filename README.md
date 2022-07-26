@@ -18,17 +18,21 @@ So far we implemented every stage and depicted components. However, in the curre
 ## Code
 Following bullet points list the important components of each stage
 
+### Instruction Set Architecture and Internal Types
+- [ISA](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/isa_types_pkg.vhd)
+- [Internal Types](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl//internal_types_pkg.vhd)
+
 ### 1. Instruction Fetch
 - [Program Counter](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/mux_init_behav.vhd)
 - [Instruction Memory](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/step_if_behav.vhd)
 
 ### 2. Decode
-- [Decoder](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/dec_dc_behav.vhd)
-- [Register File](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/rf_dc_behav.vhd)
+- [Decoder](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/DEC_dc_behav.vhd)
+- [Register File](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/RF_dc_behav.vhd)
 - [Static Branch Processing Unit](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/sbpu_behav.vhd)
 
 ### 3. Execute
-- [ALU](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/alu_ex_behav.vhd)
+- [ALU](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/ALU_ex_behav.vhd)
 - [Dynamic Branch Processing Unit](raro_ikr_risc_II/raro_ikr_risc_II_lib/hdl/dbpu_behav.vhd)
 
 ### 4. Memory
