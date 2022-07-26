@@ -23,6 +23,5 @@ begin
               sbta_valid <= '0';
     end case;
   end process;
-  
 end architecture behav;
 

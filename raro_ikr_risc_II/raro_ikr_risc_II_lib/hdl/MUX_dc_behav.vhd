@@ -10,6 +10,5 @@
 architecture behav of mux_dc is
 begin
   ra_in <= a_imm when (sel_imm = '1') else rf_mux_a;
-  
 end architecture behav;
 

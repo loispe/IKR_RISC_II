@@ -12,7 +12,6 @@ use ieee.numeric_std.all;
 
 architecture behav of mux_init is
 begin
-  
   process(all) is
   variable sel : std_logic_vector (1 downto 0);
   begin
@@ -29,6 +28,5 @@ begin
         survive <= std_logic_vector(unsigned(rpc_out) + 1);
     end case;
   end process;
-    
 end architecture behav;
 

@@ -11,11 +11,10 @@ architecture behav of mux_clock is
   constant clk_div : integer := 25_000_000;
   signal   clk_sig : std_logic;
 begin
-  divider: process(std_clk, res_n)is
+  divider: process(std_clk, res_n) is
   variable cnt     : integer   := 0;
   variable cur_val : std_logic := '0';
   begin
-    
     if res_n = '0' then
       clk_sig <= '0';
     else

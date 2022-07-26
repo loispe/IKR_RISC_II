@@ -14,12 +14,14 @@ library raro_ikr_risc_ii_lib;
 use raro_ikr_risc_ii_lib.mem_contents.all;
 
 package internal_types is
-  subtype word is           std_logic_vector(31 downto 0);
-  subtype reg_addr_type is  std_logic_vector(4 downto 0);  
-  constant memory_depth:    positive := mem_depth;
+  subtype   word          is  std_logic_vector(31 downto 0);
+  subtype   reg_addr_type is  std_logic_vector(4 downto 0);  
+  constant  memory_depth:     positive := mem_depth;
+
   type sbpu_mode_type is (
                     idle, st_cnd, st_uncnd
                     );
+                    
   type dbpu_mode_type is (
                     dbpu_idle, relaypc, beq, bne, bgt, blt, bge, ble, jmp, jsr
                     );

@@ -27,10 +27,9 @@ begin
   begin
     
     f := (others => '0');
-	 
 	  au_x    := mux_alu_b;
     au_y    := mux_alu_a;
-    
+
     x       := mux_alu_b; -- x = b since this seems to be the convention. check if this is true and adopt for au_x/y if necessary
     y       := mux_alu_a;
     c_word  := (others => '0');
@@ -58,7 +57,7 @@ begin
     au_f := au_h(au_h'right) & au_l(au_l'left - 1 downto au_l'right);
       
     case ralumode_out is
-    when alu_add | alu_sub => f := au_f; c := au_c; v := au_v;      --tested -> works
+    when alu_add | alu_sub => f := au_f; c := au_c; v := au_v;         --tested -> works
     when alu_addx| alu_subx => f := (f'right downto f'right => au_c, others => '0'); c := au_c; v := au_v;  -- alu_addx tested -> works
     when alu_lsl    => f := x(x'left - 1 downto x'right) & '0';        --tested -> works
     when alu_lsr    => f := '0' & x(x'left downto x'right + 1);        --tested -> works
@@ -95,11 +94,6 @@ begin
     
     alu_out <= f;
     
-    
   end process alu;
-  
-  
-  
-
 end architecture behav;
 

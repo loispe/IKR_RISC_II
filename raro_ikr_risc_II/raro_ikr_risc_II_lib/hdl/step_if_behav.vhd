@@ -30,7 +30,5 @@ begin
       ropcode_in <= nop;
     end if;
   end process;
-
-      
 end architecture behav;
 

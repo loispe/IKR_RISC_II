@@ -28,12 +28,12 @@ begin
   --variable rc: std_logic_vector(opc_c_reg'range);
   
   begin
-    format  := ropcode_out(format'range);
-    a_imm   <= (others => '0');
-    sel_imm <= '0';
-	  sel_a   <= (others => '0');
-    sel_b   <= (others => '0');
-    sel_c   <= (others => '0');
+    format            := ropcode_out(format'range);
+    a_imm             <= (others => '0');
+    sel_imm           <= '0';
+	  sel_a             <= (others => '0');
+    sel_b             <= (others => '0');
+    sel_c             <= (others => '0');
     rtargetreg_in_dc  <= (others => '0');
     rmemmode_in_dc    <= mem_idle;
     rfwd_sela_in_dc   <= fwd_idle;
@@ -46,32 +46,34 @@ begin
     disp              <= (others => '0');
     sbpu_mode         <= idle;
     rdbpu_mode_in     <= dbpu_idle;
-	  ralumode_in		 <= alu_idle;
-	  reg_a				 := (others => '0');
-	  reg_b				 := (others => '0');
-  	 reg_c				 := (others => '0');
+	  ralumode_in		    <= alu_idle;
+	  reg_a				      := (others => '0');
+	  reg_b				      := (others => '0');
+  	reg_c				      := (others => '0');
 
     
     -- if dbta valid then we're flushing
     if dbta_valid = '0' then  
-    
-      case format is  --begin decoding
+      --begin decoding
+      case format is    
       when opc_bra =>
         disp26 := ropcode_out(disp26'range);
+        --set branch modes
         sbpu_mode <= st_uncnd;
         rdbpu_mode_in <= dbpu_idle;
         --erweitere vorzeichenrichtig
-        disp(disp26'left downto disp26'right) <= disp26;
+        disp(disp26'left downto disp26'right) <= disp26;          
         disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
-        
+
         sel_c  <= ropcode_out(reg_c'range);
-        
+
       when opc_bsr =>
         disp26 := ropcode_out(disp26'range);
+        --set branch modes
         sbpu_mode <= st_uncnd;
         rdbpu_mode_in <= relaypc;
         
-        --erweitere vorzeichenrichtig
+        --expand "sign correct"
         disp(disp26'left downto disp26'right) <= disp26;
         disp(disp'left downto disp26'left+1) <= (others => disp26(disp26'left));
         
@@ -89,11 +91,13 @@ begin
         reg_c  := ropcode_out(reg_c'range);
         rtargetreg_in_dc <= ropcode_out(reg_c'range);
         
+        --check for read after load dependency --> Stall dc-stage and introduce nop if neccessary 
         if rmemmode_out_ex = mem_read and rtargetreg_out_ex = reg_c then
           stall_dc <= '1';
           opc_b    := opc_nop_b;
         end if;
         
+        --check for forwarding
         if reg_c = 5x"0" then
           rfwd_selc_in_dc <= fwd_idle;
         elsif reg_c = sel_rme_in then
@@ -104,7 +108,7 @@ begin
           rfwd_selc_in_dc <= fwd_idle;
         end if;
         
-         --erweitere vorzeichenrichtig
+         --expand "sign correct"
         disp(disp18'left downto disp18'right) <= disp18;
         disp(disp'left downto disp18'left+1) <= (others => disp18(disp18'left));
         
@@ -144,6 +148,7 @@ begin
         sel_b <= ropcode_out(reg_b'range);
         opc_r := ropcode_out(opc_r'range);
         
+        --check for forwarding
         if reg_b = 5x"0" then
           rfwd_selb_in_dc <= fwd_idle;
         elsif reg_b = sel_rme_in then
@@ -154,6 +159,7 @@ begin
           rfwd_selb_in_dc <= fwd_idle;
         end if;
         
+        --check for read after load dependency --> Stall dc-stage and introduce nop if neccessary 
         if rmemmode_out_ex = mem_read and (rtargetreg_out_ex = reg_a or rtargetreg_out_ex = reg_b) and opc_r /= opc_str then
           stall_dc <= '1';
           opc_r    := opc_nop_r;
@@ -164,10 +170,7 @@ begin
           rdbpu_mode_in <= jmp;
         when opc_jsr =>
           rdbpu_mode_in <= jsr;
-          rtargetreg_in_dc <= (others => '1');
-          
-          --save nextpc
-          
+          rtargetreg_in_dc <= (others => '1');          
         when others  =>
           sel_c <= ropcode_out(reg_c'range);
           rtargetreg_in_dc <= ropcode_out(reg_c'range);
@@ -177,16 +180,14 @@ begin
           when opc_lsr => ralumode_in <= alu_lsr;
           when opc_asl => ralumode_in <= alu_asl;
           when opc_asr => ralumode_in <= alu_asr;
-            
           when opc_rol_swaph =>
             extension := ropcode_out(extension'range);
-            
+        
             if extension = opc_rol then
               ralumode_in <= alu_rol;
             elsif extension = opc_swaph then
               ralumode_in <= alu_swaph;
             else  --no identifiable command
-              
             end if;
             
           when opc_ror    => ralumode_in <= alu_ror;
@@ -199,6 +200,7 @@ begin
             sel_a   <= ropcode_out(reg_a'range);
             sel_imm <= '0';
             
+            --check for forwarding <-- double check if this is neccessary, since it is already defined for r-types above
             if reg_a = 5x"0" then
               rfwd_sela_in_dc <= fwd_idle;
             elsif reg_a = sel_rme_in then
@@ -218,15 +220,13 @@ begin
             when opc_cmps => ralumode_in <= alu_cmps;
             when others =>
               
-              case opc_r is
-              -- logic with 2 source operands
+              case opc_r is -- logic with 2 source operands
               when opc_and => ralumode_in <= alu_and;
               when opc_or =>  ralumode_in <= alu_or;
               when opc_xor => ralumode_in <= alu_xor;
               when others =>
                 
-                case opc_r is
-                  --load/store
+                case opc_r is --load/store
                   when opc_str => ralumode_in <= alu_add; rtargetreg_in_dc <= (others => '0'); rmemmode_in_dc <= mem_write;
                                   rfwd_selb_in_dc <= fwd_idle;
                                   reg_c := ropcode_out(reg_c'range); 
@@ -265,7 +265,8 @@ begin
         a_imm            <= x"0000" & imm16; --erweitere vorzeichenlos
         sel_imm          <= '1';
         rmemmode_in_dc   <= mem_idle;
-
+        
+        --check for forwarding
         if reg_b = 5x"0" then
           rfwd_selb_in_dc <= fwd_idle;
         elsif reg_b = sel_rme_in then
@@ -276,18 +277,16 @@ begin
           rfwd_selb_in_dc <= fwd_idle;
         end if;
         
+        --check for read after load dependency
         if rmemmode_out_ex = mem_read and rtargetreg_out_ex = reg_b and opc_i /= opc_std then
           stall_dc <= '1';
           opc_i    := opc_nop_i;
-          
         end if;
         
         case opc_i is --determine i-command
         ----arithmetic
         when opc_addi   =>  ralumode_in <= alu_add; 
-                            a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));
-                            
-                              
+                            a_imm(a_imm'left downto imm16'left+1) <= (others => imm16(imm16'left));           
         when opc_addli  =>  ralumode_in <= alu_add;
         when opc_addhi  =>  a_imm <= imm16 & x"0000"; ralumode_in <= alu_add;
         when opc_cmpui  =>  ralumode_in <= alu_cmpu;
@@ -311,7 +310,6 @@ begin
                             rfwd_selsd_in_dc <= fwd_idle;
                           end if;
 
-                          
         when opc_ldd   => ralumode_in <= alu_add; rmemmode_in_dc <= mem_read;
         when others => --no identifiable command
           ralumode_in <= alu_add;
@@ -322,10 +320,7 @@ begin
         end case; --end determine i-command
   --***************************************************************
       end case; --end decoder
-      
     end if;    --executes nop if dbta valid
   end process decode;
-    
-  
 end architecture behav;
 
